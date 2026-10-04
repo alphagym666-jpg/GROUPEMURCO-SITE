@@ -1,0 +1,22 @@
+VOS VRAIES PHOTOS
+=================
+
+Dépose tes photos ICI, avec EXACTEMENT ces noms. Elles remplacent
+automatiquement les illustrations sur le site. Aucun code à changer.
+
+  gouttiere-avant.jpg         → comparateur avant/après (DÉJÀ EN PLACE)
+  gouttiere-apres.jpg         → comparateur avant/après (DÉJÀ EN PLACE)
+  protege-gouttieres.jpg      → page Services, section Protège-gouttières
+  lavage-pression.jpg         → page Services, section Lavage à pression
+  lavage-vitres.jpg           → page Services, section Lavage de vitres
+  ramassage-feuilles.jpg      → page Services, section Ramassage de feuilles
+  equipe.jpg                  → page À propos (toi au travail)
+
+CONSEILS
+- Format paysage, environ 1600 x 960 pixels.
+- Compresse-les avant (squoosh.app) : vise moins de 300 Ko par photo,
+  sinon le site devient lent sur cellulaire.
+- Prends l'avant ET l'après du même angle, à la même heure si possible.
+- Pas de visage de client ni de numéro civique lisible sans permission.
+
+Si une photo est absente, l'illustration reste affichée. Rien ne casse.

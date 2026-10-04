@@ -1,0 +1,24 @@
+SITE GROUPE MURCO — groupemurco.com
+===================================
+
+METTRE EN LIGNE
+1. app.netlify.com → ton projet → onglet Deploys.
+2. Glisse CE DOSSIER au complet dans la zone "Drag and drop".
+3. Attends "Published".
+
+FORMULAIRES
+Onglet Forms → active la détection si besoin, puis ajoute une
+notification courriel vers info@groupemurco.com.
+
+VOS PHOTOS
+Voir photos/LISEZ-MOI.txt : dépose tes photos dans le dossier photos/
+avec les bons noms, elles remplacent les illustrations toutes seules.
+
+AVIS CLIENTS
+assets/avis.js — ajoute les vrais avis dans la liste AVIS, et colle
+le lien de ta fiche Google dans LIEN_AVIS_GOOGLE.
+
+GOOGLE
+La balise de vérification Search Console est déjà sur toutes les pages.
+Après chaque mise en ligne importante, va dans Search Console et
+demande l'indexation de la page modifiée.
