@@ -39,3 +39,9 @@ site sur Facebook, Messenger ou par texto.
 POLICES
 Les polices (Anton, Archivo) sont dans assets/fonts : le site ne
 contacte plus Google Fonts.
+
+PRIX « À PARTIR DE » (À CONFIRMER AVANT LA MISE EN LIGNE)
+Gouttières 200 $, protège-gouttières 650 $, lavage à pression 250 $,
+vitres 150 $, feuilles 175 $. Ils sont écrits dans index.html,
+services.html, les 6 pages de villes (cartes « Dès … $ ») et dans
+la bannière de l'accueil (« Gouttières dès 200 $ »).

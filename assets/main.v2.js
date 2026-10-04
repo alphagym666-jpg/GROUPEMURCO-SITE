@@ -2,6 +2,24 @@
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Entrée du titre de l'accueil : les mots arrivent un à un ---------- */
+  var heroTitle = document.querySelector('.hero-title');
+  var heroBg = document.querySelector('.hero-bg');
+  if (heroTitle) {
+    var txt = heroTitle.textContent.trim();
+    var escTxt = function (w) { return w.replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+    heroTitle.setAttribute('aria-label', txt);
+    heroTitle.innerHTML = txt.split(/\s+/).map(function (w, i) {
+      return '<span class="w" aria-hidden="true" style="--i:' + i + '">' + escTxt(w) + '</span>';
+    }).join(' ');
+  }
+  if (heroBg) {
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      heroBg.classList.add('is-in');
+      if (heroTitle) heroTitle.classList.add('is-in');
+    }); });
+  }
+
   /* ---------- Menu mobile ---------- */
   var header = document.querySelector('.site-header');
   var toggle = document.querySelector('.menu-toggle');
@@ -137,27 +155,140 @@
   });
 
   /* ---------- Vidéo d'arrière-plan de l'accueil ----------
-     Dépose photos/hero-video.mp4 (et, si tu veux, une version verticale
-     photos/hero-video-mobile.mp4). Sans fichier, la photo reste affichée.
-     Pas de vidéo si le visiteur limite les animations ou ses données. */
+     Fichiers dans photos/ : hero-video.mp4 (+ .webm) et la version verticale
+     hero-video-mobile.mp4 (+ .webm). On essaie dans l'ordre : version mobile
+     (cellulaire seulement), WebM (plus léger) puis MP4. Si rien ne joue, la
+     photo reste. Pas de vidéo en économie de données ou animations réduites. */
   var video = document.querySelector('.hero-video');
   var conn = navigator.connection || {};
   var slow = conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
   if (video && !reduce && !slow) {
-    var mobile = window.matchMedia('(max-width: 900px)').matches;
-    var src = (mobile && video.getAttribute('data-src-mobile')) || video.getAttribute('data-src');
-    var tried = false;
-    video.addEventListener('playing', function () { video.classList.add('is-playing'); });
-    video.addEventListener('error', function () {
-      // pas de version mobile : on essaie la vidéo principale, sinon la photo reste
-      if (!tried && src !== video.getAttribute('data-src')) { tried = true; src = video.getAttribute('data-src'); video.src = src; video.play().catch(function () {}); }
-    });
-    window.addEventListener('load', function () {
-      video.src = src;
+    var bases = [];
+    if (window.matchMedia('(max-width: 900px)').matches && video.getAttribute('data-src-mobile')) bases.push(video.getAttribute('data-src-mobile'));
+    bases.push(video.getAttribute('data-src'));
+    var webm = video.canPlayType('video/webm; codecs="vp9"') !== '';
+    var queue = [];
+    bases.forEach(function (b) { if (webm) queue.push(b + '.webm'); queue.push(b + '.mp4'); });
+    var next = function () {
+      if (!queue.length) return;
+      video.src = queue.shift();
       var play = video.play();
       if (play && play.catch) play.catch(function () {});
+    };
+    video.addEventListener('playing', function () { video.classList.add('is-playing'); });
+    video.addEventListener('error', next);
+    window.addEventListener('load', next);
+  }
+
+  /* ---------- Apparition au défilement (titres, cartes, étapes…) ---------- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    var rvIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rvIo.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
+    document.querySelectorAll('.section-head, .svc, .reason, .steps li, .stat, .svc-detail, .faq details, .commitments, .about-text, .city-gallery, .next-steps li, .cta-band .wrap > *, .svc-shot').forEach(function (el) {
+      var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.style.setProperty('--d', Math.min(i, 6));
+      if (!el.classList.contains('svc-shot')) el.classList.add('rv');
+      rvIo.observe(el);
     });
   }
+
+  /* ---------- Parallaxe des bandes photo ---------- */
+  var plx = document.querySelectorAll('.proof-img img, .band-img img, .head-img img');
+  if (plx.length && !reduce) {
+    var plxTick = false;
+    var plxRun = function () {
+      var vh = window.innerHeight;
+      plx.forEach(function (img) {
+        var r = img.parentNode.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        var c = (r.top + r.height / 2 - vh / 2) / vh;
+        img.style.setProperty('--plx', (-c * r.height * 0.06).toFixed(1) + 'px');
+      });
+      plxTick = false;
+    };
+    window.addEventListener('scroll', function () { if (!plxTick) { plxTick = true; requestAnimationFrame(plxRun); } }, { passive: true });
+    plxRun();
+  }
+
+  /* ---------- Lueur qui suit la souris sur les cartes ---------- */
+  document.querySelectorAll('.svc').forEach(function (card) {
+    card.addEventListener('pointermove', function (e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* ---------- Scène avant / après pilotée par le défilement ---------- */
+  var scrub = document.querySelector('.scrub');
+  if (scrub) {
+    var scrubSteps = scrub.querySelectorAll('.scrub-steps li');
+    var scrubTick = false;
+    var scrubRun = function () {
+      var r = scrub.getBoundingClientRect();
+      var total = r.height - window.innerHeight;
+      var t = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 1;
+      var p = Math.min(1, Math.max(0, (t - 0.28) / 0.44));
+      scrub.style.setProperty('--t', t.toFixed(4));
+      scrub.style.setProperty('--p', p.toFixed(4));
+      scrub.style.setProperty('--z', t.toFixed(4));
+      var idx = t < 0.3 ? 0 : (t < 0.72 ? 1 : 2);
+      scrubSteps.forEach(function (li, i) { li.classList.toggle('on', i === idx); });
+      scrubTick = false;
+    };
+    window.addEventListener('scroll', function () { if (!scrubTick) { scrubTick = true; requestAnimationFrame(scrubRun); } }, { passive: true });
+    window.addEventListener('resize', scrubRun);
+    scrubRun();
+  }
+
+  /* ---------- Photos avant / après par ville ----------
+     Dépose photos/villes/<ville>-avant.jpg et <ville>-apres.jpg
+     (ex. candiac-avant.jpg, saint-remi-apres.jpg). Elles remplacent
+     toutes seules la photo d'exemple, sur l'accueil et la page de la ville. */
+  var EXEMPLES = [['photos/gouttiere-avant.jpg', 'photos/gouttiere-apres.jpg'], ['photos/bande-gouttiere.jpg', 'photos/bande-propre.jpg']];
+  var loadPair = function (slug, cb) {
+    var a = new Image(), b = new Image(), n = 0, ok = true;
+    var done = function () { if (++n === 2) cb(ok ? [a.src, b.src] : null); };
+    a.onload = b.onload = done;
+    a.onerror = b.onerror = function () { ok = false; done(); };
+    a.src = 'photos/villes/' + slug + '-avant.jpg';
+    b.src = 'photos/villes/' + slug + '-apres.jpg';
+  };
+  var showPair = function (ba, pair) {
+    var before = ba.querySelector('[data-ba-before]'), after = ba.querySelector('[data-ba-after]');
+    if (!before || !after) return;
+    before.removeAttribute('srcset'); after.removeAttribute('srcset');
+    before.src = pair[0]; after.src = pair[1];
+  };
+  document.querySelectorAll('.ba[data-ville]').forEach(function (ba) {
+    var cap = document.querySelector('[data-city-caption]');
+    loadPair(ba.getAttribute('data-ville'), function (pair) {
+      if (!pair) return;
+      showPair(ba, pair);
+      if (cap) cap.textContent = 'Glissez la poignée pour comparer. Job réalisée à ' + ba.getAttribute('data-ville-nom') + '.';
+    });
+  });
+  document.querySelectorAll('[data-city-gallery]').forEach(function (gal) {
+    var ba = gal.querySelector('.ba');
+    var cap = gal.querySelector('[data-city-caption]');
+    var link = gal.querySelector('[data-city-link]');
+    var chips = gal.querySelectorAll('.city-chip');
+    var pick = function (chip, i) {
+      chips.forEach(function (c) { c.setAttribute('aria-selected', c === chip ? 'true' : 'false'); });
+      var slug = chip.getAttribute('data-ville'), nom = chip.textContent;
+      link.href = 'nettoyage-gouttieres-' + slug + '.html';
+      link.textContent = 'Voir la page ' + nom;
+      ba.classList.add('is-swapping');
+      loadPair(slug, function (pair) {
+        showPair(ba, pair || EXEMPLES[i % EXEMPLES.length]);
+        cap.textContent = pair ? 'Job réalisée à ' + nom + '.' : "Photo d'une de nos jobs. Les photos de " + nom + ' arrivent bientôt.';
+        setTimeout(function () { ba.classList.remove('is-swapping'); }, 150);
+      });
+    };
+    chips.forEach(function (chip, i) { chip.addEventListener('click', function () { pick(chip, i); }); });
+    if (chips.length) pick(chips[0], 0);
+  });
 
   /* ---------- Année dans le pied de page ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
