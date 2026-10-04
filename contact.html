@@ -32,7 +32,7 @@
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html" aria-label="Groupe Murco, accueil"><img src="assets/logo-murco.svg" alt="Groupe Murco" width="200" height="56"></a>
-    <nav class="nav" aria-label="Menu principal"><a href="index.html">Accueil</a><a href="services.html">Services</a><a href="a-propos.html">À propos</a><a href="avis.html">Avis</a><a href="contact.html" aria-current="page">Contact</a></nav>
+    <nav class="nav" aria-label="Menu principal"><a href="index.html">Accueil</a><a href="services.html">Services</a><a href="a-propos.html">À propos</a><a href="contact.html" aria-current="page">Contact</a></nav>
     <div class="header-actions">
       <a class="header-phone" href="tel:+15142321837">514-232-1837</a>
       <a class="btn" href="contact.html">Soumission gratuite</a>
@@ -46,37 +46,53 @@
   <picture class="head-img"><source media="(max-width: 900px)" srcset="photos/entete-page-1100.jpg"><img src="photos/entete-page.jpg" alt="" width="1920" height="620"></picture>
   <div class="wrap">
     <h1>Demandez votre soumission</h1>
-    <p class="lead">Dites-nous où et quoi. Nous vous revenons avec un prix écrit, sans engagement.</p>
+    <p class="lead">Trois petites étapes, moins de 2 minutes. Pressé? Appelez ou textez le <a href="tel:+15142321837">514-232-1837</a>.</p>
   </div>
 </section>
 <section class="section">
   <div class="wrap contact-layout">
-    <form class="form" name="soumission" method="POST" action="merci.html" data-netlify="true" netlify-honeypot="adresse-web">
+    <form class="form form-quote" name="soumission" method="POST" action="merci.html" data-netlify="true" netlify-honeypot="adresse-web">
       <input type="hidden" name="form-name" value="soumission">
       <input type="hidden" name="services-choisis" value="">
       <p class="hidden"><label>Ne pas remplir <input name="adresse-web"></label></p>
-      <div class="form-row">
-        <div class="field"><label for="c-nom">Nom complet</label><input id="c-nom" name="nom" required autocomplete="name"></div>
-        <div class="field"><label for="c-tel">Téléphone</label><input id="c-tel" name="telephone" type="tel" required autocomplete="tel"></div>
-      </div>
-      <div class="form-row">
-        <div class="field"><label for="c-courriel">Courriel</label><input id="c-courriel" name="courriel" type="email" autocomplete="email"></div>
-        <div class="field"><label for="c-ville">Ville</label><input id="c-ville" name="ville" required autocomplete="address-level2"></div>
-      </div>
-      <div class="field"><label for="c-adresse">Adresse des travaux <span class="hint">(facultatif)</span></label><input id="c-adresse" name="adresse" autocomplete="street-address"></div>
-      <fieldset class="field">
-        <legend>Services souhaités</legend>
+      <ul class="form-promise"><li>Gratuit</li><li>Sans engagement</li><li>Réponse visée en moins de 24&nbsp;h</li></ul>
+
+      <fieldset class="form-step">
+        <legend><span class="step-n">1</span> De quoi avez-vous besoin?</legend>
+        <p class="step-hint">Cochez un ou plusieurs services.</p>
         <div class="checks"><label><input type="checkbox" name="services" value="Nettoyage de gouttières" data-svc="nettoyage-gouttieres"> <span>Nettoyage de gouttières</span></label><label><input type="checkbox" name="services" value="Protège-gouttières" data-svc="protege-gouttieres"> <span>Protège-gouttières</span></label><label><input type="checkbox" name="services" value="Lavage à pression du revêtement" data-svc="lavage-pression"> <span>Lavage à pression du revêtement</span></label><label><input type="checkbox" name="services" value="Lavage de vitres extérieures" data-svc="lavage-vitres"> <span>Lavage de vitres extérieures</span></label><label><input type="checkbox" name="services" value="Ramassage de feuilles et fermeture de terrain" data-svc="feuilles-terrain"> <span>Ramassage de feuilles et fermeture de terrain</span></label></div>
+        <div class="field"><label for="c-msg">Détails <span class="hint">(facultatif)</span></label><textarea id="c-msg" name="details" placeholder="Ex. maison de 2 étages, environ 120 pieds de gouttières, beaucoup d'arbres autour."></textarea></div>
       </fieldset>
-      <div class="form-row">
-        <div class="field"><label for="c-type">Type de bâtiment</label>
-          <select id="c-type" name="batiment"><option value="">Choisir</option><option>Maison 1 étage</option><option>Maison 2 étages</option><option>Maison 3 étages</option><option>Plex ou bloc appartements</option><option>Commerce</option></select></div>
-        <div class="field"><label for="c-pref">Je préfère être contacté par</label>
-          <select id="c-pref" name="preference"><option>Téléphone</option><option>Texto</option><option>Courriel</option></select></div>
-      </div>
-      <div class="field"><label for="c-msg">Détails <span class="hint">(longueur des gouttières, nombre de fenêtres, taille du terrain…)</span></label><textarea id="c-msg" name="details"></textarea></div>
+
+      <fieldset class="form-step">
+        <legend><span class="step-n">2</span> Où sont les travaux?</legend>
+        <div class="form-row">
+          <div class="field"><label for="c-ville">Ville</label><input id="c-ville" name="ville" required autocomplete="address-level2" list="villes-desservies" placeholder="Ex. Sherrington"></div>
+          <div class="field"><label for="c-type">Type de bâtiment <span class="hint">(facultatif)</span></label>
+            <select id="c-type" name="batiment"><option value="">Choisir</option><option>Maison 1 étage</option><option>Maison 2 étages</option><option>Maison 3 étages</option><option>Plex ou bloc appartements</option><option>Commerce</option></select></div>
+        </div>
+        <div class="field"><label for="c-adresse">Adresse des travaux <span class="hint">(facultatif)</span></label><input id="c-adresse" name="adresse" autocomplete="street-address"></div>
+        <datalist id="villes-desservies"><option value="Sherrington"><option value="Napierville"><option value="Saint-Rémi"><option value="Châteauguay"><option value="La Prairie"><option value="Candiac"></datalist>
+      </fieldset>
+
+      <fieldset class="form-step">
+        <legend><span class="step-n">3</span> Comment vous joindre?</legend>
+        <div class="form-row">
+          <div class="field"><label for="c-nom">Nom</label><input id="c-nom" name="nom" required autocomplete="name"></div>
+          <div class="field"><label for="c-tel">Téléphone</label><input id="c-tel" name="telephone" type="tel" required autocomplete="tel" placeholder="514-555-1234"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="c-courriel">Courriel <span class="hint">(facultatif)</span></label><input id="c-courriel" name="courriel" type="email" autocomplete="email"></div>
+          <div class="field"><label for="c-pref">Je préfère être contacté par</label>
+            <select id="c-pref" name="preference"><option>Téléphone</option><option>Texto</option><option>Courriel</option></select></div>
+        </div>
+      </fieldset>
+
       <label class="consent"><input type="checkbox" name="consentement" required> <span>J'accepte que Groupe Murco utilise ces renseignements pour me répondre et préparer ma soumission (<a href="confidentialite.html">politique de confidentialité</a>).</span></label>
-      <div><button class="btn" type="submit">Envoyer ma demande</button></div>
+      <div class="form-submit">
+        <button class="btn" type="submit">Recevoir ma soumission gratuite</button>
+        <p>Vos renseignements servent seulement à vous répondre.</p>
+      </div>
     </form>
     <aside class="contact-aside">
       <h2>Vous préférez appeler?</h2>
@@ -112,7 +128,7 @@
         <h2>Entreprise</h2>
         <ul>
           <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="avis.html">Avis clients</a></li>
+          <li><a href="avis.html">Laisser un avis</a></li>
           <li><a href="contact.html">Demander une soumission</a></li>
           <li><a href="confidentialite.html">Politique de confidentialité</a></li>
         </ul>

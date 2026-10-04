@@ -180,6 +180,16 @@
     });
   });
 
+  /* ---------- Formulaires : éviter le double envoi ---------- */
+  document.querySelectorAll('form[data-netlify]').forEach(function (form) {
+    var btn = form.querySelector('button[type="submit"]');
+    if (!btn) return;
+    var label = btn.textContent;
+    form.addEventListener('submit', function () { btn.disabled = true; btn.textContent = 'Envoi en cours…'; });
+    // retour arrière dans le navigateur : on réactive le bouton
+    window.addEventListener('pageshow', function () { btn.disabled = false; btn.textContent = label; });
+  });
+
   /* ---------- Avis clients ---------- */
   var grid = document.getElementById('reviews');
   if (grid && typeof AVIS !== 'undefined') {
