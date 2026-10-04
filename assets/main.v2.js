@@ -162,7 +162,7 @@
   var video = document.querySelector('.hero-video');
   var conn = navigator.connection || {};
   var slow = conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
-  if (video && !reduce && !slow) {
+  if (video && video.getAttribute('data-src') && !reduce && !slow) {
     var bases = [];
     if (window.matchMedia('(max-width: 900px)').matches && video.getAttribute('data-src-mobile')) bases.push(video.getAttribute('data-src-mobile'));
     bases.push(video.getAttribute('data-src'));
@@ -185,30 +185,12 @@
     var rvIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rvIo.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
-    document.querySelectorAll('.section-head, .svc, .reason, .steps li, .stat, .svc-detail, .faq details, .commitments, .about-text, .city-gallery, .next-steps li, .cta-band .wrap > *, .svc-shot').forEach(function (el) {
+    document.querySelectorAll('.section-head, .svc, .reason, .steps li, .stat, .svc-detail, .faq details, .commitments, .about-text, .city-gallery, .next-steps li, .cta-band .wrap > *').forEach(function (el) {
       var i = Array.prototype.indexOf.call(el.parentNode.children, el);
       el.style.setProperty('--d', Math.min(i, 6));
-      if (!el.classList.contains('svc-shot')) el.classList.add('rv');
+      el.classList.add('rv');
       rvIo.observe(el);
     });
-  }
-
-  /* ---------- Parallaxe des bandes photo ---------- */
-  var plx = document.querySelectorAll('.proof-img img, .band-img img, .head-img img');
-  if (plx.length && !reduce) {
-    var plxTick = false;
-    var plxRun = function () {
-      var vh = window.innerHeight;
-      plx.forEach(function (img) {
-        var r = img.parentNode.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > vh) return;
-        var c = (r.top + r.height / 2 - vh / 2) / vh;
-        img.style.setProperty('--plx', (-c * r.height * 0.06).toFixed(1) + 'px');
-      });
-      plxTick = false;
-    };
-    window.addEventListener('scroll', function () { if (!plxTick) { plxTick = true; requestAnimationFrame(plxRun); } }, { passive: true });
-    plxRun();
   }
 
   /* ---------- Lueur qui suit la souris sur les cartes ---------- */
@@ -232,7 +214,6 @@
       var p = Math.min(1, Math.max(0, (t - 0.28) / 0.44));
       scrub.style.setProperty('--t', t.toFixed(4));
       scrub.style.setProperty('--p', p.toFixed(4));
-      scrub.style.setProperty('--z', t.toFixed(4));
       var idx = t < 0.3 ? 0 : (t < 0.72 ? 1 : 2);
       scrubSteps.forEach(function (li, i) { li.classList.toggle('on', i === idx); });
       scrubTick = false;

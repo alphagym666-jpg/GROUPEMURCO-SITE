@@ -23,11 +23,12 @@ Si une photo est absente, l'illustration reste affichée. Rien ne casse.
 
 VIDÉO D'ARRIÈRE-PLAN (page d'accueil)
 =====================================
-Déjà en place : hero-video.mp4 / .webm (paysage) et hero-video-mobile.mp4 /
-.webm (verticale), montées à partir de tes photos de jobs avec
-outils/video-accueil.sh. Pour la remplacer par une vraie vidéo : envoie-la
-à Claude (8 à 15 s, sans son, téléphone stable), il la compresse et
-remplace les 4 fichiers.
+  hero-video.mp4 (+ .webm)          → derrière le titre, format paysage
+  hero-video-mobile.mp4 (+ .webm)   → (facultatif) version verticale
+
+Une vraie vidéo filmée (personnes en action), 8 à 15 s, sans son, moins
+de 3 Mo. Envoie la vidéo brute à Claude, il la compresse et l'installe.
+Sans fichier, la photo d'accueil reste affichée, fixe.
 
 PHOTOS AVANT / APRÈS PAR VILLE
 ==============================

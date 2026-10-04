@@ -626,10 +626,8 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 /* ---------- Page 404 ---------- */
 .notfound-links { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2rem; }
 
-/* ---------- Héro plein écran : photo animée ou vidéo d'arrière-plan ---------- */
+/* ---------- Héro plein écran : photo fixe, ou vidéo d'arrière-plan si fournie ---------- */
 .hero-bg { min-height: calc(100vh - 82px); min-height: calc(100svh - 82px); }
-.hero-bg-img img { animation: kenburns 26s ease-in-out infinite alternate; transform-origin: 70% 50%; }
-@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.09); } }
 .hero-video {
   position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover;
   opacity: 0; transition: opacity 1.2s var(--ease);
@@ -700,8 +698,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .js .rv { opacity: 0; transform: translateY(30px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--d, 0) * 80ms); }
 .js .rv.in { opacity: 1; transform: none; }
 
-/* Parallaxe sur les bandes photo */
-.proof-img img, .band-img img, .head-img img { will-change: transform; transform: translate3d(0, var(--plx, 0px), 0) scale(1.14); }
 
 /* Lueur qui suit la souris sur les cartes de services */
 .svc::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
@@ -714,14 +710,11 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .price-from { font-size: 1.05rem; margin: -.3rem 0 1.1rem !important; color: var(--graphite) !important; }
 .price-from strong { font-family: var(--display); font-weight: 400; font-size: 2.3rem; line-height: 1; color: var(--graphite); margin-left: .25rem; }
 
-/* Zoom lent sur les photos des services */
-.svc-shot img { transition: transform 7s ease-out; }
-.svc-shot:hover img, .svc-shot.in img { transform: scale(1.07); }
 
 /* Scène avant / après qui suit le défilement */
 .scrub { position: relative; height: 320vh; background: var(--ink); --p: .5; }
 .scrub-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
-.scrub-media { position: absolute; inset: 0; transform: scale(calc(1.12 - var(--z, 0) * .12)); }
+.scrub-media { position: absolute; inset: 0; }
 .scrub-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .scrub-after { clip-path: inset(0 0 0 calc(100% - var(--p) * 100%)); }
 .scrub-line { position: absolute; top: 0; bottom: 0; left: calc(100% - var(--p) * 100%); width: 3px; margin-left: -1.5px; background: #fff;
@@ -761,7 +754,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .js .hero-title .w, .js .hero-bg .lead, .js .hero-bg .hero-actions, .js .hero-bg .trust, .js .rv { opacity: 1; transform: none; filter: none; }
-  .proof-img img, .band-img img, .head-img img { transform: none; }
 }
 @media (max-width: 900px) {
   .scrub-copy { padding-bottom: calc(1.8rem + 66px); }
