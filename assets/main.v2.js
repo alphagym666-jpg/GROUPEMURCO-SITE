@@ -136,6 +136,29 @@
     }
   });
 
+  /* ---------- Vidéo d'arrière-plan de l'accueil ----------
+     Dépose photos/hero-video.mp4 (et, si tu veux, une version verticale
+     photos/hero-video-mobile.mp4). Sans fichier, la photo reste affichée.
+     Pas de vidéo si le visiteur limite les animations ou ses données. */
+  var video = document.querySelector('.hero-video');
+  var conn = navigator.connection || {};
+  var slow = conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
+  if (video && !reduce && !slow) {
+    var mobile = window.matchMedia('(max-width: 900px)').matches;
+    var src = (mobile && video.getAttribute('data-src-mobile')) || video.getAttribute('data-src');
+    var tried = false;
+    video.addEventListener('playing', function () { video.classList.add('is-playing'); });
+    video.addEventListener('error', function () {
+      // pas de version mobile : on essaie la vidéo principale, sinon la photo reste
+      if (!tried && src !== video.getAttribute('data-src')) { tried = true; src = video.getAttribute('data-src'); video.src = src; video.play().catch(function () {}); }
+    });
+    window.addEventListener('load', function () {
+      video.src = src;
+      var play = video.play();
+      if (play && play.catch) play.catch(function () {});
+    });
+  }
+
   /* ---------- Année dans le pied de page ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 

@@ -20,3 +20,17 @@ CONSEILS
 - Pas de visage de client ni de numéro civique lisible sans permission.
 
 Si une photo est absente, l'illustration reste affichée. Rien ne casse.
+
+VIDÉO D'ARRIÈRE-PLAN (page d'accueil)
+=====================================
+  hero-video.mp4          → vidéo derrière le titre (format paysage)
+  hero-video-mobile.mp4   → (facultatif) version verticale pour cellulaire
+
+- 8 à 15 secondes, qui boucle bien, SANS son (le son est coupé de toute façon).
+- Idéalement : lavage à pression qui « dévoile » un mur propre, ou
+  gouttière vidée filmée de près. Caméra stable, plan lent.
+- Vise moins de 3 Mo : 1280 x 720, H.264. Le plus simple : envoie la
+  vidéo brute à Claude, il la compresse et l'installe.
+- Tant que le fichier n'est pas là, la photo reste affichée avec un
+  léger zoom lent. Pas de vidéo non plus pour les visiteurs en mode
+  économie de données ou qui ont désactivé les animations.
