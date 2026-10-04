@@ -146,6 +146,17 @@
     if (c) c.checked = true;
   }
 
+  /* ---------- Formulaire : regrouper les services cochés ---------- */
+  document.querySelectorAll('form[data-netlify]').forEach(function (form) {
+    var out = form.querySelector('input[name="services-choisis"]');
+    if (!out) return;
+    form.addEventListener('submit', function () {
+      var vals = [];
+      form.querySelectorAll('input[name="services"]:checked').forEach(function (c) { vals.push(c.value); });
+      out.value = vals.join(', ');
+    });
+  });
+
   /* ---------- Avis clients ---------- */
   var grid = document.getElementById('reviews');
   if (grid && typeof AVIS !== 'undefined') {

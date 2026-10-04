@@ -2,6 +2,13 @@ SITE GROUPE MURCO — groupemurco.com
 ===================================
 
 METTRE EN LIGNE
+Recommandé : relier Netlify au dépôt GitHub « groupemurco-site »
+(Netlify → ton projet → Project configuration → Build & deploy →
+Link repository). Ensuite, chaque modification poussée sur la branche
+principale est publiée toute seule. Aucune commande de build : laisse
+« Build command » et « Publish directory » vides.
+
+Sinon, à la main :
 1. app.netlify.com → ton projet → onglet Deploys.
 2. Glisse CE DOSSIER au complet dans la zone "Drag and drop".
 3. Attends "Published".
@@ -9,6 +16,8 @@ METTRE EN LIGNE
 FORMULAIRES
 Onglet Forms → active la détection si besoin, puis ajoute une
 notification courriel vers info@groupemurco.com.
+Dans chaque demande, le champ « services-choisis » liste TOUS les
+services cochés par le client.
 
 VOS PHOTOS
 Voir photos/LISEZ-MOI.txt : dépose tes photos dans le dossier photos/
@@ -22,3 +31,11 @@ GOOGLE
 La balise de vérification Search Console est déjà sur toutes les pages.
 Après chaque mise en ligne importante, va dans Search Console et
 demande l'indexation de la page modifiée.
+
+IMAGE DE PARTAGE
+assets/partage.jpg (1200 x 630) s'affiche quand quelqu'un partage le
+site sur Facebook, Messenger ou par texto.
+
+POLICES
+Les polices (Anton, Archivo) sont dans assets/fonts : le site ne
+contacte plus Google Fonts.

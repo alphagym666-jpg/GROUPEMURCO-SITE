@@ -1,6 +1,10 @@
 /* ========================================================
    Groupe Murco — feuille de style
    ======================================================== */
+
+/* Polices hébergées sur le site (plus rapide, aucun appel à Google) */
+@font-face { font-family: "Anton"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/anton-latin.woff2") format("woff2"); }
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("fonts/archivo-latin.woff2") format("woff2"); }
 :root {
   --graphite: #1B1F22;
   --graphite-2: #2A2F33;
@@ -47,7 +51,7 @@ a:hover { color: var(--graphite); }
 
 h1, h2 {
   font-family: var(--display); font-weight: 400; text-transform: uppercase;
-  line-height: .93; margin: 0 0 .38em; letter-spacing: 0;
+  line-height: 1; margin: 0 0 .38em; letter-spacing: 0;
 }
 h1 { font-size: clamp(3rem, 7.6vw, 6rem); }
 h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
@@ -477,13 +481,16 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .site-footer ul a:hover { padding-left: 5px; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); margin-top: 2.6rem; padding-top: 1.5rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: .9rem; }
 
-/* Bouton d'appel mobile */
-.call-fab {
-  display: none; position: fixed; right: 1rem; bottom: 1rem; z-index: 90; background: var(--amber); color: var(--graphite);
-  border-radius: 999px; padding: 1rem 1.35rem; font-family: var(--body); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; text-decoration: none;
-  box-shadow: 0 12px 30px rgba(28,33,38,.35); align-items: center; gap: .55rem;
+/* Barre d'action mobile : appeler, texto, soumission */
+.mbar { display: none; }
+.mbar a {
+  display: flex; align-items: center; justify-content: center; gap: .45rem; min-height: 50px;
+  border-radius: var(--r-s); border: 1.5px solid rgba(255,255,255,.24); color: #fff; text-decoration: none;
+  font-family: var(--body); font-weight: 700; font-size: .95rem;
 }
-.call-fab svg { width: 21px; height: 21px; }
+.mbar a:hover { color: #fff; }
+.mbar svg { width: 19px; height: 19px; flex: none; }
+.mbar .mbar-main { background: var(--amber); border-color: var(--amber); color: var(--graphite); text-transform: uppercase; letter-spacing: .04em; font-size: .88rem; }
 
 /* Barre de progression */
 .progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--amber); width: 0; z-index: 200; transition: width .1s linear; }
@@ -522,8 +529,11 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
   .steps { grid-template-columns: 1fr 1fr; row-gap: 2.4rem; }
   .steps::before { display: none; }
   .contact-aside { position: static; }
-  .call-fab { display: inline-flex; }
-  .site-footer { padding-bottom: 6rem; }
+  .mbar {
+    display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: .5rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+    background: var(--ink); padding: .55rem .6rem calc(.55rem + env(safe-area-inset-bottom, 0px)); box-shadow: 0 -10px 30px rgba(0,0,0,.2);
+  }
+  body { padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)); }
   .section { padding: 4.6rem 0; }
 }
 @media (max-width: 620px) {
@@ -593,3 +603,25 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
   .proof blockquote { max-width: none; }
   .head-img img { object-position: 60% 58%; }
 }
+
+
+/* ---------- Héro : titre sur 3 lignes, boutons visibles sans défiler ---------- */
+@media (min-width: 901px) {
+  .hero-bg .hero-copy { max-width: 700px; }
+  .hero-bg h1 { max-width: none; font-size: clamp(3.4rem, 6vw, 5.5rem); }
+  .hero-bg .lead { max-width: 32em; }
+}
+
+/* ---------- Mobile : cartes et étapes plus compactes ---------- */
+@media (max-width: 620px) {
+  .svc { display: grid; grid-template-columns: 46px 1fr; column-gap: 1.1rem; padding: 1.6rem 1.3rem; }
+  .svc .ic { width: 46px; height: 46px; margin: 0; grid-row: 1 / span 3; }
+  .svc .go { padding-top: .7rem; }
+  .steps { row-gap: 1.6rem; }
+  .steps li { display: grid; grid-template-columns: 52px 1fr; column-gap: 1.1rem; }
+  .steps li::before { width: 46px; height: 46px; font-size: 1.3rem; margin: 0; grid-row: 1 / span 2; box-shadow: none; }
+  .steps h3 { align-self: end; margin-top: .2rem; }
+}
+
+/* ---------- Page 404 ---------- */
+.notfound-links { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2rem; }
