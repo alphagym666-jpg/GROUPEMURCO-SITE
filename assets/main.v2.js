@@ -280,6 +280,28 @@
     }, { threshold: 0.25 }).observe(v);
   });
 
+  /* ---------- Cartes de services : vidéo au survol, avant → après au défilement ---------- */
+  var hover = window.matchMedia('(hover: hover)').matches;
+  var webmOk = document.createElement('video').canPlayType('video/webm; codecs="vp9"') !== '';
+  document.querySelectorAll('.svc').forEach(function (card) {
+    var v = card.querySelector('.svc-vid');
+    if (v && hover && !reduce) {
+      card.addEventListener('mouseenter', function () {
+        if (!v.src) v.src = v.getAttribute('data-src') + (webmOk ? '.webm' : '.mp4');
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+        card.classList.add('is-playing');
+      });
+      card.addEventListener('mouseleave', function () { v.pause(); card.classList.remove('is-playing'); });
+    }
+    // sans souris (cellulaire) : la gouttière se nettoie quand la carte apparaît
+    if (!hover && card.querySelector('.svc-after') && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { setTimeout(function () { card.classList.add('is-revealed'); }, 500); io.disconnect(); } });
+      }, { threshold: 0.6 });
+      io.observe(card);
+    }
+  });
+
   /* ---------- Année dans le pied de page ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
