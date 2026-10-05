@@ -84,6 +84,7 @@ estimation.html : calculateur de prix (taux dans assets/config.js).
 Lien « Estimation » dans le menu de toutes les pages.
 
 VIDÉO D'ACCUEIL
-Pour l'instant : ta photo de lavage de revêtement (photos/hero-fond.jpg).
-Pour mettre une vidéo : envoie à Claude ta vidéo, ou des liens Pexels
+photos/hero-video(-mobile).mp4/.webm : équipe qui lave de grandes
+fenêtres à la perche (Pexels, vidéos 6196265, 6196266, 6196267, 6196271).
+Pour la remplacer : envoie à Claude ta vidéo, ou des liens Pexels
 (pexels.com/video/...) ; il les télécharge, compresse et installe.
