@@ -909,7 +909,3 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .truck-figure img { width: 100%; height: auto; }
 @media (min-width: 901px) { .hero-bg .hero-copy { max-width: 780px; } .hero-bg .hero-actions .btn { padding-inline: 1.3rem; } }
 
-/* Camion et remorque */
-.fleet { background: linear-gradient(180deg, #fff, var(--mist-2)); }
-.fleet-figure { margin: 0; border-radius: var(--r-l); overflow: hidden; box-shadow: var(--sh-l); }
-.fleet-figure img { width: 100%; height: auto; display: block; }

@@ -81,9 +81,3 @@ MAQUETTE — À REMPLACER AUSSI
   10559047, 5466466, 35153375). Remplace par tes vraies jobs par ville,
   avec les mêmes noms de fichiers (ex. candiac-vitres.jpg).
 
-CAMION + REMORQUE
-photos/maquette/camion-remorque.jpg : maquette de lettrage (dessin) du
-pick-up et de la remorque fermée, logo sur les portières, numéro sur la
-boîte, logo + services + site web sur la remorque. Tu peux la montrer à
-ton lettreur comme modèle. Remplace-la par une vraie photo quand ton
-camion et ta remorque seront lettrés.
