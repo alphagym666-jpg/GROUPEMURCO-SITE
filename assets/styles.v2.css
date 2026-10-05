@@ -842,3 +842,69 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 /* Lavage à pression : zoom vers la ligne entre le mur sale et le mur lavé */
 .svc-zoom img { transform-origin: 62% 42%; transition: transform 1.6s cubic-bezier(.33,0,.2,1); }
 .svc:hover .svc-zoom img, .svc.is-revealed .svc-zoom img { transform: scale(1.7); }
+
+/* Galerie de services par ville */
+.job-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.job-tile { position: relative; display: block; border-radius: var(--r-m); overflow: hidden; aspect-ratio: 4 / 5; box-shadow: var(--sh-m); color: #fff; text-decoration: none; }
+.job-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+.job-tile:hover img { transform: scale(1.06); }
+.job-tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(18,21,24,.82) 0%, rgba(18,21,24,0) 55%); }
+.job-tile span { position: absolute; z-index: 1; left: 1.1rem; right: 1.1rem; bottom: 1rem; font-weight: 700; font-size: 1.05rem; }
+.job-tile span::after { content: " →"; color: var(--amber); }
+.job-tile:hover { color: #fff; }
+.photo-note { margin: 1rem 0 0; font-size: .85rem; color: var(--slate); }
+@media (max-width: 900px) { .job-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ===================== Calculateur de prix ===================== */
+.calc-section { background: linear-gradient(180deg, var(--mist-2), #fff); }
+.calc { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; align-items: start; max-width: 1000px; margin-inline: auto; }
+.calc-inputs { display: grid; gap: .8rem; background: #fff; border: 1px solid var(--alu); border-radius: var(--r-l); padding: 1.6rem; box-shadow: var(--sh-s); }
+.calc-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 1rem; border: 1.5px solid var(--alu); border-radius: var(--r-m); transition: border-color .2s, background-color .2s; }
+.calc-row.on { border-color: var(--amber); background: rgba(227,160,49,.07); }
+.calc-row label { display: flex; align-items: center; gap: .65rem; font-weight: 600; cursor: pointer; }
+.calc-row input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--graphite); }
+.calc-qty { display: flex; align-items: center; gap: .5rem; flex: none; }
+.calc-qty input { width: 6.2rem; font: inherit; padding: .5rem .6rem; border: 1.5px solid var(--alu); border-radius: var(--r-s); text-align: right; }
+.calc-qty small { color: var(--slate); width: 8.5rem; font-size: .88rem; line-height: 1.2; }
+.calc-row:not(.on) .calc-qty { opacity: .45; }
+.calc-result { position: sticky; top: 110px; background: var(--graphite); color: #fff; border-radius: var(--r-l); padding: 2rem; box-shadow: var(--sh-l); }
+.calc-label { margin: 0; font-weight: 700; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--amber); }
+.calc-total { font-family: var(--display); font-size: clamp(2.6rem, 5vw, 3.6rem); line-height: 1; margin: .5rem 0 1rem; }
+.calc-lines { list-style: none; padding: 0; margin: 0 0 1.4rem; font-size: .95rem; color: #C3CAD0; }
+.calc-lines li { display: flex; justify-content: space-between; gap: 1rem; padding: .45rem 0; border-top: 1px solid rgba(255,255,255,.1); }
+.calc-result .btn { width: 100%; }
+.calc-note { margin: 1rem 0 0; font-size: .82rem; color: #9AA4AB; }
+@media (max-width: 900px) { .calc { grid-template-columns: 1fr; } .calc-result { position: static; } }
+@media (max-width: 620px) { .calc-row { flex-direction: column; align-items: flex-start; } .calc-inputs { padding: 1rem; } }
+
+/* ===================== Garantie ===================== */
+.garantie { background: var(--amber); color: var(--graphite); padding: 2.6rem 0; }
+.garantie-inner { display: flex; align-items: center; gap: 2rem; }
+.garantie h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin-bottom: .3rem; }
+.garantie p { margin: 0; max-width: 60ch; font-size: 1.05rem; }
+.garantie-badge { flex: none; display: grid; place-items: center; width: 108px; height: 108px; border-radius: 50%; background: var(--graphite); color: #fff;
+  font-weight: 700; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; line-height: 1; box-shadow: 0 0 0 6px rgba(255,255,255,.35); }
+.garantie-badge span { display: block; font-family: var(--display); font-size: 2.8rem; letter-spacing: 0; color: var(--amber); }
+@media (max-width: 620px) { .garantie-inner { flex-direction: column; align-items: flex-start; gap: 1.2rem; } .garantie-badge { width: 88px; height: 88px; } }
+
+/* ===================== Bande de confiance ===================== */
+.trust-bar { background: #fff; border-bottom: 1px solid var(--alu); }
+.trust-bar-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem 1.6rem; padding: 1.05rem 0; font-weight: 600; font-size: .95rem; }
+.trust-bar b { color: var(--moss); margin-right: .3rem; }
+@media (max-width: 620px) { .trust-bar-inner { display: grid; grid-template-columns: 1fr 1fr; font-size: .86rem; } }
+.hero-tel { display: none; }
+@media (min-width: 621px) { .hero-tel { display: inline-flex; } }
+
+/* ===================== Consentement (Loi 25) ===================== */
+.consent-bar { position: fixed; z-index: 150; left: 1rem; right: 1rem; bottom: 1rem; max-width: 560px; background: var(--ink); color: #D6DBDF;
+  border-radius: var(--r-l); padding: 1.2rem 1.3rem; box-shadow: var(--sh-l); font-size: .93rem; }
+.consent-bar p { margin: 0 0 .9rem; }
+.consent-bar a { color: var(--amber); }
+.consent-bar .actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+.consent-bar .btn { padding: .7rem 1rem; font-size: .82rem; }
+@media (max-width: 900px) { .consent-bar { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); } }
+
+/* Camion */
+.truck-figure { margin: 0 0 1.8rem; border-radius: var(--r-m); overflow: hidden; box-shadow: var(--sh-m); }
+.truck-figure img { width: 100%; height: auto; }
+@media (min-width: 901px) { .hero-bg .hero-copy { max-width: 780px; } .hero-bg .hero-actions .btn { padding-inline: 1.3rem; } }

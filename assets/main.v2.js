@@ -301,15 +301,86 @@
     }
   });
 
+  /* ---------- Calculateur de prix ---------- */
+  var calc = document.querySelector('[data-calc]');
+  if (calc && typeof PRIX !== 'undefined') {
+    var NOMS = { gouttieres: 'Gouttières', protege: 'Protège-gouttières', pression: 'Lavage à pression', vitres: 'Vitres', feuilles: 'Feuilles' };
+    var SVC = { gouttieres: 'nettoyage-gouttieres', protege: 'protege-gouttieres', pression: 'lavage-pression', vitres: 'lavage-vitres', feuilles: 'feuilles-terrain' };
+    var arrondi = function (n) { return Math.round(n / 5) * 5; };
+    var fmt = function (n) { return arrondi(n).toLocaleString('fr-CA') + ' $'; };
+    var recalc = function () {
+      var et = calc.querySelector('[data-etages]').value;
+      var mult = (PRIX.etages && PRIX.etages[et]) || 1;
+      var total = 0, lignes = [], details = ['Maison de ' + et + ' étage(s)'], svcs = [];
+      calc.querySelectorAll('[data-svc-row]').forEach(function (row) {
+        var k = row.getAttribute('data-svc-row'), cb = row.querySelector('input[type=checkbox]');
+        var q = Math.max(0, parseFloat(row.querySelector('input[type=number]').value) || 0);
+        row.classList.toggle('on', cb.checked);
+        if (!cb.checked || !PRIX[k]) return;
+        var m = (k === 'feuilles') ? 1 : mult;
+        var v = Math.max(PRIX[k].min, q * PRIX[k].taux * m);
+        total += v; svcs.push(SVC[k]);
+        lignes.push('<li><span>' + NOMS[k] + '</span><span>' + fmt(v) + '</span></li>');
+        var u = PRIX[k].unite; if (q > 1) u = u.replace(/^(\S+)/, '$1s').replace(/ (\S+)$/, function (m, w) { return ' ' + (/[sx]$/.test(w) ? w : w + 's'); });
+        details.push(NOMS[k] + ' : ' + q + ' ' + u);
+      });
+      calc.querySelector('[data-total]').textContent = total ? fmt(total * 0.9) + ' – ' + fmt(total * 1.1) : '—';
+      calc.querySelector('[data-lines]').innerHTML = lignes.join('');
+      var cta = calc.querySelector('[data-calc-cta]');
+      cta.href = 'contact.html?' + (svcs.length ? 'service=' + svcs.join(',') + '&' : '') + 'details=' +
+        encodeURIComponent(details.join(' · ') + (total ? ' · Estimation en ligne : ' + fmt(total * 0.9) + ' – ' + fmt(total * 1.1) : ''));
+    };
+    calc.addEventListener('input', recalc);
+    calc.addEventListener('change', recalc);
+    recalc();
+  }
+
+  /* ---------- Formulaire : préremplir depuis le calculateur ---------- */
+  var qs = new URLSearchParams(location.search);
+  var svcParam = qs.get('service');
+  if (svcParam) svcParam.split(',').forEach(function (k) { var c = document.querySelector('[data-svc="' + k + '"]'); if (c) c.checked = true; });
+  var det = qs.get('details'), ta = document.getElementById('c-msg');
+  if (det && ta && !ta.value) ta.value = det;
+
+  /* ---------- Badges RBQ / assurance (config.js) ---------- */
+  var badgeBox = document.querySelector('[data-badges]');
+  if (badgeBox) {
+    if (typeof NUMERO_RBQ === 'string' && NUMERO_RBQ) badgeBox.insertAdjacentHTML('beforeend', '<span><b>✓</b> Licence RBQ ' + NUMERO_RBQ.replace(/</g, '') + '</span>');
+    if (typeof ASSURANCE === 'string' && ASSURANCE) badgeBox.insertAdjacentHTML('beforeend', '<span><b>✓</b> ' + ASSURANCE.replace(/</g, '') + '</span>');
+  }
+
+  /* ---------- Suivi des visites avec consentement (Loi 25) ---------- */
+  var GA = (typeof GOOGLE_ANALYTICS_ID === 'string') ? GOOGLE_ANALYTICS_ID : '';
+  var PX = (typeof META_PIXEL_ID === 'string') ? META_PIXEL_ID : '';
+  var loadTracking = function () {
+    if (GA) {
+      var g = document.createElement('script'); g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA); document.head.appendChild(g);
+      window.dataLayer = window.dataLayer || []; window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date()); window.gtag('config', GA);
+    }
+    if (PX) {
+      !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v;
+        s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      window.fbq('init', PX); window.fbq('track', 'PageView');
+    }
+  };
+  if (GA || PX) {
+    var choix = null;
+    try { choix = localStorage.getItem('murco-consentement'); } catch (e) {}
+    if (choix === 'oui') loadTracking();
+    else if (choix !== 'non') {
+      document.body.insertAdjacentHTML('beforeend', '<div class="consent-bar" role="dialog" aria-label="Témoins"><p>Nous utilisons des témoins pour mesurer la visite du site et améliorer nos publicités. <a href="/confidentialite.html">En savoir plus</a></p><div class="actions"><button class="btn" data-ok>Accepter</button><button class="btn btn-ghost" data-no>Refuser</button></div></div>');
+      var bar = document.querySelector('.consent-bar');
+      var save = function (v) { try { localStorage.setItem('murco-consentement', v); } catch (e) {} bar.remove(); if (v === 'oui') loadTracking(); };
+      bar.querySelector('[data-ok]').addEventListener('click', function () { save('oui'); });
+      bar.querySelector('[data-no]').addEventListener('click', function () { save('non'); });
+    }
+  }
+
   /* ---------- Année dans le pied de page ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-  /* ---------- Service pré-coché depuis la page Services ---------- */
-  var p = new URLSearchParams(location.search).get('service');
-  if (p) {
-    var c = document.querySelector('[data-svc="' + p + '"]');
-    if (c) c.checked = true;
-  }
 
   /* ---------- Formulaire : regrouper les services cochés ---------- */
   document.querySelectorAll('form[data-netlify]').forEach(function (form) {

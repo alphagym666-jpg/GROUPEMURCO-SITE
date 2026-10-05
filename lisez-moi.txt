@@ -59,3 +59,24 @@ usage commercial permis). Ce ne sont PAS des jobs de Groupe Murco :
   → Remplacer par des photos de maisons que tu as faites (après la job).
 Sources Pexels — vidéos : 6160418, 6196264, 2675565, 3105317 ;
 photos : 5652625, 5652626, 6422928, 6422929, 18093637.
+
+CONFIGURATION (assets/config.js)
+- PRIX : taux du calculateur de prix (page Services). À CONFIRMER.
+- NUMERO_RBQ, ASSURANCE : remplis-les et les badges apparaissent sur
+  l'accueil. Laisse "" sinon.
+- GOOGLE_ANALYTICS_ID, META_PIXEL_ID : remplis-les avant tes pubs. Une
+  bannière de consentement (Loi 25) s'affiche alors automatiquement.
+
+GARANTIE 30 JOURS
+Affichée sur l'accueil et la page Services. Assure-toi de pouvoir
+l'honorer avant la mise en ligne, ou modifie le texte.
+
+MAQUETTE — À REMPLACER AUSSI
+- photos/maquette/camion-murco.jpg : photo Pexels (n° 20551959) d'un
+  GMC Sierra HD avec ton logo ajouté en bandeau de pare-brise. Remplace
+  par une photo de TON camion lettré.
+- photos/villes-galerie/ : 4 photos par ville (revêtement, vitres,
+  gouttières, feuilles). Mélange de tes jobs et de photos Pexels
+  (713297, 1623214, 11661020, 17041922, 5652625, 5652626, 18093637,
+  10559047, 5466466, 35153375). Remplace par tes vraies jobs par ville,
+  avec les mêmes noms de fichiers (ex. candiac-vitres.jpg).
