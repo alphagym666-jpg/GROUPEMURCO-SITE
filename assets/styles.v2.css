@@ -838,3 +838,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .svc:hover .svc-hint b { color: var(--graphite); }
 .svc-photo::after { z-index: 1; }
 @media (max-width: 620px) { .svc-hint, .svc-vid { display: none; } }
+
+/* Lavage à pression : zoom vers la ligne entre le mur sale et le mur lavé */
+.svc-zoom img { transform-origin: 62% 42%; transition: transform 1.6s cubic-bezier(.33,0,.2,1); }
+.svc:hover .svc-zoom img, .svc.is-revealed .svc-zoom img { transform: scale(1.7); }

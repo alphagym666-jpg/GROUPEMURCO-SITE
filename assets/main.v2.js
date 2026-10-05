@@ -227,7 +227,6 @@
      Dépose photos/villes/<ville>-avant.jpg et <ville>-apres.jpg
      (ex. candiac-avant.jpg, saint-remi-apres.jpg). Elles remplacent
      toutes seules la photo d'exemple, sur l'accueil et la page de la ville. */
-  var EXEMPLES = [['photos/gouttiere-avant.jpg', 'photos/gouttiere-apres.jpg'], ['photos/protege-avant.jpg', 'photos/protege-apres.jpg'], ['photos/bande-gouttiere.jpg', 'photos/bande-propre.jpg']];
   var loadPair = function (slug, cb) {
     var a = new Image(), b = new Image(), n = 0, ok = true;
     var done = function () { if (++n === 2) cb(ok ? [a.src, b.src] : null); };
@@ -262,7 +261,7 @@
       link.textContent = 'Voir la page ' + nom;
       ba.classList.add('is-swapping');
       loadPair(slug, function (pair) {
-        showPair(ba, pair || EXEMPLES[i % EXEMPLES.length]);
+        showPair(ba, pair || ['photos/villes-exemples/' + slug + '-avant.jpg', 'photos/villes-exemples/' + slug + '-apres.jpg']);
         cap.textContent = pair ? 'Job réalisée à ' + nom + '.' : "Photo d'une de nos jobs. Les photos de " + nom + ' arrivent bientôt.';
         setTimeout(function () { ba.classList.remove('is-swapping'); }, 150);
       });
@@ -294,7 +293,7 @@
       card.addEventListener('mouseleave', function () { v.pause(); card.classList.remove('is-playing'); });
     }
     // sans souris (cellulaire) : la gouttière se nettoie quand la carte apparaît
-    if (!hover && card.querySelector('.svc-after') && 'IntersectionObserver' in window) {
+    if (!hover && card.querySelector('.svc-after, .svc-zoom') && 'IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (es) {
         es.forEach(function (e) { if (e.isIntersecting) { setTimeout(function () { card.classList.add('is-revealed'); }, 500); io.disconnect(); } });
       }, { threshold: 0.6 });
