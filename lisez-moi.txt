@@ -54,4 +54,8 @@ usage commercial permis). Ce ne sont PAS des jobs de Groupe Murco :
   → Refaire : toi dans l'échelle, gouttière vidée, jet sur un revêtement.
 - svc-lavage-pression, svc-lavage-vitres, svc-feuilles : page Services.
   → Refaire : même cadrage, avec ton équipement.
-Sources Pexels (numéros de vidéo) : 6160418, 6196264, 2675565, 3105317.
+- entete-*.jpg : en-têtes des pages (Services, À propos, Contact, Avis,
+  pages de villes). bande-maison-*.jpg : bandeaux de l'accueil.
+  → Remplacer par des photos de maisons que tu as faites (après la job).
+Sources Pexels — vidéos : 6160418, 6196264, 2675565, 3105317 ;
+photos : 5652625, 5652626, 6422928, 6422929, 18093637.

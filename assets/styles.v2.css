@@ -765,3 +765,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 
 /* Vidéos en boucle dans les services */
 .svc-shot-video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--ink); }
+
+/* Citation sur photo : colonne plus large ; pied de page sur 4 colonnes */
+.proof blockquote { max-width: 34rem; }
+@media (min-width: 901px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
