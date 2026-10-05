@@ -84,7 +84,8 @@ estimation.html : calculateur de prix (taux dans assets/config.js).
 Lien « Estimation » dans le menu de toutes les pages.
 
 VIDÉO D'ACCUEIL
-photos/hero-video(-mobile).mp4/.webm : équipe qui lave de grandes
-fenêtres à la perche (Pexels, vidéos 6196265, 6196266, 6196267, 6196271).
+photos/hero-video(-mobile).mp4/.webm : travail sur une toiture avec
+harnais, ouvrier casqué sur un toit, feuilles d'automne (Pexels, vidéos
+2675565, 8853415, 3105317).
 Pour la remplacer : envoie à Claude ta vidéo, ou des liens Pexels
 (pexels.com/video/...) ; il les télécharge, compresse et installe.
