@@ -772,3 +772,37 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 
 /* Avant / après dans la page Services */
 .svc-ba { max-width: none; border-radius: var(--r-m); box-shadow: var(--sh-m); }
+
+/* ===================== Fonds photo semi-transparents ===================== */
+.section-mist {
+  background:
+    linear-gradient(180deg, rgba(246,242,235,.82) 0%, rgba(246,242,235,.66) 50%, rgba(246,242,235,.84) 100%),
+    url("../photos/fonds/maison-bleue-flou.jpg") center / cover no-repeat,
+    var(--mist);
+}
+.section-dark {
+  background:
+    linear-gradient(180deg, rgba(18,21,24,.86), rgba(18,21,24,.68)),
+    url("../photos/fonds/maison-soir-flou.jpg") center / cover no-repeat,
+    var(--graphite);
+}
+/* Cartes en verre dépoli par-dessus les fonds */
+.section-mist .svc-grid { background: rgba(216,208,196,.55); border-color: rgba(216,208,196,.7); }
+.section-mist .svc { background: rgba(255,255,255,.86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.section-mist .svc:hover { background: rgba(255,255,255,.94); }
+.section-dark .reason {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.10); border-radius: var(--r-m);
+  padding: 1.8rem 1.6rem; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.section-mist .faq details { background: rgba(255,255,255,.72); border: 1px solid rgba(216,208,196,.8); border-radius: var(--r-m); padding: 0 1.3rem; margin-bottom: .7rem; }
+.section-mist .faq summary { padding-right: 2.5rem; }
+/* Contact : formulaire en carte blanche sur fond photo */
+.contact-section {
+  background:
+    linear-gradient(180deg, rgba(248,245,240,.84), rgba(248,245,240,.72)),
+    url("../photos/fonds/gouttiere-flou.jpg") center / cover no-repeat;
+}
+.contact-section .form { background: rgba(255,255,255,.9); border-radius: var(--r-l); padding: 2rem; box-shadow: var(--sh-m);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.contact-section .contact-aside { background: rgba(255,255,255,.75); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: var(--sh-s); }
+@media (max-width: 620px) { .contact-section .form { padding: 1.2rem .9rem; } }
