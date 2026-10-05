@@ -5,17 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.classList.add('js')</script>
 <meta name="google-site-verification" content="JprTaUYPd07KYgobUB6DsRmsi9oZLU_cRQrrOe29ooU">
-<meta name="robots" content="noindex">
-<title>Merci | Groupe Murco</title>
-<meta name="description" content="Votre message a été envoyé à Groupe Murco.">
-<link rel="canonical" href="https://groupemurco.com/merci.html">
+<title>Estimation de prix en ligne | Groupe Murco</title>
+<meta name="description" content="Estimez en 30 secondes le prix de votre nettoyage de gouttières, lavage à pression, lavage de vitres ou ramassage de feuilles. Sherrington et Rive-Sud.">
+<link rel="canonical" href="https://groupemurco.com/estimation.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Merci | Groupe Murco">
-<meta property="og:description" content="Votre message a été envoyé à Groupe Murco.">
+<meta property="og:title" content="Estimation de prix en ligne | Groupe Murco">
+<meta property="og:description" content="Estimez en 30 secondes le prix de votre nettoyage de gouttières, lavage à pression, lavage de vitres ou ramassage de feuilles. Sherrington et Rive-Sud.">
 <meta property="og:image" content="https://groupemurco.com/assets/partage.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://groupemurco.com/merci.html">
+<meta property="og:url" content="https://groupemurco.com/estimation.html">
 <meta property="og:site_name" content="Groupe Murco">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:locale" content="fr_CA">
@@ -34,7 +33,7 @@
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html" aria-label="Groupe Murco, accueil"><img src="assets/logo-murco.svg" alt="Groupe Murco" width="200" height="56"></a>
-    <nav class="nav" aria-label="Menu principal"><a href="index.html">Accueil</a><a href="services.html">Services</a><a href="estimation.html">Estimation</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
+    <nav class="nav" aria-label="Menu principal"><a href="index.html">Accueil</a><a href="services.html">Services</a><a href="estimation.html" aria-current="page">Estimation</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
     <div class="header-actions">
       <a class="header-phone" href="tel:+15142321837">514-232-1837</a>
       <a class="btn" href="contact.html">Soumission gratuite</a>
@@ -44,22 +43,60 @@
 </header>
 <main id="contenu">
 
-<section class="page-head has-photo">
-  <picture class="head-img"><source media="(max-width: 900px)" srcset="photos/entete-page-1100.jpg"><img src="photos/entete-page.jpg" alt="" width="1920" height="620"></picture>
+<section class="page-head has-photo est-head">
+  <picture class="head-img"><source media="(max-width: 900px)" srcset="photos/maquette/entete-maison-soir-1100.jpg"><img src="photos/maquette/entete-maison-soir.jpg" alt="" width="1920" height="620"></picture>
   <div class="wrap">
-    <h1>Merci, nous avons bien reçu votre message.</h1>
-    <p class="lead">Nous vous revenons rapidement. Pour quelque chose d'urgent, appelez le <a href="tel:+15142321837">514-232-1837</a>.</p>
+    <h1>Estimez votre prix</h1>
+    <p class="lead">Cochez vos services, entrez des mesures approximatives : votre fourchette de prix s'affiche tout de suite. Gratuit et sans engagement.</p>
+    <ul class="est-steps"><li><b>1</b> Choisissez vos services</li><li><b>2</b> Entrez vos mesures</li><li><b>3</b> Recevez votre prix exact</li></ul>
   </div>
 </section>
-<section class="section">
+
+<section class="section calc-page" id="estimation">
   <div class="wrap">
-    <h2>La suite</h2>
-    <ol class="next-steps">
-      <li><div><strong>Nous lisons votre demande</strong><span>Si un détail manque, nous vous appelons ou vous écrivons.</span></div></li>
-      <li><div><strong>Vous recevez un prix écrit</strong><span>Mesuré au pied, au pied carré ou à la fenêtre. Gratuit et sans engagement.</span></div></li>
-      <li><div><strong>On fixe une date ensemble</strong><span>Vous payez seulement une fois le travail terminé.</span></div></li>
-    </ol>
-    <div class="hero-actions"><a class="btn btn-ghost" href="services.html">Voir nos services</a><a class="btn btn-ghost" href="index.html">Retour à l'accueil</a></div>
+    <div class="calc" data-calc>
+      <div class="calc-inputs">
+        <div class="field"><label for="k-etages">Hauteur de la maison</label>
+          <select id="k-etages" data-etages><option value="1">1 étage</option><option value="2" selected>2 étages</option><option value="3">3 étages</option></select></div>
+        <div class="calc-row" data-svc-row="gouttieres"><label><input type="checkbox" checked> <span>Nettoyage de gouttières</span></label><div class="calc-qty"><input type="number" min="0" step="10" value="120" inputmode="numeric" aria-label="Pieds de gouttières"><small>pieds de gouttières</small></div></div>
+        <div class="calc-row" data-svc-row="protege"><label><input type="checkbox"> <span>Protège-gouttières</span></label><div class="calc-qty"><input type="number" min="0" step="10" value="120" inputmode="numeric" aria-label="Pieds de gouttières à protéger"><small>pieds de gouttières</small></div></div>
+        <div class="calc-row" data-svc-row="pression"><label><input type="checkbox"> <span>Lavage à pression du revêtement</span></label><div class="calc-qty"><input type="number" min="0" step="100" value="1500" inputmode="numeric" aria-label="Pieds carrés de revêtement"><small>pi² de revêtement</small></div></div>
+        <div class="calc-row" data-svc-row="vitres"><label><input type="checkbox"> <span>Lavage de vitres extérieures</span></label><div class="calc-qty"><input type="number" min="0" step="1" value="15" inputmode="numeric" aria-label="Nombre de fenêtres"><small>fenêtres</small></div></div>
+        <div class="calc-row" data-svc-row="feuilles"><label><input type="checkbox"> <span>Ramassage de feuilles</span></label><div class="calc-qty"><input type="number" min="0" step="500" value="5000" inputmode="numeric" aria-label="Pieds carrés de terrain"><small>pi² de terrain</small></div></div>
+      </div>
+      <aside class="calc-result" aria-live="polite">
+        <p class="calc-label">Estimation</p>
+        <p class="calc-total" data-total>—</p>
+        <ul class="calc-lines" data-lines></ul>
+        <a class="btn" data-calc-cta href="contact.html">Recevoir mon prix exact</a>
+        <p class="calc-note">Estimation indicative, taxes en sus. Le prix final est confirmé par écrit après une évaluation gratuite.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section est-help">
+  <div class="wrap">
+    <div class="est-tips">
+      <div class="est-tip"><h3>Pieds de gouttières</h3><p>Mesurez la longueur d'un côté de la maison et multipliez : une maison de 2 étages typique a entre 120 et 180 pieds de gouttières.</p></div>
+      <div class="est-tip"><h3>Pieds carrés de revêtement</h3><p>Largeur × hauteur de chaque mur à laver. Une façade de maison à étages fait souvent de 400 à 700 pi².</p></div>
+      <div class="est-tip"><h3>Fenêtres</h3><p>Comptez chaque fenêtre vue de l'extérieur. Une porte-fenêtre compte pour deux.</p></div>
+      <div class="est-tip"><h3>Pas sûr de vos mesures?</h3><p>Pas de problème : envoyez une estimation approximative, nous mesurons sur place avant de confirmer le prix.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band has-photo">
+  <picture class="band-img"><source media="(max-width: 900px)" srcset="photos/maquette/bande-maison-soir-1100.jpg"><img src="photos/maquette/bande-maison-soir.jpg" alt="" loading="lazy" width="1920" height="900"></picture>
+  <div class="wrap">
+    <div>
+      <h2>Vous préférez en parler?</h2>
+      <p>Appelez ou textez-nous, on vous donne un prix au téléphone.</p>
+    </div>
+    <div class="actions">
+      <a class="btn" href="contact.html">Demander une soumission</a>
+      <a class="btn btn-light" href="tel:+15142321837">514-232-1837</a>
+    </div>
   </div>
 </section>
 </main>

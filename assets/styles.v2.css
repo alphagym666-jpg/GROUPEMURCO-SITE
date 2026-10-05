@@ -909,3 +909,30 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .truck-figure img { width: 100%; height: auto; }
 @media (min-width: 901px) { .hero-bg .hero-copy { max-width: 780px; } .hero-bg .hero-actions .btn { padding-inline: 1.3rem; } }
 
+
+/* ===================== Page Estimation ===================== */
+.est-head { padding-bottom: 5.5rem; }
+.est-steps { list-style: none; margin: 1.8rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .7rem; }
+.est-steps li { display: inline-flex; align-items: center; gap: .6rem; padding: .55rem 1rem .55rem .55rem; border-radius: 999px;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22); color: #fff; font-weight: 600; font-size: .95rem;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.est-steps b { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--amber); color: var(--graphite); font-family: var(--display); font-weight: 400; }
+.calc-page {
+  padding-top: 0;
+  background:
+    linear-gradient(180deg, rgba(246,242,235,.80) 0%, rgba(246,242,235,.70) 50%, rgba(246,242,235,.92) 100%),
+    url("../photos/fonds/maison-bleue-flou.jpg") center / cover no-repeat;
+}
+.calc-page .calc { position: relative; z-index: 3; margin-top: -3.5rem; max-width: 1080px; }
+.calc-page .calc-inputs { background: rgba(255,255,255,.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: var(--sh-l); border-color: rgba(216,208,196,.8); }
+.est-help { padding-top: 4rem; }
+.est-tips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+.est-tip { background: var(--mist-2); border: 1px solid var(--alu); border-radius: var(--r-m); padding: 1.4rem; }
+.est-tip h3 { font-size: 1.02rem; margin-bottom: .4rem; }
+.est-tip p { margin: 0; color: var(--slate); font-size: .96rem; }
+.est-teaser { padding: 4rem 0; background: var(--graphite); color: #fff; }
+.est-teaser-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+.est-teaser h2 { color: #fff; margin-bottom: .3rem; }
+.est-teaser p { margin: 0; color: #BEC6CC; }
+@media (max-width: 900px) { .est-tips { grid-template-columns: 1fr 1fr; } .calc-page .calc { margin-top: -2.5rem; } }
+@media (max-width: 620px) { .est-tips { grid-template-columns: 1fr; } .est-steps li { font-size: .88rem; } }

@@ -33,7 +33,7 @@
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html" aria-label="Groupe Murco, accueil"><img src="assets/logo-murco.svg" alt="Groupe Murco" width="200" height="56"></a>
-    <nav class="nav" aria-label="Menu principal"><a href="index.html">Accueil</a><a href="services.html" aria-current="page">Services</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
+    <nav class="nav" aria-label="Menu principal"><a href="index.html">Accueil</a><a href="services.html" aria-current="page">Services</a><a href="estimation.html">Estimation</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
     <div class="header-actions">
       <a class="header-phone" href="tel:+15142321837">514-232-1837</a>
       <a class="btn" href="contact.html">Soumission gratuite</a>
@@ -47,7 +47,7 @@
   <picture class="head-img"><source media="(max-width: 900px)" srcset="photos/maquette/entete-services-1100.jpg"><img src="photos/maquette/entete-services.jpg" alt="" width="1920" height="620"></picture>
   <div class="wrap">
     <h1>Nos services d'entretien extérieur</h1>
-    <p class="lead">Chaque service est mesuré sur place et facturé à l'unité. <a href="#estimation">Estimez votre prix en 30 secondes</a>.</p>
+    <p class="lead">Chaque service est mesuré sur place et facturé à l'unité. <a href="estimation.html">Estimez votre prix en 30 secondes</a>.</p>
     <nav class="svc-nav" aria-label="Liste des services"><a href="#nettoyage-gouttieres">Nettoyage de gouttières</a><a href="#protege-gouttieres">Protège-gouttières</a><a href="#lavage-pression">Lavage à pression du revêtement</a><a href="#lavage-vitres">Lavage de vitres extérieures</a><a href="#feuilles-terrain">Ramassage de feuilles et fermeture de terrain</a></nav>
   </div>
 </section>
@@ -157,30 +157,10 @@
 </article>
 </div>
 </section>
-<section class="section calc-section" id="estimation">
-  <div class="wrap">
-    <div class="section-head center">
-      <h2>Estimez votre prix</h2>
-      <p>Cochez vos services, entrez les mesures approximatives et voyez tout de suite une fourchette de prix.</p>
-    </div>
-    <div class="calc" data-calc>
-      <div class="calc-inputs">
-        <div class="field"><label for="k-etages">Hauteur de la maison</label>
-          <select id="k-etages" data-etages><option value="1">1 étage</option><option value="2" selected>2 étages</option><option value="3">3 étages</option></select></div>
-        <div class="calc-row" data-svc-row="gouttieres"><label><input type="checkbox" checked> <span>Nettoyage de gouttières</span></label><div class="calc-qty"><input type="number" min="0" step="10" value="120" inputmode="numeric" aria-label="Pieds de gouttières"><small>pieds de gouttières</small></div></div>
-        <div class="calc-row" data-svc-row="protege"><label><input type="checkbox"> <span>Protège-gouttières</span></label><div class="calc-qty"><input type="number" min="0" step="10" value="120" inputmode="numeric" aria-label="Pieds de gouttières à protéger"><small>pieds de gouttières</small></div></div>
-        <div class="calc-row" data-svc-row="pression"><label><input type="checkbox"> <span>Lavage à pression du revêtement</span></label><div class="calc-qty"><input type="number" min="0" step="100" value="1500" inputmode="numeric" aria-label="Pieds carrés de revêtement"><small>pi² de revêtement</small></div></div>
-        <div class="calc-row" data-svc-row="vitres"><label><input type="checkbox"> <span>Lavage de vitres extérieures</span></label><div class="calc-qty"><input type="number" min="0" step="1" value="15" inputmode="numeric" aria-label="Nombre de fenêtres"><small>fenêtres</small></div></div>
-        <div class="calc-row" data-svc-row="feuilles"><label><input type="checkbox"> <span>Ramassage de feuilles</span></label><div class="calc-qty"><input type="number" min="0" step="500" value="5000" inputmode="numeric" aria-label="Pieds carrés de terrain"><small>pi² de terrain</small></div></div>
-      </div>
-      <aside class="calc-result" aria-live="polite">
-        <p class="calc-label">Estimation</p>
-        <p class="calc-total" data-total>—</p>
-        <ul class="calc-lines" data-lines></ul>
-        <a class="btn" data-calc-cta href="contact.html">Recevoir mon prix exact</a>
-        <p class="calc-note">Estimation indicative, taxes en sus. Le prix final est confirmé par écrit après une évaluation gratuite.</p>
-      </aside>
-    </div>
+<section class="section est-teaser">
+  <div class="wrap est-teaser-inner">
+    <div><h2>Combien ça coûte?</h2><p>Faites une estimation en ligne en 30 secondes, sans donner vos coordonnées.</p></div>
+    <a class="btn" href="estimation.html">Estimer mon prix</a>
   </div>
 </section>
 
@@ -236,7 +216,7 @@
         <ul>
           <li><a href="a-propos.html">À propos</a></li>
           <li><a href="avis.html">Laisser un avis</a></li>
-          <li><a href="contact.html">Demander une soumission</a></li>
+          <li><a href="estimation.html">Estimation en ligne</a></li><li><a href="contact.html">Demander une soumission</a></li>
           <li><a href="confidentialite.html">Politique de confidentialité</a></li>
         </ul>
       </div>

@@ -49,9 +49,6 @@ la bannière de l'accueil (« Gouttières dès 200 $ »).
 MAQUETTE : IMAGES DE BANQUE À REMPLACER AVANT LA VRAIE MISE EN LIGNE
 Tout ce qui est dans photos/maquette/ vient de Pexels (licence gratuite,
 usage commercial permis). Ce ne sont PAS des jobs de Groupe Murco :
-- hero-video(-mobile) : accueil. Plans : jet de pression sur béton, laveur
-  de vitres à la perche, travailleur en hauteur, feuilles d'érable.
-  → Refaire : toi dans l'échelle, gouttière vidée, jet sur un revêtement.
 - svc-lavage-pression, svc-lavage-vitres, svc-feuilles : page Services.
   → Refaire : même cadrage, avec ton équipement.
 - entete-*.jpg : en-têtes des pages (Services, À propos, Contact, Avis,
@@ -81,3 +78,12 @@ MAQUETTE — À REMPLACER AUSSI
   10559047, 5466466, 35153375). Remplace par tes vraies jobs par ville,
   avec les mêmes noms de fichiers (ex. candiac-vitres.jpg).
 
+
+PAGE ESTIMATION
+estimation.html : calculateur de prix (taux dans assets/config.js).
+Lien « Estimation » dans le menu de toutes les pages.
+
+VIDÉO D'ACCUEIL
+Pour l'instant : ta photo de lavage de revêtement (photos/hero-fond.jpg).
+Pour mettre une vidéo : envoie à Claude ta vidéo, ou des liens Pexels
+(pexels.com/video/...) ; il les télécharge, compresse et installe.
