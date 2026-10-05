@@ -45,3 +45,13 @@ Gouttières 200 $, protège-gouttières 650 $, lavage à pression 250 $,
 vitres 150 $, feuilles 175 $. Ils sont écrits dans index.html,
 services.html, les 6 pages de villes (cartes « Dès … $ ») et dans
 la bannière de l'accueil (« Gouttières dès 200 $ »).
+
+MAQUETTE : IMAGES DE BANQUE À REMPLACER AVANT LA VRAIE MISE EN LIGNE
+Tout ce qui est dans photos/maquette/ vient de Pexels (licence gratuite,
+usage commercial permis). Ce ne sont PAS des jobs de Groupe Murco :
+- hero-video(-mobile) : accueil. Plans : jet de pression sur béton, laveur
+  de vitres à la perche, travailleur en hauteur, feuilles d'érable.
+  → Refaire : toi dans l'échelle, gouttière vidée, jet sur un revêtement.
+- svc-lavage-pression, svc-lavage-vitres, svc-feuilles : page Services.
+  → Refaire : même cadrage, avec ton équipement.
+Sources Pexels (numéros de vidéo) : 6160418, 6196264, 2675565, 3105317.

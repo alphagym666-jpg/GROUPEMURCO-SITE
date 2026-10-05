@@ -271,6 +271,15 @@
     if (chips.length) pick(chips[0], 0);
   });
 
+  /* ---------- Vidéos des services : jouent seulement quand elles sont visibles ---------- */
+  document.querySelectorAll('.svc-shot-video video').forEach(function (v) {
+    if (reduce) { v.removeAttribute('autoplay'); v.pause(); return; }
+    if (!('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); });
+    }, { threshold: 0.25 }).observe(v);
+  });
+
   /* ---------- Année dans le pied de page ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
