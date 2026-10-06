@@ -32,11 +32,12 @@ Les pages « nettoyage-gouttieres-<ville>.html » redirigent vers les
 nouvelles « calfeutrage-peinture-<ville>.html » (fichier _redirects).
 
 PHOTOS ET VIDÉOS DE MAQUETTE (à remplacer par les tiennes)
-- photos/hero-video(-mobile) : peintre au pistolet airless (Pexels,
-  vidéos 6474073, 6474075, 6474077, 6474081, 6474086, 6474088).
+- photos/hero-video(-mobile) : peinture de façades extérieures, peintre
+  dans l'échelle et peintre au pistolet sur échafaudage (Pexels, vidéos
+  13372330 et 9182402).
 - photos/metiers/ : photos Pexels 6124242, 3615723 (calfeutrage),
-  32115287, 7217998 (peinture), 1260676, 16075970 (brique) ; video-peinture
-  = Pexels 6474075.
+  32115287 (peinture), 1260676, 16075970 (brique) ; video-peinture
+  = Pexels 13372330 ; entete-peinture = Pexels 5434074 (vidéo).
 - photos/villes/<ville>-calfeutrage|peinture|brique.jpg : 3 photos par
   ville (Pexels + ta photo de lavage). Remplace-les par tes jobs, mêmes noms.
 - photos/simulation/ : maison Pexels 6422929 ; « maison-apres.jpg » est une
