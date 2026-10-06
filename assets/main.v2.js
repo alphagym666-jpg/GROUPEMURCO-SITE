@@ -257,7 +257,7 @@
     var pick = function (chip, i) {
       chips.forEach(function (c) { c.setAttribute('aria-selected', c === chip ? 'true' : 'false'); });
       var slug = chip.getAttribute('data-ville'), nom = chip.textContent;
-      link.href = 'nettoyage-gouttieres-' + slug + '.html';
+      link.href = 'calfeutrage-peinture-' + slug + '.html';
       link.textContent = 'Voir la page ' + nom;
       ba.classList.add('is-swapping');
       loadPair(slug, function (pair) {
@@ -304,8 +304,8 @@
   /* ---------- Calculateur de prix ---------- */
   var calc = document.querySelector('[data-calc]');
   if (calc && typeof PRIX !== 'undefined') {
-    var NOMS = { gouttieres: 'Gouttières', protege: 'Protège-gouttières', pression: 'Lavage à pression', vitres: 'Vitres', feuilles: 'Feuilles' };
-    var SVC = { gouttieres: 'nettoyage-gouttieres', protege: 'protege-gouttieres', pression: 'lavage-pression', vitres: 'lavage-vitres', feuilles: 'feuilles-terrain' };
+    var NOMS = { calfeutrage: 'Calfeutrage', peinture: 'Peinture extérieure', brique: 'Lavage de brique' };
+    var SVC = { calfeutrage: 'calfeutrage', peinture: 'peinture', brique: 'brique' };
     var arrondi = function (n) { return Math.round(n / 5) * 5; };
     var fmt = function (n) { return arrondi(n).toLocaleString('fr-CA') + ' $'; };
     var recalc = function () {
@@ -317,7 +317,7 @@
         var q = Math.max(0, parseFloat(row.querySelector('input[type=number]').value) || 0);
         row.classList.toggle('on', cb.checked);
         if (!cb.checked || !PRIX[k]) return;
-        var m = (k === 'feuilles') ? 1 : mult;
+        var m = mult;
         var v = Math.max(PRIX[k].min, q * PRIX[k].taux * m);
         total += v; svcs.push(SVC[k]);
         lignes.push('<li><span>' + NOMS[k] + '</span><span>' + fmt(v) + '</span></li>');
@@ -345,7 +345,10 @@
   /* ---------- Badges RBQ / assurance (config.js) ---------- */
   var badgeBox = document.querySelector('[data-badges]');
   if (badgeBox) {
-    if (typeof NUMERO_RBQ === 'string' && NUMERO_RBQ) badgeBox.insertAdjacentHTML('beforeend', '<span><b>✓</b> Licence RBQ ' + NUMERO_RBQ.replace(/</g, '') + '</span>');
+    if (typeof NUMERO_RBQ === 'string' && NUMERO_RBQ) {
+      var rbqSpan = badgeBox.querySelector('span');
+      if (rbqSpan && /RBQ/.test(rbqSpan.textContent)) rbqSpan.innerHTML = '<b>✓</b> Licence RBQ ' + NUMERO_RBQ.replace(/</g, '');
+    }
     if (typeof ASSURANCE === 'string' && ASSURANCE) badgeBox.insertAdjacentHTML('beforeend', '<span><b>✓</b> ' + ASSURANCE.replace(/</g, '') + '</span>');
   }
 
@@ -377,6 +380,59 @@
       bar.querySelector('[data-no]').addEventListener('click', function () { save('non'); });
     }
   }
+
+  /* ---------- Numéro RBQ (config.js) dans le pied de page et À propos ---------- */
+  if (typeof NUMERO_RBQ === 'string' && NUMERO_RBQ) {
+    var num = NUMERO_RBQ.replace(/</g, '');
+    document.querySelectorAll('[data-rbq-footer]').forEach(function (el) { el.textContent = 'Licence RBQ ' + num; });
+    document.querySelectorAll('[data-rbq-num]').forEach(function (el) { el.textContent = ', no ' + num; });
+  }
+
+  /* ---------- Simulateur de couleur de revêtement ---------- */
+  document.querySelectorAll('[data-simulateur]').forEach(function (sim) {
+    var canvas = sim.querySelector('.sim-canvas');
+    var ctx = canvas.getContext && canvas.getContext('2d', { willReadFrequently: true });
+    if (!ctx) return;
+    var photo = new Image(), masque = new Image(), loaded = 0, base = null, mask = null, lum = null, mean = 0.265;
+    var ready = function () {
+      if (++loaded < 2) return;
+      var W = canvas.width, Hh = canvas.height;
+      ctx.drawImage(masque, 0, 0, W, Hh); mask = ctx.getImageData(0, 0, W, Hh).data;
+      ctx.drawImage(photo, 0, 0, W, Hh); base = ctx.getImageData(0, 0, W, Hh);
+      var d = base.data; lum = new Float32Array(W * Hh); var sum = 0, cnt = 0;
+      for (var i = 0, p = 0; i < d.length; i += 4, p++) {
+        var L = (0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2]) / 255; lum[p] = L;
+        var m = mask[i] / 255; sum += L * m; cnt += m;
+      }
+      if (cnt) mean = sum / cnt;
+      sim.classList.add('is-ready');
+    };
+    photo.onload = masque.onload = ready;
+    photo.src = sim.getAttribute('data-sim-photo'); masque.src = sim.getAttribute('data-masque');
+    var paint = function (hex) {
+      if (!base) return;
+      if (!hex) { sim.classList.remove('is-colored'); return; }
+      var r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+      var out = ctx.createImageData(base); var o = out.data, d = base.data;
+      for (var i = 0, p = 0; i < d.length; i += 4, p++) {
+        var m = mask[i] / 255, f = Math.min(2.2, lum[p] / mean);
+        o[i] = d[i] * (1 - m) + Math.min(255, r * f) * m;
+        o[i + 1] = d[i + 1] * (1 - m) + Math.min(255, g * f) * m;
+        o[i + 2] = d[i + 2] * (1 - m) + Math.min(255, b * f) * m;
+        o[i + 3] = 255;
+      }
+      ctx.putImageData(out, 0, 0); sim.classList.add('is-colored');
+    };
+    var btns = sim.querySelectorAll('.sim-swatches button');
+    var select = function (btn, hex) {
+      btns.forEach(function (b) { b.setAttribute('aria-checked', b === btn ? 'true' : 'false'); });
+      var go = function () { paint(hex); };
+      if (base) go(); else { var t = setInterval(function () { if (base) { clearInterval(t); go(); } }, 100); }
+    };
+    btns.forEach(function (btn) { btn.addEventListener('click', function () { select(btn, btn.getAttribute('data-color')); }); });
+    var custom = sim.querySelector('[data-custom]');
+    if (custom) custom.addEventListener('input', function () { select(null, custom.value); });
+  });
 
   /* ---------- Année dans le pied de page ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });

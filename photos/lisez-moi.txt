@@ -1,47 +1,19 @@
 VOS VRAIES PHOTOS
 =================
+Remplace les fichiers en gardant EXACTEMENT les mêmes noms :
 
-Dépose tes photos ICI, avec EXACTEMENT ces noms. Elles remplacent
-automatiquement les illustrations sur le site. Aucun code à changer.
+  metiers/calfeutrage-1.jpg, calfeutrage-2.jpg   → page Services
+  metiers/peinture-1.jpg                          → page Services
+  metiers/brique-1.jpg, brique-2.jpg              → page Services
+  metiers/carte-calfeutrage|peinture|brique.jpg   → cartes (640 x 400)
+  villes/<ville>-calfeutrage|peinture|brique.jpg  → pages de villes (800 x 600)
 
-  gouttiere-avant.jpg         → comparateur avant/après (DÉJÀ EN PLACE)
-  gouttiere-apres.jpg         → comparateur avant/après (DÉJÀ EN PLACE)
-  protege-gouttieres.jpg      → page Services, section Protège-gouttières
-  lavage-pression.jpg         → page Services, section Lavage à pression
-  lavage-vitres.jpg           → page Services, section Lavage de vitres
-  ramassage-feuilles.jpg      → page Services, section Ramassage de feuilles
-  equipe.jpg                  → page À propos (toi au travail)
+AVANT / APRÈS DE PEINTURE : prends la même maison, même angle, avant et
+après tes travaux. Envoie-les à Claude : il remplace la simulation par ta
+vraie job.
 
-CONSEILS
-- Format paysage, environ 1600 x 960 pixels.
-- Compresse-les avant (squoosh.app) : vise moins de 300 Ko par photo,
-  sinon le site devient lent sur cellulaire.
-- Prends l'avant ET l'après du même angle, à la même heure si possible.
-- Pas de visage de client ni de numéro civique lisible sans permission.
+VIDÉO D'ACCUEIL : envoie ta vidéo brute (10-15 s, téléphone stable,
+à l'horizontale), Claude la compresse et l'installe.
 
-Si une photo est absente, l'illustration reste affichée. Rien ne casse.
-
-VIDÉO D'ARRIÈRE-PLAN (page d'accueil)
-=====================================
-  hero-video.mp4 (+ .webm)          → derrière le titre, format paysage
-  hero-video-mobile.mp4 (+ .webm)   → (facultatif) version verticale
-
-Une vraie vidéo filmée (personnes en action), 8 à 15 s, sans son, moins
-de 3 Mo. Envoie la vidéo brute à Claude, il la compresse et l'installe.
-Sans fichier, la photo d'accueil reste affichée, fixe.
-
-PHOTOS AVANT / APRÈS PAR VILLE
-==============================
-Dépose-les dans photos/villes/ avec ces noms (même angle avant et après) :
-
-  sherrington-avant.jpg    sherrington-apres.jpg
-  napierville-avant.jpg    napierville-apres.jpg
-  saint-remi-avant.jpg     saint-remi-apres.jpg
-  chateauguay-avant.jpg    chateauguay-apres.jpg
-  la-prairie-avant.jpg     la-prairie-apres.jpg
-  candiac-avant.jpg        candiac-apres.jpg
-
-Elles apparaissent toutes seules dans « Nos jobs, ville par ville » sur
-l'accueil et sur la page de la ville, avec « Job réalisée à <ville> ».
-Sans photo, on montre une de tes jobs avec la mention « Les photos de
-<ville> arrivent bientôt ».
+Conseils : format paysage, moins de 300 Ko par photo (squoosh.app),
+pas de numéro civique lisible sans permission.

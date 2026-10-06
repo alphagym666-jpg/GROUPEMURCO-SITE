@@ -7,18 +7,16 @@
 // À CONFIRMER : ce sont des valeurs de départ pour la maquette.
 // "min" = prix minimum facturé ; l'estimation affichée est une fourchette.
 const PRIX = {
-  gouttieres: { unite: "pied linéaire", taux: 2.00, min: 200 },
-  protege:    { unite: "pied linéaire", taux: 9.00, min: 650 },
-  pression:   { unite: "pied carré",    taux: 0.30, min: 250 },
-  vitres:     { unite: "fenêtre",       taux: 12,   min: 150 },
-  feuilles:   { unite: "pied carré",    taux: 0.04, min: 175 },
+  calfeutrage: { unite: "ouverture",          taux: 40,   min: 350 },   // par fenêtre ou porte
+  peinture:    { unite: "pied carré",         taux: 2.75, min: 2500 },  // revêtement peint
+  brique:      { unite: "pied carré",         taux: 0.60, min: 400 },   // brique lavée
   // Multiplicateur selon la hauteur de la maison
   etages: { 1: 1.00, 2: 1.15, 3: 1.35 }
 };
 
 // ---- Badges de confiance ----
 // Laisse "" tant que tu n'as pas l'info : le badge ne s'affiche pas.
-const NUMERO_RBQ = "";          // ex. "5812-3456-01"
+const NUMERO_RBQ = "";          // ex. "5812-3456-01" — à remplir avec ta licence
 const ASSURANCE = "";           // ex. "Assuré responsabilité civile 2 M$"
 
 // ---- Suivi des visites (pour tes pubs) ----

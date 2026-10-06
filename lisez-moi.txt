@@ -1,91 +1,45 @@
 SITE GROUPE MURCO — groupemurco.com
 ===================================
+Métiers : calfeutrage, peinture de revêtement extérieur, lavage de brique
+à pression. Entrepreneur détenteur d'une licence RBQ.
 
 METTRE EN LIGNE
 Recommandé : relier Netlify au dépôt GitHub « groupemurco-site »
 (Netlify → ton projet → Project configuration → Build & deploy →
-Link repository). Ensuite, chaque modification poussée sur la branche
-principale est publiée toute seule. Aucune commande de build : laisse
-« Build command » et « Publish directory » vides.
-
-Sinon, à la main :
-1. app.netlify.com → ton projet → onglet Deploys.
-2. Glisse CE DOSSIER au complet dans la zone "Drag and drop".
-3. Attends "Published".
+Link repository). Laisse « Build command » et « Publish directory » vides.
+Sinon : Netlify → Deploys → glisse CE DOSSIER au complet.
 
 FORMULAIRES
-Onglet Forms → active la détection si besoin, puis ajoute une
-notification courriel vers info@groupemurco.com.
-Dans chaque demande, le champ « services-choisis » liste TOUS les
-services cochés par le client.
-
-VOS PHOTOS
-Voir photos/LISEZ-MOI.txt : dépose tes photos dans le dossier photos/
-avec les bons noms, elles remplacent les illustrations toutes seules.
-
-AVIS CLIENTS
-assets/avis.js — ajoute les vrais avis dans la liste AVIS, et colle
-le lien de ta fiche Google dans LIEN_AVIS_GOOGLE.
-
-GOOGLE
-La balise de vérification Search Console est déjà sur toutes les pages.
-Après chaque mise en ligne importante, va dans Search Console et
-demande l'indexation de la page modifiée.
-
-IMAGE DE PARTAGE
-assets/partage.jpg (1200 x 630) s'affiche quand quelqu'un partage le
-site sur Facebook, Messenger ou par texto.
-
-POLICES
-Les polices (Anton, Archivo) sont dans assets/fonts : le site ne
-contacte plus Google Fonts.
-
-PRIX « À PARTIR DE » (À CONFIRMER AVANT LA MISE EN LIGNE)
-Gouttières 200 $, protège-gouttières 650 $, lavage à pression 250 $,
-vitres 150 $, feuilles 175 $. Ils sont écrits dans index.html,
-services.html, les 6 pages de villes (cartes « Dès … $ ») et dans
-la bannière de l'accueil (« Gouttières dès 200 $ »).
-
-MAQUETTE : IMAGES DE BANQUE À REMPLACER AVANT LA VRAIE MISE EN LIGNE
-Tout ce qui est dans photos/maquette/ vient de Pexels (licence gratuite,
-usage commercial permis). Ce ne sont PAS des jobs de Groupe Murco :
-- svc-lavage-pression, svc-lavage-vitres, svc-feuilles : page Services.
-  → Refaire : même cadrage, avec ton équipement.
-- entete-*.jpg : en-têtes des pages (Services, À propos, Contact, Avis,
-  pages de villes). bande-maison-*.jpg : bandeaux de l'accueil.
-  → Remplacer par des photos de maisons que tu as faites (après la job).
-Sources Pexels — vidéos : 6160418, 6196264, 2675565, 3105317 ;
-photos : 5652625, 5652626, 6422928, 6422929, 18093637.
+Onglet Forms → notification courriel vers info@groupemurco.com.
+Le champ « services-choisis » liste tous les services cochés.
 
 CONFIGURATION (assets/config.js)
-- PRIX : taux du calculateur de prix (page Services). À CONFIRMER.
-- NUMERO_RBQ, ASSURANCE : remplis-les et les badges apparaissent sur
-  l'accueil. Laisse "" sinon.
-- GOOGLE_ANALYTICS_ID, META_PIXEL_ID : remplis-les avant tes pubs. Une
-  bannière de consentement (Loi 25) s'affiche alors automatiquement.
+- PRIX : taux du calculateur (page Estimation). À CONFIRMER :
+  calfeutrage 40 $ l'ouverture (min. 350 $), peinture 2,75 $/pi²
+  (min. 2 500 $), lavage de brique 0,60 $/pi² (min. 400 $).
+- NUMERO_RBQ : écris ton numéro de licence, il s'affiche sur l'accueil,
+  dans le pied de page et sur À propos.
+- GOOGLE_ANALYTICS_ID, META_PIXEL_ID : avant tes pubs (bannière Loi 25
+  automatique).
 
-GARANTIE 30 JOURS
-Affichée sur l'accueil et la page Services. Assure-toi de pouvoir
-l'honorer avant la mise en ligne, ou modifie le texte.
+À CONFIRMER AVANT LA VRAIE MISE EN LIGNE
+- Prix « dès » : calfeutrage 350 $, peinture 2 500 $, brique 400 $.
+- Garantie 2 ans sur la main-d'œuvre (accueil) : garde-la seulement si
+  tu peux l'honorer.
 
-MAQUETTE — À REMPLACER AUSSI
-- photos/maquette/camion-murco.jpg : photo Pexels (n° 20551959) d'un
-  GMC Sierra HD avec ton logo ajouté en bandeau de pare-brise. Remplace
-  par une photo de TON camion lettré.
-- photos/villes-galerie/ : 4 photos par ville (revêtement, vitres,
-  gouttières, feuilles). Mélange de tes jobs et de photos Pexels
-  (713297, 1623214, 11661020, 17041922, 5652625, 5652626, 18093637,
-  10559047, 5466466, 35153375). Remplace par tes vraies jobs par ville,
-  avec les mêmes noms de fichiers (ex. candiac-vitres.jpg).
+ANCIENNES PAGES
+Les pages « nettoyage-gouttieres-<ville>.html » redirigent vers les
+nouvelles « calfeutrage-peinture-<ville>.html » (fichier _redirects).
 
-
-PAGE ESTIMATION
-estimation.html : calculateur de prix (taux dans assets/config.js).
-Lien « Estimation » dans le menu de toutes les pages.
-
-VIDÉO D'ACCUEIL
-photos/hero-video(-mobile).mp4/.webm : travail sur une toiture avec
-harnais, ouvrier casqué sur un toit, feuilles d'automne (Pexels, vidéos
-2675565, 8853415, 3105317).
-Pour la remplacer : envoie à Claude ta vidéo, ou des liens Pexels
-(pexels.com/video/...) ; il les télécharge, compresse et installe.
+PHOTOS ET VIDÉOS DE MAQUETTE (à remplacer par les tiennes)
+- photos/hero-video(-mobile) : peintre au pistolet airless (Pexels,
+  vidéos 6474073, 6474075, 6474077, 6474081, 6474086, 6474088).
+- photos/metiers/ : photos Pexels 6124242, 3615723 (calfeutrage),
+  32115287, 7217998 (peinture), 1260676, 16075970 (brique) ; video-peinture
+  = Pexels 6474075.
+- photos/villes/<ville>-calfeutrage|peinture|brique.jpg : 3 photos par
+  ville (Pexels + ta photo de lavage). Remplace-les par tes jobs, mêmes noms.
+- photos/simulation/ : maison Pexels 6422929 ; « maison-apres.jpg » est une
+  SIMULATION de couleur (le site l'indique), pas une vraie job.
+- photos/maquette/camion-murco.jpg : GMC (Pexels 20551959) + ton logo.
+- photos/vos-photos/ : ta vraie photo de lavage de revêtement.

@@ -800,7 +800,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .contact-section {
   background:
     linear-gradient(180deg, rgba(248,245,240,.84), rgba(248,245,240,.72)),
-    url("../photos/fonds/gouttiere-flou.jpg") center / cover no-repeat;
+    url("../photos/fonds/maison-soir-flou.jpg") center / cover no-repeat;
 }
 .contact-section .form { background: rgba(255,255,255,.9); border-radius: var(--r-l); padding: 2rem; box-shadow: var(--sh-m);
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
@@ -936,3 +936,41 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .est-teaser p { margin: 0; color: #BEC6CC; }
 @media (max-width: 900px) { .est-tips { grid-template-columns: 1fr 1fr; } .calc-page .calc { margin-top: -2.5rem; } }
 @media (max-width: 620px) { .est-tips { grid-template-columns: 1fr; } .est-steps li { font-size: .88rem; } }
+
+/* ===================== 3 métiers ===================== */
+.svc-grid-3 > *, .svc-grid-3 > *:nth-child(4), .svc-grid-3 > *:nth-child(5) { grid-column: span 2; }
+.svc-grid-3 > .svc-cta { grid-column: span 6; }
+.svc-grid-3 .svc-photo, .svc-grid-3 > *:nth-child(4) .svc-photo, .svc-grid-3 > *:nth-child(5) .svc-photo { aspect-ratio: 16 / 10; }
+@media (max-width: 1080px) { .svc-grid-3 > * { grid-column: span 6; } .svc-grid-3 .svc-photo { aspect-ratio: 16 / 7; } }
+@media (max-width: 900px) { .svc-grid-3 > *, .svc-grid-3 > .svc-cta { grid-column: auto; } }
+@media (max-width: 620px) { .svc-grid-3 .svc-photo { aspect-ratio: auto; } }
+.job-grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .job-grid-3 { grid-template-columns: 1fr 1fr 1fr; gap: .6rem; } .job-grid-3 .job-tile span { font-size: .9rem; left: .7rem; bottom: .7rem; } }
+@media (max-width: 620px) { .job-grid-3 { grid-template-columns: 1fr; } .job-grid-3 .job-tile { aspect-ratio: 4 / 3; } }
+.svc-detail > div > .svc-shot { margin-top: 1.6rem; }
+.city-links { margin: -1.4rem 0 2.6rem; }
+.footer-rbq { font-size: .9rem; color: var(--amber); font-weight: 600; }
+
+/* ===================== Simulateur de couleur ===================== */
+.sim-section { background: linear-gradient(180deg, #fff, var(--mist-2)); }
+.sim { display: grid; grid-template-columns: 1.55fr 1fr; gap: 2rem; align-items: start; }
+.sim-stage { position: relative; border-radius: var(--r-l); overflow: hidden; box-shadow: var(--sh-l); background: var(--mist); }
+.sim-base, .sim-canvas { display: block; width: 100%; height: auto; }
+.sim-canvas { position: absolute; inset: 0; opacity: 0; transition: opacity .35s var(--ease); }
+.sim.is-colored .sim-canvas { opacity: 1; }
+.sim-tag { position: absolute; top: .9rem; left: .9rem; background: rgba(18,21,24,.7); color: #fff; font-size: .74rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; padding: .35rem .7rem; border-radius: 999px; }
+.sim-panel { background: #fff; border: 1px solid var(--alu); border-radius: var(--r-l); padding: 1.6rem; box-shadow: var(--sh-s); }
+.sim-label { margin: 0 0 .8rem; font-weight: 700; }
+.sim-swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; }
+.sim-swatches button { display: grid; gap: .35rem; justify-items: center; padding: .4rem .2rem; border: 0; background: none; cursor: pointer; font: inherit; color: var(--graphite); }
+.sim-swatches button::before { content: ""; width: 46px; height: 46px; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); transition: transform .2s, box-shadow .2s; }
+.sim-swatches button[aria-checked="true"]::before { box-shadow: inset 0 0 0 1px rgba(0,0,0,.15), 0 0 0 3px #fff, 0 0 0 5px var(--amber); transform: scale(1.05); }
+.sim-swatches span { font-size: .78rem; line-height: 1.2; text-align: center; }
+.sim-custom { display: flex; align-items: center; gap: .7rem; margin: 1.1rem 0 .4rem; font-weight: 600; font-size: .95rem; }
+.sim-custom input { width: 46px; height: 34px; border: 1px solid var(--alu); border-radius: var(--r-s); padding: 2px; background: #fff; cursor: pointer; }
+.sim-note { font-size: .85rem; color: var(--slate); margin: .6rem 0 1.2rem; }
+.sim-panel .btn { width: 100%; }
+@media (max-width: 900px) { .sim { grid-template-columns: 1fr; } }
+.calc-total { font-size: clamp(2.1rem, 3.4vw, 2.9rem); white-space: nowrap; }
+.job-grid-3 .job-tile { aspect-ratio: 4 / 3; }
