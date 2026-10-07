@@ -2,14 +2,17 @@ VOS VRAIES PHOTOS
 =================
 Remplace les fichiers en gardant EXACTEMENT les mêmes noms :
 
-  metiers/calfeutrage-1.jpg, calfeutrage-2.jpg   → page Services
+  metiers/calfeutrage-2.jpg                       → page Services
   metiers/peinture-1.jpg                          → page Services
-  metiers/brique-1.jpg, brique-2.jpg              → page Services
-  metiers/carte-calfeutrage|peinture|brique.jpg   → cartes (640 x 400)
+  metiers/brique-1.jpg                            → page Services
+  metiers/carte-peinture.jpg                      → carte peinture (640 x 400)
+  avant-apres/calfeutrage-avant|apres.jpg         → curseur Services (1280 x 800)
+  avant-apres/brique-avant|apres.jpg              → curseur Services (1280 x 800)
+  avant-apres/carte-<calfeutrage|brique>-avant|apres.jpg → cartes (640 x 400)
   villes/<ville>-calfeutrage|peinture|brique.jpg  → pages de villes (800 x 600)
 
-AVANT / APRÈS DE PEINTURE : prends la même maison, même angle, avant et
-après tes travaux. Envoie-les à Claude : il remplace la simulation par ta
+AVANT / APRÈS (peinture, calfeutrage, brique) : prends la même place,
+même angle, avant et après tes travaux. Envoie-les à Claude : il remplace la simulation par ta
 vraie job.
 
 VIDÉO D'ACCUEIL : envoie ta vidéo brute (10-15 s, téléphone stable,
