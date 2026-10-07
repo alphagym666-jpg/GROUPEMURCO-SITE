@@ -15,8 +15,8 @@ def vurl(slug): return f'calfeutrage-peinture-{slug}.html'
 SVC = [
   dict(id='calfeutrage', nom='Calfeutrage', court='Calfeutrage', prix='350',
        carte="Fenêtres, portes et joints de revêtement : on retire le vieux scellant fissuré et on refait des joints étanches et propres.",
-       img='photos/avant-apres/carte-calfeutrage-avant.jpg', alt="Vieux joint fendillé entre le cadre de fenêtre et la brique",
-       after='photos/avant-apres/carte-calfeutrage-apres.jpg', hover='avant-apres', hint='Fendillé <b>→</b> lisse'),
+       img='photos/metiers/carte-calfeutrage.jpg', alt="Fenêtre neuve dans la brique, joints blancs nets tout autour du cadre",
+       hover='zoom', hint='Joints <b>nets</b>'),
   dict(id='peinture', nom='Peinture de revêtement extérieur', court='Peinture extérieure', prix='2 500',
        carte="Revêtement de bois, de vinyle, d'aluminium ou de fibrociment : préparation, apprêt et deux couches, au pistolet ou au rouleau.",
        img='photos/metiers/carte-peinture.jpg', alt='Peintre en nacelle sur un mur extérieur',
@@ -179,6 +179,8 @@ def svc_cards(cta_title='Plusieurs travaux à faire?', cta_text='Calfeutrage, pe
         if s['hover'] == 'video':
             extra = f'<video class="svc-vid" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="photos/metiers/video-{s["id"]}"></video><span class="svc-hint">{s["hint"]}</span>'
             cls = 'svc-photo'
+        elif s['hover'] == 'zoom':
+            extra = f'<span class="svc-hint">{s["hint"]}</span>'; cls = 'svc-photo svc-zoom'
         else:
             extra = f'<img class="svc-after" src="{s["after"]}" width="640" height="400" loading="lazy" alt="" aria-hidden="true"><span class="svc-hint">{s["hint"]}</span>'
             cls = 'svc-photo'
@@ -392,8 +394,8 @@ DETAIL = {
    liste=["Retrait complet du vieux scellant, pas juste par-dessus", "Nettoyage et préparation des surfaces", "Fond de joint au besoin, pour un joint qui travaille bien", "Scellant extérieur haute performance, de la couleur de vos cadres", "Fenêtres, portes, coins de revêtement, solins et passages de fils"],
    ideal="Joints qui craquent, infiltrations d'air, avant de repeindre, maisons de 10 ans et plus.",
    prixnote="Prix à l'ouverture (fenêtre ou porte) ou au pied linéaire de joint, indiqué sur votre soumission.",
-   media=('img', 'photos/metiers/calfeutrage-2.jpg', "Porte d'entrée et fenêtre sur une façade de brique"),
-   media2=('duo', 'calfeutrage', 'Le même joint avant et après le calfeutrage (simulation)')),
+   media=('img', 'photos/metiers/calfeutrage-fenetre.jpg', 'Fenêtre neuve dans la brique, joints blancs nets tout autour du cadre'),
+   media2=('img', 'photos/metiers/calfeutrage-joint.jpg', "Gros plan d'un joint blanc net et continu entre le cadre de fenêtre et la brique")),
  'peinture': dict(
    intro="Une peinture extérieure dure aussi longtemps que sa préparation. On lave, on gratte, on calfeutre et on applique un apprêt avant les deux couches de finition, au pistolet ou au rouleau selon la surface.",
    liste=["Lavage du revêtement et grattage de la peinture qui lève", "Calfeutrage des joints avant la peinture", "Apprêt adapté : bois, vinyle, aluminium ou fibrociment", "Deux couches de finition, au pistolet airless ou au rouleau", "Protection des fenêtres, du terrain et des plates-bandes"],
@@ -410,11 +412,6 @@ DETAIL = {
    media2=('ba', 'brique', 'Brique encrassée avant, brique propre après le lavage (simulation)')),
 }
 def media_html(m):
-    if m[0] == 'duo':
-        return f'''<div class="duo" role="group" aria-label="{H.escape(m[2], quote=True)}">
-  <figure><img src="photos/avant-apres/{m[1]}-avant-gros-plan.jpg" width="600" height="800" loading="lazy" alt="Vieux joint fendillé et ouvert entre le cadre de fenêtre et la brique"><figcaption class="ba-tag before">Avant</figcaption></figure>
-  <figure><img src="photos/avant-apres/{m[1]}-apres-gros-plan.jpg" width="600" height="800" loading="lazy" alt="Nouveau joint lisse et continu entre le cadre et la brique"><figcaption class="ba-tag after">Après</figcaption></figure>
-</div>'''
     if m[0] == 'ba':
         return f'''<div class="ba-shell svc-ba">
   <div class="ba is-photo" role="group" aria-label="Comparateur avant et après">

@@ -35,13 +35,12 @@ PHOTOS ET VIDÉOS DE MAQUETTE (à remplacer par les tiennes)
 - photos/video-accueil-exterieur(-mobile) : peinture de façades extérieures, peintre
   dans l'échelle et peintre au pistolet sur échafaudage (Pexels, vidéos
   13372330 et 9182402).
-- photos/avant-apres/ : SIMULATIONS faites par ordinateur (le site le dit).
-  Calfeutrage = fenêtre Pexels 4482206, joint fendillé puis joint lisse
-  dessinés. Brique = mur Pexels 20185424 : l'après est la photo ravivée,
-  l'avant est la même photo salie (coulisses, efflorescence, mousse).
-  Remplace-les par tes vrais avant/après, mêmes noms.
-- photos/metiers/ : calfeutrage = fenêtres et portes vues de l'extérieur
-  (Pexels 19443446, 39167214) ;
+- photos/avant-apres/ : SIMULATION de lavage de brique (le site le dit).
+  Mur Pexels 20185424 : l'après est la photo ravivée, l'avant est la même
+  photo salie (coulisses, efflorescence, mousse). Remplace par ton vrai
+  avant/après, mêmes noms.
+- photos/metiers/ : calfeutrage = fenêtre neuve dans la brique aux joints
+  nets (Pexels 7641839) + en-tête Pexels 19443446 ;
   32115287 (peinture), 1260676, 16075970 (brique) ; video-peinture
   = Pexels 13372330 ; entete-peinture = Pexels 5434074 (vidéo).
 - photos/villes/<ville>-calfeutrage|peinture|brique.jpg : 3 photos par

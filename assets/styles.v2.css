@@ -975,16 +975,10 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .calc-total { font-size: clamp(2.1rem, 3.4vw, 2.9rem); white-space: nowrap; }
 .job-grid-3 .job-tile { aspect-ratio: 4 / 3; }
 
-/* Cartes calfeutrage et brique : l'après se dévoile au survol (ou à l'apparition sur cellulaire) */
+/* Carte brique : l'après se dévoile au survol (ou à l'apparition sur cellulaire) */
 .svc-after { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;
   clip-path: inset(0 100% 0 0); transition: clip-path 1.2s cubic-bezier(.65,0,.35,1); }
 .svc:hover .svc-after, .svc:focus-visible .svc-after, .svc.is-revealed .svc-after { clip-path: inset(0 0 0 0); }
 
-/* Avant / après côte à côte (gros plan d'un joint) et curseur dans la colonne principale */
-.svc-detail > div > .duo, .svc-detail > div > .svc-ba { margin-top: 1.6rem; }
-.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; border-radius: var(--r-m); overflow: hidden; box-shadow: var(--sh-m); background: var(--ink); }
-.duo figure { position: relative; margin: 0; }
-.duo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
-.duo .ba-tag { top: auto; bottom: 1rem; }
-.duo .ba-tag.before { left: 1rem; } .duo .ba-tag.after { left: 1rem; right: auto; }
-@media (max-width: 620px) { .duo .ba-tag { bottom: .6rem; font-size: .66rem; padding: .35rem .65rem; } .duo .ba-tag.before, .duo .ba-tag.after { left: .6rem; } }
+/* Curseur avant / après dans la colonne principale de Services */
+.svc-detail > div > .svc-ba { margin-top: 1.6rem; }

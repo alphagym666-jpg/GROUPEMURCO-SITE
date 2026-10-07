@@ -2,13 +2,12 @@ VOS VRAIES PHOTOS
 =================
 Remplace les fichiers en gardant EXACTEMENT les mêmes noms :
 
-  metiers/calfeutrage-2.jpg                       → page Services
+  metiers/calfeutrage-joint.jpg, calfeutrage-fenetre.jpg → page Services
   metiers/peinture-1.jpg                          → page Services
   metiers/brique-1.jpg                            → page Services
-  metiers/carte-peinture.jpg                      → carte peinture (640 x 400)
-  avant-apres/calfeutrage-avant|apres.jpg         → curseur Services (1280 x 800)
+  metiers/carte-calfeutrage|peinture.jpg          → cartes (640 x 400)
   avant-apres/brique-avant|apres.jpg              → curseur Services (1280 x 800)
-  avant-apres/carte-<calfeutrage|brique>-avant|apres.jpg → cartes (640 x 400)
+  avant-apres/carte-brique-avant|apres.jpg        → carte brique (640 x 400)
   villes/<ville>-calfeutrage|peinture|brique.jpg  → pages de villes (800 x 600)
 
 AVANT / APRÈS (peinture, calfeutrage, brique) : prends la même place,
