@@ -626,6 +626,10 @@ for f, t, d, extra in [('merci.html', 'Merci | Groupe Murco', 'Merci, nous avons
     m = m.replace('Mesuré au pied, au pied carré ou à la fenêtre.', "Mesuré sur place, détaillé par travaux.")
     pages[f] = head(f, t, d, **extra) + m + foot(f)
 
+# Version des photos : change PHOTOS_V quand tu remplaces une photo par une autre du même nom,
+# pour que les navigateurs qui ont gardé l'ancienne en mémoire chargent la nouvelle.
+PHOTOS_V = '3'
 for f, s in pages.items():
+    s = re.sub(r'(photos/[A-Za-z0-9_\-/]+\.(?:jpg|jpeg|png|webp|svg))(\?v=\w+)?', r'\1?v=' + PHOTOS_V, s)
     open(f, 'w', encoding='utf-8').write(s)
 print('pages écrites :', len(pages))

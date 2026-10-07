@@ -777,13 +777,13 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .section-mist {
   background:
     linear-gradient(180deg, rgba(246,242,235,.82) 0%, rgba(246,242,235,.66) 50%, rgba(246,242,235,.84) 100%),
-    url("../photos/fonds/maison-bleue-flou.jpg") center / cover no-repeat,
+    url("../photos/fonds/maison-bleue-flou.jpg?v=3") center / cover no-repeat,
     var(--mist);
 }
 .section-dark {
   background:
     linear-gradient(180deg, rgba(18,21,24,.86), rgba(18,21,24,.68)),
-    url("../photos/fonds/maison-soir-flou.jpg") center / cover no-repeat,
+    url("../photos/fonds/maison-soir-flou.jpg?v=3") center / cover no-repeat,
     var(--graphite);
 }
 /* Cartes en verre dépoli par-dessus les fonds */
@@ -800,7 +800,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .contact-section {
   background:
     linear-gradient(180deg, rgba(248,245,240,.84), rgba(248,245,240,.72)),
-    url("../photos/fonds/maison-soir-flou.jpg") center / cover no-repeat;
+    url("../photos/fonds/maison-soir-flou.jpg?v=3") center / cover no-repeat;
 }
 .contact-section .form { background: rgba(255,255,255,.9); border-radius: var(--r-l); padding: 2rem; box-shadow: var(--sh-m);
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
@@ -921,7 +921,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
   padding-top: 0;
   background:
     linear-gradient(180deg, rgba(246,242,235,.80) 0%, rgba(246,242,235,.70) 50%, rgba(246,242,235,.92) 100%),
-    url("../photos/fonds/maison-bleue-flou.jpg") center / cover no-repeat;
+    url("../photos/fonds/maison-bleue-flou.jpg?v=3") center / cover no-repeat;
 }
 .calc-page .calc { position: relative; z-index: 3; margin-top: -3.5rem; max-width: 1080px; }
 .calc-page .calc-inputs { background: rgba(255,255,255,.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: var(--sh-l); border-color: rgba(216,208,196,.8); }
