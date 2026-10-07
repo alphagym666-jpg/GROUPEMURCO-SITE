@@ -30,6 +30,7 @@
 <body>
 <div class="progress" aria-hidden="true"></div>
 <a class="skip" href="#contenu">Aller au contenu</a>
+<div class="season-bar" data-season="9,10,11" hidden><div class="wrap"><span><strong>Calfeutrage d'automne :</strong> on scelle tant qu'il fait plus de 5 °C. Réservez avant le gel.</span><a href="tel:+15142321837">Appeler</a></div></div>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html" aria-label="Groupe Murco, accueil"><img src="assets/logo-murco.svg" alt="Groupe Murco" width="200" height="56"></a>
@@ -67,7 +68,7 @@
       </div>
     </div>
   </div>
-  <a class="scroll-cue" href="#avant-apres" aria-label="Voir la suite"><span></span></a>
+  <a class="scroll-cue" href="#services" aria-label="Voir la suite"><span></span></a>
 </section>
 
 <div class="trust-bar">
@@ -80,26 +81,8 @@
 </div>
 <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Calfeutrage</span><span>Peinture extérieure</span><span>Lavage de brique</span><span>Licence RBQ</span><span>Sherrington</span><span>Napierville</span><span>Saint-Rémi</span><span>Châteauguay</span><span>La Prairie</span><span>Candiac</span><span>Calfeutrage</span><span>Peinture extérieure</span><span>Lavage de brique</span><span>Licence RBQ</span><span>Sherrington</span><span>Napierville</span><span>Saint-Rémi</span><span>Châteauguay</span><span>La Prairie</span><span>Candiac</span></div></div>
 
-<section class="scrub" id="avant-apres" aria-label="Simulation : la même maison avant et après la peinture">
-  <div class="scrub-sticky">
-    <div class="scrub-media">
-      <img class="scrub-before" src="photos/simulation/facade-avant.jpg" width="1280" height="853" loading="lazy" alt="Maison au revêtement terni, délavé et taché">
-      <img class="scrub-after" src="photos/simulation/facade-apres.jpg" width="1280" height="853" loading="lazy" alt="La même maison repeinte : revêtement bleu ardoise et moulures blanches (simulation)">
-      <span class="scrub-line" aria-hidden="true"></span>
-    </div>
-    <div class="wrap scrub-copy">
-      <p class="scrub-kicker">Une peinture fraîche, la même maison · simulation</p>
-      <ol class="scrub-steps">
-        <li class="on"><h2>Avant</h2><p>Un revêtement terni, des joints qui fendillent : la maison a l'air plus vieille qu'elle ne l'est.</p></li>
-        <li><h2>Préparation</h2><p>Lavage, grattage, calfeutrage des joints et apprêt. C'est là que se joue la durée d'une peinture.</p></li>
-        <li><h2>Après</h2><p>Deux couches appliquées proprement, des lignes nettes. Une façade qui fait honneur au quartier.</p></li>
-      </ol>
-      <div class="scrub-bar" aria-hidden="true"><span></span></div>
-    </div>
-  </div>
-</section>
 
-<section class="section section-mist">
+<section class="section section-mist" id="services">
   <div class="wrap">
     <div class="section-head">
       <h2>Nos trois métiers</h2>
@@ -138,6 +121,7 @@
 <section class="section joint-section" id="calfeutrage-de-pres">
   <div class="wrap joint-grid">
     <div class="joint-copy">
+      <p class="eyebrow"><b>01</b> Calfeutrage</p>
       <h2>Le calfeutrage, de près</h2>
       <p>Un bon joint, c'est une ligne continue, lisse et de la couleur du cadre. Faites défiler : voici exactement où on scelle autour d'une fenêtre.</p>
       <ol class="joint-steps">
@@ -157,6 +141,54 @@
       </figure>
   </div>
 </section>
+<section class="section brick-section" id="brique-avant-apres">
+  <div class="wrap joint-grid joint-grid-flip">
+    <div class="joint-copy">
+      <p class="eyebrow"><b>02</b> Lavage de brique</p>
+      <h2>Glissez. La brique revient.</h2>
+      <p>Coulisses noires sous les allèges, efflorescence blanche, mousse verte au bas des murs : un lavage bien dosé redonne à la brique sa couleur d'origine, sans gruger le mortier.</p>
+      <ul class="brick-points">
+        <li>Pression et buse ajustées à la brique</li>
+        <li>Nettoyant adapté : mousse, efflorescence, rouille</li>
+        <li>Rinçage complet de la façade et du terrain</li>
+      </ul>
+      <a class="btn" href="services.html#brique">Voir le lavage de brique</a>
+    </div>
+    <div class="brick-media">
+    <div class="ba-shell svc-ba brick-ba">
+      <div class="ba is-photo" role="group" aria-label="Comparateur avant et après">
+        <span class="ba-tag before">Avant</span>
+        <span class="ba-tag after">Après</span>
+        <img class="ba-img" src="photos/avant-apres/brique-avant.jpg" width="1280" height="800" loading="lazy" alt="Brique encrassée avant, brique propre après le lavage (simulation)">
+        <div class="ba-after" aria-hidden="true"><img class="ba-img" src="photos/avant-apres/brique-apres.jpg" width="1280" height="800" loading="lazy" alt=""></div>
+        <div class="ba-handle"><span class="ba-grip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span></div>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Glisser pour comparer avant et après">
+      </div>
+    </div>
+      <p class="ba-note">Simulation à titre d'exemple. Vos vraies jobs viendront ici.</p>
+    </div>
+  </div>
+</section>
+<section class="scrub" id="avant-apres" aria-label="Simulation : la même maison avant et après la peinture">
+  <div class="scrub-sticky">
+    <div class="scrub-media">
+      <img class="scrub-before" src="photos/simulation/facade-avant.jpg" width="1280" height="853" loading="lazy" alt="Maison au revêtement terni, délavé et taché">
+      <img class="scrub-after" src="photos/simulation/facade-apres.jpg" width="1280" height="853" loading="lazy" alt="La même maison repeinte : revêtement bleu ardoise et moulures blanches (simulation)">
+      <span class="scrub-line" aria-hidden="true"></span>
+    </div>
+    <div class="wrap scrub-copy">
+      <p class="scrub-kicker"><b>03</b> Peinture extérieure · simulation</p>
+      <ol class="scrub-steps">
+        <li class="on"><h2>Avant</h2><p>Un revêtement terni, des joints qui fendillent : la maison a l'air plus vieille qu'elle ne l'est.</p></li>
+        <li><h2>Préparation</h2><p>Lavage, grattage, calfeutrage des joints et apprêt. C'est là que se joue la durée d'une peinture.</p></li>
+        <li><h2>Après</h2><p>Deux couches appliquées proprement, des lignes nettes. Une façade qui fait honneur au quartier.</p></li>
+      </ol>
+      <div class="scrub-bar" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
+</section>
+
+
 <section class="section sim-section" id="couleurs">
   <div class="wrap">
     <div class="section-head center">
@@ -211,14 +243,27 @@
   </div>
 </section>
 
-<section class="proof">
-  <picture class="proof-img"><source media="(max-width: 900px)" srcset="photos/maquette/bande-maison-bleue-1100.jpg"><img src="photos/maquette/bande-maison-bleue.jpg" alt="" loading="lazy" width="1920" height="900"></picture>
-  <div class="wrap proof-inner">
-    <blockquote>
-      <p>Une maison se protège par ses détails.</p>
-      <p class="proof-sub">Un joint bien scellé, une peinture qui tient, une brique qui respire.</p>
-      <cite>Samuel Michea, fondateur</cite>
-    </blockquote>
+<section class="crew">
+  <div class="wrap crew-grid">
+    <div class="crew-copy">
+      <p class="eyebrow"><b>★</b> Qui on est</p>
+      <h2>Une équipe locale, un seul responsable.</h2>
+      <p class="crew-lead">Groupe Murco, c'est Samuel Michea et son équipe, basés à Sherrington. Le même nom sur la soumission, sur le camion et sur la garantie : vous savez toujours à qui parler.</p>
+      <ul class="crew-points">
+        <li><b>Licence RBQ</b><span>Entrepreneur en règle</span></li>
+        <li><b>2 ans</b><span>Garantie main-d'œuvre</span></li>
+        <li><b>0 $</b><span>Visite et soumission</span></li>
+      </ul>
+      <div class="crew-actions">
+        <a class="btn btn-call" href="tel:+15142321837"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg> Appeler Samuel</a>
+        <a class="btn btn-light" href="contact.html">Demander une soumission</a>
+      </div>
+      <p class="crew-sign">Samuel Michea<span>Fondateur, Groupe Murco</span></p>
+    </div>
+    <figure class="crew-photo">
+      <img src="photos/maquette/camion-murco.jpg" width="1400" height="1155" loading="lazy" alt="Camion GMC lettré au logo Groupe Murco">
+      <figcaption>Le camion que vous verrez dans votre entrée.</figcaption>
+    </figure>
   </div>
 </section>
 <section class="section">
@@ -235,7 +280,7 @@
   </div>
 </section>
 
-<section class="section section-mist">
+<section class="section section-plain">
   <div class="wrap">
     <div class="section-head">
       <h2>Où nous travaillons</h2>
@@ -250,16 +295,18 @@
     </div>
   </div>
 </section>
-<section class="cta-band has-photo">
+<section class="cta-band has-photo cta-call">
   <picture class="band-img"><source media="(max-width: 900px)" srcset="photos/maquette/bande-maison-soir-1100.jpg"><img src="photos/maquette/bande-maison-soir.jpg" alt="" loading="lazy" width="1920" height="900"></picture>
   <div class="wrap">
     <div>
-      <h2>Parlons de votre maison.</h2>
-      <p>Décrivez-nous le travail, nous vous revenons avec un prix écrit.</p>
+      <p class="eyebrow eyebrow-light"><span class="live-dot" aria-hidden="true"></span> On vise une réponse en moins de 24 h</p>
+      <h2>Appelez Samuel.</h2>
+      <a class="cta-phone" href="tel:+15142321837">514-232-1837</a>
+      <p>Visite et soumission écrite gratuites, partout sur la Rive-Sud.</p>
     </div>
     <div class="actions">
-      <a class="btn" href="contact.html">Demander une soumission</a>
-      <a class="btn btn-light" href="tel:+15142321837"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg> 514-232-1837</a>
+      <a class="btn btn-call" href="tel:+15142321837"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg> Appeler maintenant</a>
+      <a class="btn btn-light" href="contact.html">Écrire plutôt</a>
     </div>
   </div>
 </section>

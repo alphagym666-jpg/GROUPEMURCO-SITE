@@ -87,6 +87,7 @@ def head(fname, title, desc, canonical=True, noindex=False, extra=''):
 <body>
 <div class="progress" aria-hidden="true"></div>
 <a class="skip" href="#contenu">Aller au contenu</a>
+<div class="season-bar" data-season="9,10,11" hidden><div class="wrap"><span><strong>Calfeutrage d'automne :</strong> on scelle tant qu'il fait plus de 5 °C. Réservez avant le gel.</span><a href="tel:+15142321837">Appeler</a></div></div>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="{pre}index.html" aria-label="Groupe Murco, accueil"><img src="{pre}assets/logo-murco.svg" alt="Groupe Murco" width="200" height="56"></a>
@@ -421,7 +422,7 @@ index_main = f'''
 </section>
 {cta_band()}'''
 pages['index.html'] = head('index.html', 'Groupe Murco | Calfeutrage, peinture extérieure et lavage de brique, Rive-Sud',
-    'Entrepreneur licencié RBQ à Sherrington : calfeutrage de fenêtres et de portes, peinture de revêtement extérieur et lavage de brique à pression sur la Rive-Sud. Soumission gratuite.') + index_main + foot('index.html')
+    'Entrepreneur licencié RBQ à Sherrington : calfeutrage de fenêtres et de portes, peinture de revêtement extérieur et lavage de brique à pression sur la Rive-Sud. Soumission gratuite.') + (lambda s: s[s.index('<main id="contenu">') + len('<main id="contenu">\n'):s.index('</main>')])(open('index.html', encoding='utf-8').read()) + foot('index.html')  # l'accueil est maintenant retouché à la main : on reprend son contenu
 
 # ===================== SERVICES =====================
 DETAIL = {

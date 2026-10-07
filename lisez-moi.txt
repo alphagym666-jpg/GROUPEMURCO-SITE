@@ -26,6 +26,12 @@ CONFIGURATION (assets/config.js)
 - Prix « dès » : calfeutrage 350 $, peinture 2 500 $, brique 400 $.
 - Garantie 2 ans sur la main-d'œuvre (accueil) : garde-la seulement si
   tu peux l'honorer.
+- Bande d'automne (en haut de toutes les pages, affichée seulement en
+  septembre, octobre et novembre) : « on scelle tant qu'il fait plus de
+  5 °C ». Ajuste selon le scellant que tu utilises.
+- Section « Qui on est » et appel final : « Appelez Samuel », « réponse
+  en moins de 24 h », visite et soumission gratuites. Confirme que c'est
+  bien toi qui réponds et que le délai est réaliste.
 
 ANCIENNES PAGES
 Les pages « nettoyage-gouttieres-<ville>.html » redirigent vers les

@@ -301,6 +301,12 @@
     }
   });
 
+  /* ---------- Bande saisonnière : visible seulement les mois indiqués ---------- */
+  document.querySelectorAll('[data-season]').forEach(function (bar) {
+    var mois = bar.getAttribute('data-season').split(',').map(Number);
+    if (mois.indexOf(new Date().getMonth() + 1) !== -1) bar.hidden = false;
+  });
+
   /* ---------- Calfeutrage : les joints se tracent quand la photo arrive à l'écran ---------- */
   document.querySelectorAll('[data-joint-trace]').forEach(function (fig) {
     if (reduce || !('IntersectionObserver' in window)) { fig.classList.add('is-on'); return; }
