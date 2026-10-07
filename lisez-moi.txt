@@ -35,12 +35,16 @@ PHOTOS ET VIDÉOS DE MAQUETTE (à remplacer par les tiennes)
 - photos/video-accueil-exterieur(-mobile) : peinture de façades extérieures, peintre
   dans l'échelle et peintre au pistolet sur échafaudage (Pexels, vidéos
   13372330 et 9182402).
-- photos/metiers/ : photos Pexels 6124242, 3615723 (calfeutrage),
+- photos/metiers/ : calfeutrage = fenêtres et portes vues de l'extérieur
+  (Pexels 19443446, 32926633, 8266827, 39167214) ;
   32115287 (peinture), 1260676, 16075970 (brique) ; video-peinture
   = Pexels 13372330 ; entete-peinture = Pexels 5434074 (vidéo).
 - photos/villes/<ville>-calfeutrage|peinture|brique.jpg : 3 photos par
   ville (Pexels + ta photo de lavage). Remplace-les par tes jobs, mêmes noms.
-- photos/simulation/ : maison Pexels 6422929 ; « maison-apres.jpg » est une
-  SIMULATION de couleur (le site l'indique), pas une vraie job.
+- photos/simulation/ : simulateur de couleurs = maison Pexels 6422929.
+  Avant/après de l'accueil = maison Pexels 10258631 : « facade-apres.jpg »
+  est la photo d'origine, « facade-avant.jpg » est la même photo vieillie
+  par ordinateur. C'est une SIMULATION (le site l'indique), pas une vraie
+  job : remplace-les par un vrai avant/après pris au même angle.
 - photos/maquette/camion-murco.jpg : GMC (Pexels 20551959) + ton logo.
 - photos/vos-photos/ : ta vraie photo de lavage de revêtement.

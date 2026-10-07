@@ -15,7 +15,7 @@ def vurl(slug): return f'calfeutrage-peinture-{slug}.html'
 SVC = [
   dict(id='calfeutrage', nom='Calfeutrage', court='Calfeutrage', prix='350',
        carte="Fenêtres, portes et joints de revêtement : on retire le vieux scellant fissuré et on refait des joints étanches et propres.",
-       img='photos/metiers/carte-calfeutrage.jpg', alt="Calfeutrage d'un cadre de fenêtre au pistolet",
+       img='photos/metiers/carte-calfeutrage.jpg', alt="Fenêtre extérieure avec joints de calfeutrage autour du cadre",
        hover='zoom', hint='Joint <b>→</b> étanche'),
   dict(id='peinture', nom='Peinture de revêtement extérieur', court='Peinture extérieure', prix='2 500',
        carte="Revêtement de bois, de vinyle, d'aluminium ou de fibrociment : préparation, apprêt et deux couches, au pistolet ou au rouleau.",
@@ -291,12 +291,12 @@ index_main = f'''
 <section class="scrub" id="avant-apres" aria-label="Simulation : la même maison avant et après la peinture">
   <div class="scrub-sticky">
     <div class="scrub-media">
-      <img class="scrub-before" src="photos/simulation/maison.jpg" width="1280" height="853" loading="lazy" alt="Maison avec revêtement gris foncé">
-      <img class="scrub-after" src="photos/simulation/maison-apres.jpg" width="1280" height="853" loading="lazy" alt="La même maison avec un revêtement blanc cassé (simulation)">
+      <img class="scrub-before" src="photos/simulation/facade-avant.jpg" width="1280" height="853" loading="lazy" alt="Maison au revêtement terni, délavé et taché">
+      <img class="scrub-after" src="photos/simulation/facade-apres.jpg" width="1280" height="853" loading="lazy" alt="La même maison repeinte : revêtement bleu ardoise et moulures blanches (simulation)">
       <span class="scrub-line" aria-hidden="true"></span>
     </div>
     <div class="wrap scrub-copy">
-      <p class="scrub-kicker">Une nouvelle couleur, la même maison · simulation</p>
+      <p class="scrub-kicker">Une peinture fraîche, la même maison · simulation</p>
       <ol class="scrub-steps">
         <li class="on"><h2>Avant</h2><p>Un revêtement terni, des joints qui fendillent : la maison a l'air plus vieille qu'elle ne l'est.</p></li>
         <li><h2>Préparation</h2><p>Lavage, grattage, calfeutrage des joints et apprêt. C'est là que se joue la durée d'une peinture.</p></li>
