@@ -155,8 +155,8 @@
   });
 
   /* ---------- Vidéo d'arrière-plan de l'accueil ----------
-     Fichiers dans photos/ : hero-video.mp4 (+ .webm) et la version verticale
-     hero-video-mobile.mp4 (+ .webm). On essaie dans l'ordre : version mobile
+     Fichiers dans photos/ : video-accueil-exterieur.mp4 (+ .webm) et la version verticale
+     video-accueil-exterieur-mobile.mp4 (+ .webm). On essaie dans l'ordre : version mobile
      (cellulaire seulement), WebM (plus léger) puis MP4. Si rien ne joue, la
      photo reste. Pas de vidéo en économie de données ou animations réduites. */
   var video = document.querySelector('.hero-video');

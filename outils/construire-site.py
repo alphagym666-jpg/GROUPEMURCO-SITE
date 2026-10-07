@@ -258,7 +258,7 @@ index_main = f'''
   </picture>
   <!-- Vidéo d arrière-plan : peinture extérieure (Pexels 13372330, 9182402). À remplacer par une vraie vidéo de Groupe Murco. -->
   <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
-         data-src="photos/hero-video" data-src-mobile="photos/hero-video-mobile"></video>
+         data-src="photos/video-accueil-exterieur" data-src-mobile="photos/video-accueil-exterieur-mobile"></video>
   <div class="wrap hero-inner">
     <div class="hero-copy">
       <h1 class="hero-title">Calfeutrage, peinture et brique, faits comme il faut.</h1>

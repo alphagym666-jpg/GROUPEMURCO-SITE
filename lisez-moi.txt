@@ -32,7 +32,7 @@ Les pages « nettoyage-gouttieres-<ville>.html » redirigent vers les
 nouvelles « calfeutrage-peinture-<ville>.html » (fichier _redirects).
 
 PHOTOS ET VIDÉOS DE MAQUETTE (à remplacer par les tiennes)
-- photos/hero-video(-mobile) : peinture de façades extérieures, peintre
+- photos/video-accueil-exterieur(-mobile) : peinture de façades extérieures, peintre
   dans l'échelle et peintre au pistolet sur échafaudage (Pexels, vidéos
   13372330 et 9182402).
 - photos/metiers/ : photos Pexels 6124242, 3615723 (calfeutrage),
