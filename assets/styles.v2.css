@@ -982,3 +982,37 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 
 /* Curseur avant / après dans la colonne principale de Services */
 .svc-detail > div > .svc-ba { margin-top: 1.6rem; }
+
+/* Calfeutrage : les joints se tracent sur la photo au défilement */
+.joint-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.joint-copy h2 { margin-bottom: 1rem; max-width: 12ch; }
+.joint-copy > p { color: var(--slate); margin-bottom: 1.6rem; }
+.joint-steps { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: 1.1rem; }
+.joint-steps li { display: grid; grid-template-columns: 2.2rem 1fr; gap: .9rem; align-items: start; }
+.joint-steps b { display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--amber); color: var(--graphite); font-weight: 800; }
+.joint-steps strong { display: block; }
+.joint-steps span { color: var(--slate); line-height: 1.5; }
+.joint-steps strong { color: var(--graphite); }
+.joint-trace { position: relative; margin: 0; aspect-ratio: 16 / 10; border-radius: var(--r-l); overflow: hidden; box-shadow: var(--sh-l); background: var(--mist); }
+.joint-trace img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.joint-trace svg, .svc-trace { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.jt-line { fill: none; stroke: #f2b440; stroke-width: 11; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1;
+  filter: drop-shadow(0 0 6px rgba(242,180,64,.95)) drop-shadow(0 0 2px rgba(255,255,255,.8)); }
+.joint-trace.is-on .jt-line { transition: stroke-dashoffset 1.3s cubic-bezier(.65,0,.35,1); stroke-dashoffset: 0; }
+.joint-trace.is-on .jt-line:nth-child(2) { transition-delay: .35s; }
+.joint-trace.is-on .jt-line:nth-child(3) { transition-delay: .7s; }
+.jt-pin { position: absolute; z-index: 2; width: 2.3rem; height: 2.3rem; margin: -1.15rem 0 0 -1.15rem; display: grid; place-items: center;
+  border-radius: 50%; background: var(--amber); color: var(--graphite); font-weight: 800; font-size: .95rem;
+  box-shadow: 0 0 0 4px rgba(255,255,255,.85), 0 6px 18px rgba(0,0,0,.35); opacity: 0; transform: scale(.4); transition: opacity .4s, transform .5s cubic-bezier(.34,1.56,.64,1); }
+.joint-trace.is-on .jt-pin { opacity: 1; transform: none; transition-delay: 1.5s; }
+.joint-trace.is-on .jt-pin:nth-of-type(2) { transition-delay: 1.65s; }
+.joint-trace.is-on .jt-pin:nth-of-type(3) { transition-delay: 1.8s; }
+.joint-trace.is-on .jt-pin:nth-of-type(4) { transition-delay: 1.95s; }
+.svc-trace { z-index: 1; }
+.svc-trace .jt-line { stroke-width: 14; transition: stroke-dashoffset 1.1s cubic-bezier(.65,0,.35,1); }
+.svc:hover .svc-trace .jt-line, .svc:focus-visible .svc-trace .jt-line, .svc.is-revealed .svc-trace .jt-line { stroke-dashoffset: 0; }
+.svc-trace .jt-line:nth-child(2) { transition-delay: .2s; } .svc-trace .jt-line:nth-child(3) { transition-delay: .4s; }
+.svc-detail > div > .joint-trace { margin-top: 1.6rem; border-radius: var(--r-m); box-shadow: var(--sh-m); }
+@media (max-width: 900px) { .joint-grid { grid-template-columns: 1fr; } .joint-trace { order: -1; } }
+@media (max-width: 620px) { .jt-pin { width: 1.8rem; height: 1.8rem; margin: -.9rem 0 0 -.9rem; font-size: .8rem; } .jt-line { stroke-width: 9; } }
+@media (prefers-reduced-motion: reduce) { .jt-line { stroke-dashoffset: 0 !important; transition: none !important; } .jt-pin { opacity: 1; transform: none; transition: none; } }

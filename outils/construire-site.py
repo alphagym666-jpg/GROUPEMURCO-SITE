@@ -16,7 +16,7 @@ SVC = [
   dict(id='calfeutrage', nom='Calfeutrage', court='Calfeutrage', prix='350',
        carte="Fenêtres, portes et joints de revêtement : on retire le vieux scellant fissuré et on refait des joints étanches et propres.",
        img='photos/metiers/carte-calfeutrage.jpg', alt="Fenêtre neuve dans la brique, joints blancs nets tout autour du cadre",
-       hover='zoom', hint='Joints <b>nets</b>'),
+       hover='trace', hint='Voir les <b>joints</b>'),
   dict(id='peinture', nom='Peinture de revêtement extérieur', court='Peinture extérieure', prix='2 500',
        carte="Revêtement de bois, de vinyle, d'aluminium ou de fibrociment : préparation, apprêt et deux couches, au pistolet ou au rouleau.",
        img='photos/metiers/carte-peinture.jpg', alt='Peintre en nacelle sur un mur extérieur',
@@ -173,11 +173,47 @@ def cta_band(title='Parlons de votre maison.', text='Décrivez-nous le travail, 
 </section>
 '''
 
+JOINT_PATHS = '<path class="jt-line" pathLength="1" d="M331 0 L284 848"/><path class="jt-line" pathLength="1" d="M1120 0 L1163 548"/><path class="jt-line" pathLength="1" d="M232 918 L1198 598"/>'
+JOINT_FIG = '''<figure class="joint-trace" data-joint-trace>
+  <img src="photos/metiers/calfeutrage-fenetre.jpg" width="1600" height="1000" loading="lazy" alt="Fenêtre dans la brique : les joints de calfeutrage autour du cadre sont tracés en orange">
+  <svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path class="jt-line" pathLength="1" d="M331 0 L284 848"/><path class="jt-line" pathLength="1" d="M1120 0 L1163 548"/><path class="jt-line" pathLength="1" d="M232 918 L1198 598"/></svg>
+  <span class="jt-pin" style="left:19.1%;top:42%" aria-hidden="true">1</span>
+  <span class="jt-pin" style="left:71.4%;top:28%" aria-hidden="true">1</span>
+  <span class="jt-pin" style="left:44.7%;top:75.8%" aria-hidden="true">2</span>
+  <span class="jt-pin" style="left:75.3%;top:59%" aria-hidden="true">3</span>
+</figure>'''
+JOINT_SECTION = '''<section class="section joint-section" id="calfeutrage-de-pres">
+  <div class="wrap joint-grid">
+    <div class="joint-copy">
+      <h2>Le calfeutrage, de près</h2>
+      <p>Un bon joint, c'est une ligne continue, lisse et de la couleur du cadre. Faites défiler : voici exactement où on scelle autour d'une fenêtre.</p>
+      <ol class="joint-steps">
+        <li><b>1</b><span><strong>Cadre contre la brique</strong> Les deux côtés, du haut jusqu'à l'allège.</span></li>
+        <li><b>2</b><span><strong>Cadre sur l'allège</strong> Là où l'eau de pluie s'accumule en premier.</span></li>
+        <li><b>3</b><span><strong>Bouts d'allège</strong> Les coins, souvent oubliés, souvent fissurés.</span></li>
+      </ol>
+      <a class="btn" href="services.html#calfeutrage">Voir le calfeutrage</a>
+    </div>
+    <figure class="joint-trace" data-joint-trace>
+        <img src="photos/metiers/calfeutrage-fenetre.jpg" width="1600" height="1000" loading="lazy" alt="Fenêtre dans la brique : les joints de calfeutrage autour du cadre sont tracés en orange">
+        <svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path class="jt-line" pathLength="1" d="M331 0 L284 848"/><path class="jt-line" pathLength="1" d="M1120 0 L1163 548"/><path class="jt-line" pathLength="1" d="M232 918 L1198 598"/></svg>
+        <span class="jt-pin" style="left:19.1%;top:42%" aria-hidden="true">1</span>
+        <span class="jt-pin" style="left:71.4%;top:28%" aria-hidden="true">1</span>
+        <span class="jt-pin" style="left:44.7%;top:75.8%" aria-hidden="true">2</span>
+        <span class="jt-pin" style="left:75.3%;top:59%" aria-hidden="true">3</span>
+      </figure>
+  </div>
+</section>
+'''
+
 def svc_cards(cta_title='Plusieurs travaux à faire?', cta_text='Calfeutrage, peinture et brique peuvent se faire dans le même chantier : une seule soumission.'):
     out = []
     for s in SVC:
         if s['hover'] == 'video':
             extra = f'<video class="svc-vid" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="photos/metiers/video-{s["id"]}"></video><span class="svc-hint">{s["hint"]}</span>'
+            cls = 'svc-photo'
+        elif s['hover'] == 'trace':
+            extra = '<svg class="svc-trace" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' + JOINT_PATHS + f'</svg><span class="svc-hint">{s["hint"]}</span>'
             cls = 'svc-photo'
         elif s['hover'] == 'zoom':
             extra = f'<span class="svc-hint">{s["hint"]}</span>'; cls = 'svc-photo svc-zoom'
@@ -320,7 +356,7 @@ index_main = f'''
   </div>
 </section>
 
-{SIMULATEUR}
+{JOINT_SECTION}{SIMULATEUR}
 <section class="section section-dark on-dark">
   <div class="wrap">
     <div class="section-head">
@@ -394,8 +430,8 @@ DETAIL = {
    liste=["Retrait complet du vieux scellant, pas juste par-dessus", "Nettoyage et préparation des surfaces", "Fond de joint au besoin, pour un joint qui travaille bien", "Scellant extérieur haute performance, de la couleur de vos cadres", "Fenêtres, portes, coins de revêtement, solins et passages de fils"],
    ideal="Joints qui craquent, infiltrations d'air, avant de repeindre, maisons de 10 ans et plus.",
    prixnote="Prix à l'ouverture (fenêtre ou porte) ou au pied linéaire de joint, indiqué sur votre soumission.",
-   media=('img', 'photos/metiers/calfeutrage-fenetre.jpg', 'Fenêtre neuve dans la brique, joints blancs nets tout autour du cadre'),
-   media2=('img', 'photos/metiers/calfeutrage-joint.jpg', "Gros plan d'un joint blanc net et continu entre le cadre de fenêtre et la brique")),
+   media=('img', 'photos/metiers/calfeutrage-joint.jpg', "Gros plan d'un joint blanc net et continu entre le cadre de fenêtre et la brique"),
+   media2=('trace', '', '')),
  'peinture': dict(
    intro="Une peinture extérieure dure aussi longtemps que sa préparation. On lave, on gratte, on calfeutre et on applique un apprêt avant les deux couches de finition, au pistolet ou au rouleau selon la surface.",
    liste=["Lavage du revêtement et grattage de la peinture qui lève", "Calfeutrage des joints avant la peinture", "Apprêt adapté : bois, vinyle, aluminium ou fibrociment", "Deux couches de finition, au pistolet airless ou au rouleau", "Protection des fenêtres, du terrain et des plates-bandes"],
@@ -412,6 +448,8 @@ DETAIL = {
    media2=('ba', 'brique', 'Brique encrassée avant, brique propre après le lavage (simulation)')),
 }
 def media_html(m):
+    if m[0] == 'trace':
+        return JOINT_FIG
     if m[0] == 'ba':
         return f'''<div class="ba-shell svc-ba">
   <div class="ba is-photo" role="group" aria-label="Comparateur avant et après">

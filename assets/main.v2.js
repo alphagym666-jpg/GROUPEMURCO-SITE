@@ -293,12 +293,21 @@
       card.addEventListener('mouseleave', function () { v.pause(); card.classList.remove('is-playing'); });
     }
     // sans souris (cellulaire) : la gouttière se nettoie quand la carte apparaît
-    if (!hover && card.querySelector('.svc-after, .svc-zoom') && 'IntersectionObserver' in window) {
+    if (!hover && card.querySelector('.svc-after, .svc-zoom, .svc-trace') && 'IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (es) {
         es.forEach(function (e) { if (e.isIntersecting) { setTimeout(function () { card.classList.add('is-revealed'); }, 500); io.disconnect(); } });
       }, { threshold: 0.6 });
       io.observe(card);
     }
+  });
+
+  /* ---------- Calfeutrage : les joints se tracent quand la photo arrive à l'écran ---------- */
+  document.querySelectorAll('[data-joint-trace]').forEach(function (fig) {
+    if (reduce || !('IntersectionObserver' in window)) { fig.classList.add('is-on'); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { fig.classList.add('is-on'); io.disconnect(); } });
+    }, { threshold: 0.45 });
+    io.observe(fig);
   });
 
   /* ---------- Calculateur de prix ---------- */
