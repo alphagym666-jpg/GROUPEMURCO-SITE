@@ -301,6 +301,23 @@
     }
   });
 
+  /* ---------- Vidéos « on arrache / on refait » : jouent seulement quand elles sont à l'écran ---------- */
+  var stepVids = document.querySelectorAll('[data-step-video] video');
+  if (stepVids.length) {
+    if (reduce || !('IntersectionObserver' in window)) {
+      stepVids.forEach(function (v) { v.controls = true; });
+    } else {
+      var vio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+          else v.pause();
+        });
+      }, { threshold: 0.35 });
+      stepVids.forEach(function (v) { vio.observe(v); });
+    }
+  }
+
   /* ---------- Bande saisonnière : visible seulement les mois indiqués ---------- */
   document.querySelectorAll('[data-season]').forEach(function (bar) {
     var mois = bar.getAttribute('data-season').split(',').map(Number);

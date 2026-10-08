@@ -41,6 +41,14 @@ PHOTOS ET VIDÉOS DE MAQUETTE (à remplacer par les tiennes)
 - photos/video-accueil-exterieur(-mobile) : peinture de façades extérieures, peintre
   dans l'échelle et peintre au pistolet sur échafaudage (Pexels, vidéos
   13372330 et 9182402).
+- photos/calfeutrage/ : arracher.mp4/.webm = vidéo « on arrache le vieux
+  calfeutrage » (reçue de toi). ATTENTION : elle vient d'un reel Facebook
+  de « Kettle Caulking » (le texte « Caulk removal » est incrusté dans
+  l'image). C'est une vidéo d'une autre entreprise : OK pour la maquette,
+  mais à REMPLACER par ta propre vidéo avant de laisser le site en ligne.
+  refaire.mp4/.webm = « on refait le joint » (reçue de toi, sans marque
+  visible; confirme que c'est bien toi qui l'as filmée).
+  Pour remplacer : même nom de fichier, vidéo verticale 9:16, 8 à 10 s.
 - photos/avant-apres/ : SIMULATION de lavage de brique (le site le dit).
   Mur Pexels 20185424 : l'après est la photo ravivée, l'avant est la même
   photo salie (coulisses, efflorescence, mousse). Remplace par ton vrai
