@@ -1104,3 +1104,18 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .step-pair-sm .step-arrow { width: 2.1rem; height: 2.1rem; }
 @media (max-width: 900px) { .steps-grid { grid-template-columns: 1fr; } .step-pair { width: 100%; max-width: 520px; margin-inline: auto; } }
 @media (max-width: 480px) { .step-tag { font-size: .68rem; padding: .4rem .7rem; left: .5rem; bottom: .5rem; } .step-arrow { width: 1.9rem; height: 1.9rem; } .step-arrow svg { width: 1rem; height: 1rem; } }
+
+/* Calfeutrage : avant / après du joint, deux photos côte à côte */
+.joint-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; border-radius: var(--r-l); overflow: hidden; box-shadow: var(--sh-l); background: var(--ink); }
+.joint-duo figure { position: relative; margin: 0; }
+.joint-duo img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+.joint-duo .ba-tag { top: auto; bottom: 1rem; left: 1rem; right: auto; }
+.joint-duo-wrap { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.joint-duo-title { font-family: var(--display); font-weight: 400; font-size: clamp(1.6rem, 3.4vw, 2.4rem); text-transform: uppercase; margin: 0 0 1.4rem; }
+.joint-duo-wrap .joint-duo { max-width: 860px; }
+.joint-duo-sm { border-radius: var(--r-m); box-shadow: var(--sh-m); }
+.joint-duo-sm .ba-tag { bottom: .6rem; left: .6rem; font-size: .66rem; padding: .35rem .65rem; }
+@media (max-width: 620px) { .joint-duo .ba-tag { bottom: .6rem; left: .6rem; font-size: .68rem; padding: .35rem .65rem; } }
+.joint-duo-wrap .joint-duo { max-width: none; }
+.joint-duo-wrap .joint-duo img { aspect-ratio: 4 / 3; }
+@media (max-width: 620px) { .joint-duo-wrap .joint-duo img { aspect-ratio: 1 / 1; } }

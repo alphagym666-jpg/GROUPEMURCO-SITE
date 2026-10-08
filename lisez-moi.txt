@@ -49,6 +49,10 @@ PHOTOS ET VIDÉOS DE MAQUETTE (à remplacer par les tiennes)
   refaire.mp4/.webm = « on refait le joint » (reçue de toi, sans marque
   visible; confirme que c'est bien toi qui l'as filmée).
   Pour remplacer : même nom de fichier, vidéo verticale 9:16, 8 à 10 s.
+- photos/avant-apres/joint-avant.jpg + joint-apres.jpg : tes deux photos
+  du joint de calfeutrage (vieux joint détérioré, puis joint blanc neuf).
+  Recadrées en carré, métadonnées (GPS) retirées. Confirme que ce sont
+  bien tes jobs ; sinon, remplace-les par les tiennes (mêmes noms).
 - photos/avant-apres/ : SIMULATION de lavage de brique (le site le dit).
   Mur Pexels 20185424 : l'après est la photo ravivée, l'avant est la même
   photo salie (coulisses, efflorescence, mousse). Remplace par ton vrai

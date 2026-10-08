@@ -230,6 +230,13 @@ JOINT_SECTION = '''<section class="section joint-section" id="calfeutrage-de-pre
       </figure>
     </div>
   </div>
+  <div class="wrap joint-duo-wrap">
+    <h3 class="joint-duo-title">Le résultat : un joint qui ferme pour de bon</h3>
+    <div class="joint-duo" role="group" aria-label="Le même type de joint avant et après le calfeutrage">
+  <figure><img src="photos/avant-apres/joint-avant.jpg?v=3" width="900" height="900" loading="lazy" alt="Vieux joint de calfeutrage détérioré entre la brique et la dalle, plein de débris"><figcaption class="ba-tag before">Avant</figcaption></figure>
+  <figure><img src="photos/avant-apres/joint-apres.jpg?v=3" width="900" height="900" loading="lazy" alt="Nouveau joint blanc, net et continu entre la brique et la dalle"><figcaption class="ba-tag after">Après</figcaption></figure>
+</div>
+</div>
 </section>
 '''
 
@@ -457,7 +464,7 @@ DETAIL = {
    liste=["Retrait complet du vieux scellant, pas juste par-dessus", "Nettoyage et préparation des surfaces", "Fond de joint au besoin, pour un joint qui travaille bien", "Scellant extérieur haute performance, de la couleur de vos cadres", "Fenêtres, portes, coins de revêtement, solins et passages de fils"],
    ideal="Joints qui craquent, infiltrations d'air, avant de repeindre, maisons de 10 ans et plus.",
    prixnote="Prix à l'ouverture (fenêtre ou porte) ou au pied linéaire de joint, indiqué sur votre soumission.",
-   media=('img', 'photos/metiers/calfeutrage-joint.jpg', "Gros plan d'un joint blanc net et continu entre le cadre de fenêtre et la brique"),
+   media=('duo', '', ''),
    media2=('trace', '', '')),
  'peinture': dict(
    intro="Une peinture extérieure dure aussi longtemps que sa préparation. On lave, on gratte, on calfeutre et on applique un apprêt avant les deux couches de finition, au pistolet ou au rouleau selon la surface.",
@@ -474,7 +481,13 @@ DETAIL = {
    media=('img', 'photos/metiers/brique-1.jpg', 'Façade de brique rouge'),
    media2=('ba', 'brique', 'Brique encrassée avant, brique propre après le lavage (simulation)')),
 }
+JOINT_DUO = '''<div class="joint-duo joint-duo-sm" role="group" aria-label="Le même type de joint avant et après le calfeutrage">
+  <figure><img src="photos/avant-apres/joint-avant.jpg?v=3" width="900" height="900" loading="lazy" alt="Vieux joint de calfeutrage détérioré entre la brique et la dalle, plein de débris"><figcaption class="ba-tag before">Avant</figcaption></figure>
+  <figure><img src="photos/avant-apres/joint-apres.jpg?v=3" width="900" height="900" loading="lazy" alt="Nouveau joint blanc, net et continu entre la brique et la dalle"><figcaption class="ba-tag after">Après</figcaption></figure>
+</div>'''
 def media_html(m):
+    if m[0] == 'duo':
+        return JOINT_DUO
     if m[0] == 'trace':
         return JOINT_FIG
     if m[0] == 'ba':
