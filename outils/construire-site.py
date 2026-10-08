@@ -2,6 +2,9 @@
 # Régénère toutes les pages : python3 outils/construire-site.py (depuis le dossier du site)
 """Reconstruit le site Groupe Murco autour de 3 métiers :
 calfeutrage, peinture de revêtement extérieur, lavage de brique à pression."""
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import methode as M_METHODE
 import json, re, os, html as H
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(R)
@@ -545,7 +548,8 @@ for s in SVC:
       <a class="btn" href="contact.html?service={s["id"]}">Demander un prix</a>
     </div>
   </div>
-</article>''')
+</article>
+''' + M_METHODE.bloc_service(s["id"]))
 svc_faq = [
  ("Quand faut-il refaire le calfeutrage?", "En général aux 8 à 12 ans, ou dès qu'un joint fendille, décolle ou durcit. On le refait aussi toujours avant de repeindre un revêtement."),
  ("Peut-on peindre un revêtement de vinyle ou d'aluminium?", "Oui, avec une préparation et une peinture conçues pour ces surfaces. On vous conseille une teinte adaptée pour éviter la déformation du vinyle au soleil."),

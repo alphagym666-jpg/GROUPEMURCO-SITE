@@ -333,7 +333,7 @@
 
   /* ---------- Navigation par chapitres (accueil, grands écrans) ---------- */
   (function () {
-    var CH = [['services', 'Métiers'], ['quiz', 'Mon projet'], ['calfeutrage-de-pres', 'Calfeutrage'], ['brique-avant-apres', 'Brique'], ['avant-apres', 'Peinture'], ['couleurs', 'Couleurs'], ['equipe', 'Équipe'], ['appel', 'Appeler']];
+    var CH = [['services', 'Métiers'], ['quiz', 'Mon projet'], ['calfeutrage-de-pres', 'Calfeutrage'], ['brique-avant-apres', 'Brique'], ['avant-apres', 'Peinture'], ['methode', 'Méthode'], ['couleurs', 'Couleurs'], ['equipe', 'Équipe'], ['appel', 'Appeler']];
     var found = CH.filter(function (c) { return document.getElementById(c[0]); });
     if (found.length < 4 || !('IntersectionObserver' in window)) return;
     var nav = document.createElement('nav');
@@ -469,6 +469,35 @@
   /* ---------- Clavier ouvert sur cellulaire : on cache la barre d'appel du bas ---------- */
   document.addEventListener('focusin', function (e) { if (e.target.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]), textarea, select')) document.body.classList.add('kbd'); });
   document.addEventListener('focusout', function () { setTimeout(function () { var a = document.activeElement; if (!a || !a.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]), textarea, select')) document.body.classList.remove('kbd'); }, 60); });
+
+  /* ---------- Méthode étape par étape : onglets (accueil) et étapes qui s'allument au défilement ---------- */
+  document.querySelectorAll('[data-ptabs]').forEach(function (box) {
+    var tabs = Array.prototype.slice.call(box.querySelectorAll('[role="tab"]'));
+    var panels = Array.prototype.slice.call(box.querySelectorAll('[role="tabpanel"]'));
+    var show = function (i, focus) {
+      tabs.forEach(function (t, j) { t.setAttribute('aria-selected', j === i ? 'true' : 'false'); t.tabIndex = j === i ? 0 : -1; });
+      panels.forEach(function (p, j) { p.hidden = j !== i; });
+      if (focus) tabs[i].focus();
+    };
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { show(i, false); });
+      t.addEventListener('keydown', function (e) {
+        var n = e.key === 'ArrowRight' ? (i + 1) % tabs.length : e.key === 'ArrowLeft' ? (i + tabs.length - 1) % tabs.length : -1;
+        if (n >= 0) { e.preventDefault(); show(n, true); }
+      });
+    });
+    show(0, false);
+  });
+  var pSteps = document.querySelectorAll('.process-steps li');
+  if (pSteps.length) {
+    if (reduce || !('IntersectionObserver' in window)) { pSteps.forEach(function (li) { li.classList.add('in'); }); }
+    else {
+      var pio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); pio.unobserve(e.target); } });
+      }, { threshold: 0.6, rootMargin: '0px 0px -8% 0px' });
+      pSteps.forEach(function (li) { pio.observe(li); });
+    }
+  }
 
   /* ---------- Bande saisonnière : visible seulement les mois indiqués ---------- */
   document.querySelectorAll('[data-season]').forEach(function (bar) {

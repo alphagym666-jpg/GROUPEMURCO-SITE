@@ -1285,3 +1285,43 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .area-tags li { padding: .5rem .9rem; border-radius: 999px; background: #fff; border: 1px solid var(--alu); font-weight: 600; font-size: .95rem; color: var(--graphite); }
 .area-tags li:last-child { background: var(--graphite); border-color: var(--graphite); color: var(--amber); font-weight: 800; }
 .footer-more { color: #AEB7BD; font-size: .88rem; line-height: 1.4; }
+
+/* ===================== Notre méthode : étape par étape ===================== */
+.process { margin: clamp(2rem, 5vw, 3.2rem) 0 clamp(3rem, 6vw, 4.5rem); padding: clamp(1.3rem, 4vw, 2.6rem); background: var(--mist-2); border: 1px solid var(--alu); border-radius: var(--r-l); }
+.process-head h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.8rem, 4.6vw, 2.8rem); line-height: 1.05; margin: 0 0 .7rem; }
+.process-lead { color: var(--slate); margin: 0 0 .5rem; max-width: 62ch; }
+.process-legend { margin: 0 0 1.6rem; font-size: .88rem; color: var(--slate); }
+.process-legend.center { text-align: center; margin: 1.4rem 0 0; }
+.process-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; max-width: 820px; }
+.process-steps li { position: relative; display: grid; grid-template-columns: 2.9rem minmax(0, 1fr); gap: 1rem; padding-bottom: 1.5rem; }
+.process-steps li:last-child { padding-bottom: 0; }
+.process-steps li::before { content: ""; position: absolute; left: calc(1.45rem - 1.5px); top: 2.9rem; bottom: 0; width: 3px; border-radius: 3px; background: var(--alu); }
+.process-steps li::after { content: ""; position: absolute; left: calc(1.45rem - 1.5px); top: 2.9rem; bottom: 0; width: 3px; border-radius: 3px; background: linear-gradient(180deg, #FFDC93, var(--amber)); transform: scaleY(0); transform-origin: top; transition: transform .9s var(--ease) .15s; }
+.process-steps li:last-child::before, .process-steps li:last-child::after { display: none; }
+.process-steps li.in::after { transform: scaleY(1); }
+.ps-n { display: grid; place-items: center; width: 2.9rem; height: 2.9rem; border-radius: 50%; background: #fff; border: 3px solid var(--alu); font-family: var(--display); font-size: 1.35rem; color: var(--slate); transition: background-color .4s, border-color .4s, color .4s, transform .4s var(--ease); z-index: 1; }
+.process-steps li.in .ps-n { background: var(--amber); border-color: var(--amber); color: var(--graphite); transform: scale(1.04); }
+.process-steps h4 { margin: .35rem 0 .3rem; font-size: 1.12rem; line-height: 1.25; color: var(--graphite); }
+.process-steps p { margin: 0; color: var(--slate); line-height: 1.55; }
+.ps-tag { display: inline-block; margin-top: .55rem; padding: .22rem .65rem; border-radius: 999px; border: 1.5px solid var(--amber); color: var(--amber-dp); font-weight: 800; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; background: rgba(227,160,49,.12); }
+.process-foot { margin: 1.6rem 0 0; padding: 1rem 1.1rem; border-left: 4px solid var(--amber); background: var(--mist); border-radius: 0 12px 12px 0; max-width: 820px; }
+
+.process-section { background: var(--white); }
+.ptabs-list { display: none; }
+.js .ptabs-list { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.8rem; }
+.ptabs-list button { min-height: 48px; padding: .7rem 1.3rem; border-radius: 999px; border: 2px solid var(--alu); background: #fff; color: var(--graphite); font: inherit; font-weight: 800; font-size: .95rem; letter-spacing: .04em; cursor: pointer; transition: background-color .2s, border-color .2s, color .2s; }
+.ptabs-list button:hover { border-color: var(--graphite); }
+.ptabs-list button[aria-selected="true"] { background: var(--graphite); border-color: var(--graphite); color: var(--amber); }
+.ptabs-list button:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+.ptabs-panel { background: var(--mist-2); border: 1px solid var(--alu); border-radius: var(--r-l); padding: clamp(1.2rem, 4vw, 2.4rem); }
+.ptabs-panel + .ptabs-panel { margin-top: 1.4rem; }
+.ptabs-panel[hidden] { display: none; }
+.ptabs-panel .process-steps { margin-inline: auto; }
+.ptabs-more { margin: 1.8rem 0 0; text-align: center; }
+@media (max-width: 620px) {
+  .process-steps li { grid-template-columns: 2.4rem minmax(0, 1fr); gap: .8rem; }
+  .ps-n { width: 2.4rem; height: 2.4rem; font-size: 1.15rem; }
+  .process-steps li::before, .process-steps li::after { left: calc(1.2rem - 1.5px); top: 2.4rem; }
+  .ptabs-list button { flex: 1 1 auto; padding-inline: .8rem; font-size: .9rem; }
+}
+@media (prefers-reduced-motion: reduce) { .process-steps li::after { transition: none; transform: scaleY(1); } .ps-n { transition: none; } }
