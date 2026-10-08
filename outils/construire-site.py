@@ -87,7 +87,7 @@ def head(fname, title, desc, canonical=True, noindex=False, extra=''):
 <body>
 <div class="progress" aria-hidden="true"></div>
 <a class="skip" href="#contenu">Aller au contenu</a>
-<div class="season-bar" data-season="9,10,11" hidden><div class="wrap"><span><strong>Calfeutrage d'automne :</strong> on scelle tant qu'il fait plus de 5 °C. Réservez avant le gel.</span><a href="tel:+15142321837">Appeler</a></div></div>
+<div class="season-bar"><div class="wrap"><span><strong>Calfeutrage toute l'année :</strong> même l'hiver, on scelle vos joints. Visite et soumission gratuites.</span><a href="tel:+15142321837">Appeler</a></div></div>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="{pre}index.html" aria-label="Groupe Murco, accueil"><img src="{pre}assets/logo-murco.svg" alt="Groupe Murco" width="200" height="56"></a>

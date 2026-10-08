@@ -17,7 +17,7 @@ CONFIGURATION (assets/config.js)
 - PRIX : taux du calculateur (page Estimation). À CONFIRMER :
   calfeutrage 40 $ l'ouverture (min. 350 $), peinture 2,75 $/pi²
   (min. 2 500 $), lavage de brique 0,60 $/pi² (min. 400 $).
-- NUMERO_RBQ : écris ton numéro de licence, il s'affiche sur l'accueil,
+- NUMERO_RBQ : 5885-4050 (déjà rempli). Il s'affiche sur l'accueil,
   dans le pied de page et sur À propos.
 - GOOGLE_ANALYTICS_ID, META_PIXEL_ID : avant tes pubs (bannière Loi 25
   automatique).
@@ -26,9 +26,8 @@ CONFIGURATION (assets/config.js)
 - Prix « dès » : calfeutrage 350 $, peinture 2 500 $, brique 400 $.
 - Garantie 2 ans sur la main-d'œuvre (accueil) : garde-la seulement si
   tu peux l'honorer.
-- Bande d'automne (en haut de toutes les pages, affichée seulement en
-  septembre, octobre et novembre) : « on scelle tant qu'il fait plus de
-  5 °C ». Ajuste selon le scellant que tu utilises.
+- Bande du haut : « Calfeutrage toute l'année : même l'hiver, on scelle vos joints ».
+  Garde-la seulement si c'est vrai pour ton scellant et ta saison.
 - Section « Qui on est » et appel final : « Appelez Samuel », « réponse
   en moins de 24 h », visite et soumission gratuites. Confirme que c'est
   bien toi qui réponds et que le délai est réaliste.
@@ -49,10 +48,9 @@ PHOTOS ET VIDÉOS DE MAQUETTE (à remplacer par les tiennes)
   refaire.mp4/.webm = « on refait le joint » (reçue de toi, sans marque
   visible; confirme que c'est bien toi qui l'as filmée).
   Pour remplacer : même nom de fichier, vidéo verticale 9:16, 8 à 10 s.
-- photos/avant-apres/joint-avant.jpg + joint-apres.jpg : tes deux photos
-  du joint de calfeutrage (vieux joint détérioré, puis joint blanc neuf).
-  Recadrées en carré, métadonnées (GPS) retirées. Confirme que ce sont
-  bien tes jobs ; sinon, remplace-les par les tiennes (mêmes noms).
+- photos/avant-apres/joint-avant.jpg + joint-apres.jpg : tes photos du
+  joint de calfeutrage (confirmé : ce sont tes jobs). Recadrées en carré,
+  métadonnées (GPS) retirées.
 - photos/avant-apres/ : SIMULATION de lavage de brique (le site le dit).
   Mur Pexels 20185424 : l'après est la photo ravivée, l'avant est la même
   photo salie (coulisses, efflorescence, mousse). Remplace par ton vrai

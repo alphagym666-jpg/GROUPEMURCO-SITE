@@ -1119,3 +1119,47 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .joint-duo-wrap .joint-duo { max-width: none; }
 .joint-duo-wrap .joint-duo img { aspect-ratio: 4 / 3; }
 @media (max-width: 620px) { .joint-duo-wrap .joint-duo img { aspect-ratio: 1 / 1; } }
+
+/* ===================== Signature visuelle : le joint de calfeutrage ===================== */
+/* Un filet orange, comme un joint fraîchement tiré, se dessine au haut des sections quand on y arrive */
+.bead-top { position: relative; }
+.bead-top::before { content: ""; position: absolute; top: 0; left: 50%; width: 0; height: 6px; transform: translateX(-50%); z-index: 3; pointer-events: none;
+  border-radius: 6px; background: linear-gradient(180deg, #FFDC93 0%, var(--amber) 48%, #B9791A 100%); box-shadow: 0 0 16px rgba(227,160,49,.65);
+  transition: width 1.5s cubic-bezier(.65,0,.35,1); }
+.bead-top.bead-on::before { width: min(1180px, calc(100% - 2rem)); }
+
+/* Grande bande de lettres : contours blancs et mots pleins en orange */
+.marquee-xl { background: var(--ink); padding: 1.2rem 0 1rem; border-block: 1px solid rgba(255,255,255,.08); }
+.marquee-xl .marquee-track { animation-duration: 70s; }
+.marquee-xl span { font-family: var(--display); font-weight: 400; font-size: clamp(2.6rem, 7vw, 5.6rem); line-height: 1.05; letter-spacing: .01em;
+  padding: 0 1rem; gap: 1rem; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.6); }
+.marquee-xl span:nth-child(3n+1) { color: var(--amber); -webkit-text-stroke: 0; }
+.marquee-xl span::after { width: .3em; height: .3em; border-radius: 0; transform: rotate(45deg); background: var(--amber); }
+@media (max-width: 620px) { .marquee-xl span { -webkit-text-stroke-width: 1.2px; } }
+
+/* Sceau « licencié RBQ · garantie 2 ans » collé sur la photo du camion */
+.seal { position: absolute; z-index: 3; top: -2rem; left: -2rem; width: clamp(96px, 12vw, 138px); filter: drop-shadow(0 14px 22px rgba(0,0,0,.5)); }
+.seal svg { display: block; width: 100%; height: auto; }
+.seal-ring { transform-origin: 100px 100px; animation: sealSpin 28s linear infinite; }
+@keyframes sealSpin { to { transform: rotate(360deg); } }
+@media (max-width: 900px) { .seal { top: -1.2rem; left: -.4rem; } }
+
+/* Lueur orange qui suit la souris : aussi sur les raisons, les repères et les conseils */
+.section-dark .reason, .crew-points li, .est-tip {
+  background-image: radial-gradient(300px circle at var(--mx, -999px) var(--my, -999px), rgba(227,160,49,.2), transparent 62%); }
+
+/* Navigation par chapitres (grands écrans seulement) */
+.chapters { position: fixed; z-index: 95; right: 1.1rem; top: 50%; transform: translateY(-50%) translateX(140%); display: none; flex-direction: column; gap: .15rem;
+  padding: .7rem .55rem; border-radius: 999px; background: rgba(18,21,24,.62); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.14); transition: transform .5s var(--ease); }
+.chapters.show { transform: translateY(-50%); }
+.chapters a { position: relative; display: block; width: 1.5rem; height: 1.5rem; }
+.chapters a::before { content: ""; position: absolute; inset: 50% auto auto 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.75); transition: background-color .25s, transform .25s, border-color .25s; }
+.chapters a.on::before { background: var(--amber); border-color: var(--amber); transform: scale(1.35); }
+.chapters a span { position: absolute; right: calc(100% + .7rem); top: 50%; transform: translateY(-50%) translateX(8px); white-space: nowrap; padding: .35rem .75rem;
+  border-radius: 999px; background: var(--graphite); color: #fff; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
+.chapters a:hover span, .chapters a:focus-visible span { opacity: 1; transform: translateY(-50%); }
+.chapters a.on:hover span { background: var(--amber); color: var(--graphite); }
+@media (min-width: 1200px) { .chapters { display: flex; } }
+@media (prefers-reduced-motion: reduce) { .seal-ring { animation: none; } .bead-top::before { transition: none; } .marquee-xl .marquee-track { animation: none; } }

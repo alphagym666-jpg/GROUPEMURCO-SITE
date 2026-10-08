@@ -16,7 +16,7 @@ const PRIX = {
 
 // ---- Badges de confiance ----
 // Laisse "" tant que tu n'as pas l'info : le badge ne s'affiche pas.
-const NUMERO_RBQ = "";          // ex. "5812-3456-01" — à remplir avec ta licence
+const NUMERO_RBQ = "5885-4050"; // ton numéro de licence RBQ
 const ASSURANCE = "";           // ex. "Assuré responsabilité civile 2 M$"
 
 // ---- Suivi des visites (pour tes pubs) ----

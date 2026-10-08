@@ -194,12 +194,13 @@
   }
 
   /* ---------- Lueur qui suit la souris sur les cartes ---------- */
-  document.querySelectorAll('.svc').forEach(function (card) {
+  document.querySelectorAll('.svc, .section-dark .reason, .crew-points li, .est-tip').forEach(function (card) {
     card.addEventListener('pointermove', function (e) {
       var r = card.getBoundingClientRect();
       card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
       card.style.setProperty('--my', (e.clientY - r.top) + 'px');
     });
+    card.addEventListener('pointerleave', function () { card.style.removeProperty('--mx'); card.style.removeProperty('--my'); });
   });
 
   /* ---------- Scène avant / après pilotée par le défilement ---------- */
@@ -317,6 +318,40 @@
       stepVids.forEach(function (v) { vio.observe(v); });
     }
   }
+
+  /* ---------- Filet orange (« joint ») qui se dessine au haut des sections ---------- */
+  var beads = document.querySelectorAll('.bead-top');
+  if (beads.length) {
+    if (reduce || !('IntersectionObserver' in window)) { beads.forEach(function (b) { b.classList.add('bead-on'); }); }
+    else {
+      var bio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('bead-on'); bio.unobserve(e.target); } });
+      }, { threshold: 0, rootMargin: '0px 0px -35% 0px' });
+      beads.forEach(function (b) { bio.observe(b); });
+    }
+  }
+
+  /* ---------- Navigation par chapitres (accueil, grands écrans) ---------- */
+  (function () {
+    var CH = [['services', 'Métiers'], ['calfeutrage-de-pres', 'Calfeutrage'], ['brique-avant-apres', 'Brique'], ['avant-apres', 'Peinture'], ['couleurs', 'Couleurs'], ['equipe', 'Équipe'], ['appel', 'Appeler']];
+    var found = CH.filter(function (c) { return document.getElementById(c[0]); });
+    if (found.length < 4 || !('IntersectionObserver' in window)) return;
+    var nav = document.createElement('nav');
+    nav.className = 'chapters'; nav.setAttribute('aria-label', 'Sections de la page');
+    nav.innerHTML = found.map(function (c) { return '<a href="#' + c[0] + '" aria-label="' + c[1] + '"><span>' + c[1] + '</span></a>'; }).join('');
+    document.body.appendChild(nav);
+    var links = {}; nav.querySelectorAll('a').forEach(function (a, i) { links[found[i][0]] = a; });
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Object.keys(links).forEach(function (k) { links[k].classList.toggle('on', k === e.target.id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    found.forEach(function (c) { cio.observe(document.getElementById(c[0])); });
+    var first = document.getElementById(found[0][0]);
+    var toggle = function () { nav.classList.toggle('show', first.getBoundingClientRect().top < window.innerHeight * 0.6); };
+    window.addEventListener('scroll', toggle, { passive: true }); toggle();
+  })();
 
   /* ---------- Bande saisonnière : visible seulement les mois indiqués ---------- */
   document.querySelectorAll('[data-season]').forEach(function (bar) {
