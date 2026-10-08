@@ -333,7 +333,7 @@
 
   /* ---------- Navigation par chapitres (accueil, grands écrans) ---------- */
   (function () {
-    var CH = [['services', 'Métiers'], ['quiz', 'Mon projet'], ['calfeutrage-de-pres', 'Calfeutrage'], ['brique-avant-apres', 'Brique'], ['avant-apres', 'Peinture'], ['methode', 'Méthode'], ['couleurs', 'Couleurs'], ['equipe', 'Équipe'], ['appel', 'Appeler']];
+    var CH = [['services', 'Métiers'], ['quiz', 'Mon projet'], ['calfeutrage-de-pres', 'Calfeutrage'], ['avant-apres', 'Peinture'], ['methode', 'Méthode'], ['couleurs', 'Couleurs'], ['equipe', 'Équipe'], ['appel', 'Appeler']];
     var found = CH.filter(function (c) { return document.getElementById(c[0]); });
     if (found.length < 4 || !('IntersectionObserver' in window)) return;
     var nav = document.createElement('nav');
@@ -361,7 +361,7 @@
     var STEPS = [
       { k: 'projet', q: 'Que voulez-vous faire?', opts: [
         ['Calfeutrage', 'Fenêtres, portes, joints', 'calfeutrage'], ['Peinture du revêtement', 'Façade extérieure', 'peinture'],
-        ['Lavage de brique', 'Brique et pierre', 'brique'], ['Plusieurs travaux', 'Une seule soumission', 'plusieurs']] },
+        ['Plusieurs travaux', 'Une seule soumission', 'plusieurs']] },
       { k: 'maison', q: 'Votre maison?', opts: [['1 étage', 'Bungalow'], ['2 étages', ''], ['3 étages ou plus', '']] },
       { k: 'ville', q: 'Dans quelle ville?', two: true, opts: [['Longueuil'], ['Brossard'], ['Boucherville'], ['La Prairie'], ['Candiac'], ['Châteauguay'], ['Saint-Rémi'], ['Napierville'], ['Sherrington'], ['Saint-Jean-sur-Richelieu'], ['Valleyfield'], ['Cantons-de-l\'Est'], ['Autre ville de la Rive-Sud']] },
       { k: 'delai', q: 'C\'est pour quand?', opts: [['Dès que possible', 'On vous rappelle vite'], ['Dans le mois', ''], ['Je planifie pour plus tard', 'Prix sans engagement']] }

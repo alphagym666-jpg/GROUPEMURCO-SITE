@@ -9,7 +9,7 @@
 const PRIX = {
   calfeutrage: { unite: "ouverture",          taux: 40,   min: 350 },   // par fenêtre ou porte
   peinture:    { unite: "pied carré",         taux: 2.75, min: 2500 },  // revêtement peint
-  brique:      { unite: "pied carré",         taux: 0.60, min: 400 },   // brique lavée
+  // brique:   { unite: "pied carré",         taux: 0.60, min: 400 },   // lavage de brique : désactivé pour le moment
   // Multiplicateur selon la hauteur de la maison
   etages: { 1: 1.00, 2: 1.15, 3: 1.35 }
 };

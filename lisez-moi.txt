@@ -1,7 +1,17 @@
 SITE GROUPE MURCO — groupemurco.com
 ===================================
-Métiers : calfeutrage, peinture de revêtement extérieur, lavage de brique
-à pression. Entrepreneur détenteur d'une licence RBQ.
+Métiers : 1) calfeutrage (priorité), 2) peinture de revêtement extérieur
+résidentielle. Le lavage de brique est RETIRÉ du site pour le moment.
+Entrepreneur détenteur d'une licence RBQ (5885-4050).
+
+RETROUVER LE LAVAGE DE BRIQUE PLUS TARD
+La version complète avec le lavage de brique est le commit 98550b3
+(voir `git show 98550b3`). Demande à Claude de le remettre : le texte de
+l'étape par étape de la brique est gardé dans outils/methode.py.
+
+ATTENTION : ne relance pas outils/construire-site.py sans demander à Claude.
+Le site a été retouché à la main (accueil, quiz, villes, pieds de page) et
+une régénération pourrait effacer des changements.
 
 METTRE EN LIGNE
 Recommandé : relier Netlify au dépôt GitHub « groupemurco-site »
@@ -16,14 +26,14 @@ Le champ « services-choisis » liste tous les services cochés.
 CONFIGURATION (assets/config.js)
 - PRIX : taux du calculateur (page Estimation). À CONFIRMER :
   calfeutrage 40 $ l'ouverture (min. 350 $), peinture 2,75 $/pi²
-  (min. 2 500 $), lavage de brique 0,60 $/pi² (min. 400 $).
+  (min. 2 500 $).
 - NUMERO_RBQ : 5885-4050 (déjà rempli). Il s'affiche sur l'accueil,
   dans le pied de page et sur À propos.
 - GOOGLE_ANALYTICS_ID, META_PIXEL_ID : avant tes pubs (bannière Loi 25
   automatique).
 
 À CONFIRMER AVANT LA VRAIE MISE EN LIGNE
-- Prix « dès » : calfeutrage 350 $, peinture 2 500 $, brique 400 $.
+- Prix « dès » : calfeutrage 350 $, peinture 2 500 $.
 - Garantie 2 ans sur la main-d'œuvre (accueil) : garde-la seulement si
   tu peux l'honorer.
 - Bande du haut : « Calfeutrage toute l'année : même l'hiver, on scelle vos joints ».
@@ -68,3 +78,15 @@ PHOTOS ET VIDÉOS DE MAQUETTE (à remplacer par les tiennes)
   job : remplace-les par un vrai avant/après pris au même angle.
 - photos/maquette/camion-murco.jpg : GMC (Pexels 20551959) + ton logo.
 - photos/vos-photos/ : ta vraie photo de lavage de revêtement.
+
+
+FICHES ET PAGES AJOUTÉES (octobre 2026)
+- outils/google-business.md : tous les textes à coller dans ta fiche Google
+  (catégories, description, services, zone, publications, avis).
+- outils/villes_supplementaires.py : crée les pages Longueuil, Brossard,
+  Boucherville, Saint-Jean-sur-Richelieu, Valleyfield et Granby à partir de
+  la page de Candiac. Les photos de ces pages sont des photos d'illustration
+  d'autres villes : remplace-les par tes jobs (photos/villes/<ville>-...).
+- outils/methode.py : le texte de l'étape par étape (calfeutrage, peinture).
+- Les fichiers de travail (lisez-moi, outils/) sont cachés du public
+  (voir _redirects).

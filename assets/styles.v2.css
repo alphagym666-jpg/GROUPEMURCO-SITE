@@ -1325,3 +1325,14 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .ptabs-list button { flex: 1 1 auto; padding-inline: .8rem; font-size: .9rem; }
 }
 @media (prefers-reduced-motion: reduce) { .process-steps li::after { transition: none; transform: scaleY(1); } .ps-n { transition: none; } }
+
+/* Deux métiers pour le moment : calfeutrage, puis peinture extérieure */
+.svc-grid-2 > * { grid-column: span 3; }
+.svc-grid-2 > .svc-cta { grid-column: span 6; }
+.svc-grid-2 .svc-photo { aspect-ratio: 16 / 10; }
+@media (max-width: 900px) { .svc-grid-2 > *, .svc-grid-2 > .svc-cta { grid-column: auto; } }
+@media (max-width: 620px) { .svc-grid-2 .svc-photo { aspect-ratio: auto; } }
+.job-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.job-grid-2 .job-tile { aspect-ratio: 4 / 3; }
+@media (max-width: 620px) { .job-grid-2 { gap: .6rem; } .job-grid-2 .job-tile span { font-size: .9rem; left: .7rem; bottom: .7rem; } }
+.est-tips { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }

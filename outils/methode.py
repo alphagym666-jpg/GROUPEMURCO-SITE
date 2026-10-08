@@ -50,7 +50,7 @@ METHODES = {
     ("Nettoyage final et inspection", "On retire les protections, on nettoie le terrain et on regarde le résultat avec vous.", False),
    ]),
 }
-ORDRE = ['calfeutrage', 'peinture', 'brique']
+ORDRE = ['calfeutrage', 'peinture']   # + 'brique' quand le lavage de brique reviendra (le texte est prêt plus haut)
 LEGENDE = "L'étiquette « Souvent sauté » marque les étapes qu'on laisse facilement tomber quand on veut aller vite."
 
 def etapes_html(k):

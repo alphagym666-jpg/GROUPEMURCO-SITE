@@ -5,3 +5,8 @@
 /nettoyage-gouttieres-chateauguay.html  /calfeutrage-peinture-chateauguay.html  301
 /nettoyage-gouttieres-la-prairie.html   /calfeutrage-peinture-la-prairie.html   301
 /nettoyage-gouttieres-candiac.html      /calfeutrage-peinture-candiac.html      301
+
+# Fichiers de travail : ne pas les montrer au public
+/lisez-moi.txt        /404.html   404!
+/photos/lisez-moi.txt /404.html   404!
+/outils/*             /404.html   404!

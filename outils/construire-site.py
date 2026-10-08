@@ -5,6 +5,7 @@ calfeutrage, peinture de revêtement extérieur, lavage de brique à pression.""
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import methode as M_METHODE
+import retirer_brique as RB   # le lavage de brique est retiré pour le moment (voir outils/retirer_brique.py)
 import json, re, os, html as H
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(R)
@@ -693,6 +694,7 @@ for f, t, d, extra in [('merci.html', 'Merci | Groupe Murco', 'Merci, nous avons
 # pour que les navigateurs qui ont gardé l'ancienne en mémoire chargent la nouvelle.
 PHOTOS_V = '4'
 for f, s in pages.items():
+    s = RB.retirer(s)
     s = re.sub(r'(photos/[A-Za-z0-9_\-/]+\.(?:jpg|jpeg|png|webp|svg))(\?v=\w+)?', r'\1?v=' + PHOTOS_V, s)
     open(f, 'w', encoding='utf-8').write(s)
 print('pages écrites :', len(pages))
