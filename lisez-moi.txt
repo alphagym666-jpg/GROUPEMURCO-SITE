@@ -98,3 +98,7 @@ PRIX DU CALFEUTRAGE AU PIED LINÉAIRE
   Le « 8 $ » est une valeur de départ À CONFIRMER : change-la dans config.js
   (calculateur et quiz) ET dans les textes « Dès 8 $ du pied linéaire »
   (accueil, services, pages de villes), à chercher avec « 8&nbsp;$ ».
+
+VIDÉO DE LA SECTION « QUI ON EST » (accueil)
+- photos/equipe/equipe.mp4 + .webm + .jpg : vidéo de maquette (deux peintres sur plateforme, Pexels 5434074).
+  À remplacer par une vraie vidéo de ton équipe : mêmes noms, format 5:4 (900x720), 10-15 s.
