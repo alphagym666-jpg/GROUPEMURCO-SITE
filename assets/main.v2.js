@@ -333,7 +333,7 @@
 
   /* ---------- Navigation par chapitres (accueil, grands écrans) ---------- */
   (function () {
-    var CH = [['services', 'Métiers'], ['quiz', 'Mon projet'], ['calfeutrage-de-pres', 'Calfeutrage'], ['avant-apres', 'Peinture'], ['methode', 'Méthode'], ['couleurs', 'Couleurs'], ['equipe', 'Équipe'], ['appel', 'Appeler']];
+    var CH = [['avant-apres', 'Peinture'], ['services', 'Métiers'], ['quiz', 'Mon projet'], ['calfeutrage-de-pres', 'Calfeutrage'], ['methode', 'Méthode'], ['couleurs', 'Couleurs'], ['equipe', 'Équipe'], ['appel', 'Appeler']];
     var found = CH.filter(function (c) { return document.getElementById(c[0]); });
     if (found.length < 4 || !('IntersectionObserver' in window)) return;
     var nav = document.createElement('nav');

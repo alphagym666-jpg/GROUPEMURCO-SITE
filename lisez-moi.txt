@@ -50,6 +50,8 @@ PHOTOS ET VIDÉOS DE MAQUETTE (à remplacer par les tiennes)
 - photos/video-accueil-chantier(-mobile) : vidéo d'accueil = peintre sur échelle,
   peintre sur échafaudage, puis une belle maison finie (Pexels 13372330,
   9182402, 4307348). À remplacer par TA vidéo : même nom, 10-15 s.
+- photos/calfeutrage/resultat.mp4/.webm : « le joint fini, de près » (ta propre vidéo,
+  extraits montés). Affichée dans la section calfeutrage de l'accueil.
 - photos/calfeutrage/ : arracher.mp4/.webm = vidéo « on arrache le vieux
   calfeutrage » (reçue de toi). ATTENTION : elle vient d'un reel Facebook
   de « Kettle Caulking » (le texte « Caulk removal » est incrusté dans

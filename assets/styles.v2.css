@@ -1129,13 +1129,6 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .bead-top.bead-on::before { width: min(1180px, calc(100% - 2rem)); }
 
 /* Grande bande de lettres : contours blancs et mots pleins en orange */
-.marquee-xl { background: var(--ink); padding: 1.2rem 0 1rem; border-block: 1px solid rgba(255,255,255,.08); }
-.marquee-xl .marquee-track { animation-duration: 70s; }
-.marquee-xl span { font-family: var(--display); font-weight: 400; font-size: clamp(2.6rem, 7vw, 5.6rem); line-height: 1.05; letter-spacing: .01em;
-  padding: 0 1rem; gap: 1rem; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.6); }
-.marquee-xl span:nth-child(3n+1) { color: var(--amber); -webkit-text-stroke: 0; }
-.marquee-xl span::after { width: .3em; height: .3em; border-radius: 0; transform: rotate(45deg); background: var(--amber); }
-@media (max-width: 620px) { .marquee-xl span { -webkit-text-stroke-width: 1.2px; } }
 
 /* Sceau « licencié RBQ · garantie 2 ans » collé sur la photo du camion */
 .seal { position: absolute; z-index: 3; top: -2rem; left: -2rem; width: clamp(96px, 12vw, 138px); filter: drop-shadow(0 14px 22px rgba(0,0,0,.5)); }
@@ -1162,7 +1155,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .chapters a:hover span, .chapters a:focus-visible span { opacity: 1; transform: translateY(-50%); }
 .chapters a.on:hover span { background: var(--amber); color: var(--graphite); }
 @media (min-width: 1200px) { .chapters { display: flex; } }
-@media (prefers-reduced-motion: reduce) { .seal-ring { animation: none; } .bead-top::before { transition: none; } .marquee-xl .marquee-track { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .seal-ring { animation: none; } .bead-top::before { transition: none; } }
 
 /* Accueil : la vidéo doit se voir. Voile plus léger, seulement là où il y a du texte */
 .hero-bg::after {
@@ -1336,3 +1329,10 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .job-grid-2 .job-tile { aspect-ratio: 4 / 3; }
 @media (max-width: 620px) { .job-grid-2 { gap: .6rem; } .job-grid-2 .job-tile span { font-size: .9rem; left: .7rem; bottom: .7rem; } }
 .est-tips { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+
+/* Vidéo « le joint fini » dans la section calfeutrage */
+.joint-reel { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: clamp(1.6rem, 5vw, 4rem); align-items: center; justify-content: center; margin-top: 3rem; }
+.joint-reel .step-tag { background: var(--amber); color: var(--graphite); }
+.joint-reel-copy h3 { font-size: clamp(2rem, 4.4vw, 3.2rem); margin-bottom: .5rem; }
+.joint-reel-copy p { max-width: 32em; margin-bottom: 1.3rem; }
+@media (max-width: 760px) { .joint-reel { grid-template-columns: 1fr; margin-top: 2rem; } .joint-reel .step-vid { max-width: 300px; margin-inline: auto; } .joint-reel-copy { text-align: center; } .joint-reel-copy p { margin-inline: auto; } }
