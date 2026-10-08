@@ -1347,3 +1347,115 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .svc-list li { position: relative; padding-left: 1.3rem; }
 .svc-list li::before { content: ""; position: absolute; left: 0; top: .55em; width: .55rem; height: .55rem; border-radius: 50%; background: var(--amber); }
 @media (max-width: 620px) { .calc-help { flex: none; width: 100%; } }
+
+/* =====================================================================
+   Finition premium : fonds en couches, grain, grille d'atelier, mots géants
+   ===================================================================== */
+html { background: var(--ink); scrollbar-width: thin; scrollbar-color: var(--amber) var(--ink); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--amber), var(--amber-dp)); border-radius: 10px; border: 2px solid var(--ink); }
+
+/* Fin grain de pellicule sur tout le site (image fixe : aucun coût au défilement) */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 9990; pointer-events: none; opacity: .055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1.4 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Sections claires : lueur ambre + lueur acier + quadrillage d'atelier très discret */
+.joint-section, .process-section, .sim-section, .section-plain, main > .section.bead-top:not([class*="-"]) {
+  --glow-a: 100% 0%; --glow-b: 0% 100%;
+}
+.joint-section {
+  background:
+    radial-gradient(60% 38% at var(--glow-a), rgba(227,160,49,.13), transparent 72%),
+    radial-gradient(55% 34% at var(--glow-b), rgba(84,112,146,.10), transparent 72%),
+    linear-gradient(rgba(27,31,34,.032) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(90deg, rgba(27,31,34,.032) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(180deg, #fff 0%, #FBF8F2 100%);
+}
+.process-section {
+  --glow-a: 0% 0%; --glow-b: 100% 100%;
+  background:
+    radial-gradient(55% 32% at var(--glow-a), rgba(84,112,146,.11), transparent 72%),
+    radial-gradient(55% 34% at var(--glow-b), rgba(227,160,49,.13), transparent 72%),
+    linear-gradient(rgba(27,31,34,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(90deg, rgba(27,31,34,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(180deg, #FDFBF8, #F7F2EA);
+}
+.sim-section {
+  background:
+    radial-gradient(60% 40% at 50% 0%, rgba(227,160,49,.12), transparent 72%),
+    linear-gradient(rgba(27,31,34,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(90deg, rgba(27,31,34,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(180deg, #fff, var(--mist-2));
+}
+.section-plain {
+  background:
+    radial-gradient(50% 36% at 100% 100%, rgba(84,112,146,.10), transparent 72%),
+    radial-gradient(45% 30% at 0% 0%, rgba(227,160,49,.11), transparent 72%),
+    linear-gradient(rgba(27,31,34,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(90deg, rgba(27,31,34,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    var(--mist-2);
+}
+main > .section.bead-top:not([class*="-"]) {
+  background:
+    radial-gradient(55% 34% at 0% 100%, rgba(227,160,49,.11), transparent 72%),
+    linear-gradient(rgba(27,31,34,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(90deg, rgba(27,31,34,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    #fff;
+}
+/* Sections sombres : profondeur + quadrillage clair */
+.quiz-section {
+  background:
+    radial-gradient(50% 40% at 12% 100%, rgba(227,160,49,.16), transparent 70%),
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 76px 76px,
+    radial-gradient(120% 100% at 80% 0%, #2A2F33 0%, var(--ink) 62%);
+}
+.crew {
+  background:
+    radial-gradient(45% 40% at 8% 90%, rgba(227,160,49,.14), transparent 70%),
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    radial-gradient(120% 90% at 85% 40%, #2A2F33 0%, var(--ink) 60%);
+}
+.section-dark {
+  background:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(180deg, rgba(18,21,24,.86), rgba(18,21,24,.68)),
+    url("../photos/fonds/maison-soir-flou.jpg?v=4") center / cover no-repeat,
+    var(--graphite);
+}
+.site-footer {
+  background:
+    radial-gradient(60% 50% at 90% 0%, rgba(227,160,49,.09), transparent 70%),
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px) 0 0 / 76px 76px,
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px) 0 0 / 76px 76px,
+    var(--ink);
+}
+.trust-bar { background: linear-gradient(180deg, #fff, #F8F4EC); box-shadow: 0 10px 30px -18px rgba(18,21,24,.35); position: relative; z-index: 3; }
+
+/* Mots géants en contour derrière les sections */
+[data-word] { overflow: clip; }
+[data-word] > .wrap { position: relative; z-index: 1; }
+[data-word]::after {
+  content: attr(data-word); position: absolute; right: -1.5vw; top: 1.2rem; z-index: 0; pointer-events: none; white-space: nowrap;
+  font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .85; letter-spacing: .01em;
+  font-size: clamp(4rem, 13vw, 11.5rem); color: transparent; -webkit-text-stroke: 1.5px rgba(27,31,34,.075);
+}
+.quiz-section[data-word]::after, .crew[data-word]::after, .section-dark[data-word]::after { -webkit-text-stroke-color: rgba(255,255,255,.07); }
+[data-word="left"]::after { right: auto; left: -1.5vw; }
+.crew[data-word]::after { top: auto; bottom: 1rem; }
+
+/* Cartes : filet fin, relief en deux couches, léger soulèvement */
+.joint-card, .process, .est-tip, .quiz-card, .reason {
+  border: 1px solid rgba(216,208,196,.9);
+  box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 2px 4px rgba(18,21,24,.04), 0 24px 50px -28px rgba(18,21,24,.35);
+}
+.joint-card { background: rgba(255,255,255,.78); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: var(--r-l); padding: 1rem 1rem 1.1rem; transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
+.joint-card:hover { transform: translateY(-4px); box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 4px 8px rgba(18,21,24,.05), 0 36px 60px -26px rgba(18,21,24,.42); }
+.section-dark .reason { border-color: rgba(255,255,255,.1); box-shadow: none; }
+@media (max-width: 620px) { body::before { opacity: .04; } [data-word]::after { top: .6rem; -webkit-text-stroke-width: 1px; } }
+@media (prefers-reduced-motion: reduce) { .joint-card { transition: none; } }
