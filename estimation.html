@@ -59,7 +59,7 @@
       <div class="calc-inputs">
         <div class="field"><label for="k-etages">Hauteur de la maison</label>
           <select id="k-etages" data-etages><option value="1">1 étage</option><option value="2" selected>2 étages</option><option value="3">3 étages</option></select></div>
-        <div class="calc-row" data-svc-row="calfeutrage"><label><input type="checkbox" checked> <span>Calfeutrage (fenêtres et portes)</span></label><div class="calc-qty"><input type="number" min="0" step="1" value="12" inputmode="numeric" aria-label="Nombre de fenêtres et de portes"><small>ouvertures</small></div></div><div class="calc-row" data-svc-row="peinture"><label><input type="checkbox"> <span>Peinture de revêtement extérieur</span></label><div class="calc-qty"><input type="number" min="0" step="100" value="1200" inputmode="numeric" aria-label="Pieds carrés de revêtement"><small>pi² de revêtement</small></div></div>
+        <div class="calc-row" data-svc-row="calfeutrage"><label><input type="checkbox" checked> <span>Calfeutrage (au pied linéaire)</span></label><div class="calc-qty"><input type="number" min="0" step="10" value="180" inputmode="numeric" aria-label="Pieds linéaires de joints à calfeutrer"><small>pieds linéaires</small></div><div class="calc-help"><label for="lf-help">Pas sûr de la longueur? Entrez le nombre de fenêtres et de portes :</label><input id="lf-help" type="number" min="0" step="1" inputmode="numeric" placeholder="ex. 12" data-lf-help></div></div><div class="calc-row" data-svc-row="peinture"><label><input type="checkbox"> <span>Peinture de revêtement extérieur</span></label><div class="calc-qty"><input type="number" min="0" step="100" value="1200" inputmode="numeric" aria-label="Pieds carrés de revêtement"><small>pi² de revêtement</small></div></div>
       </div>
       <aside class="calc-result" aria-live="polite">
         <p class="calc-label">Estimation</p>
@@ -75,7 +75,7 @@
 <section class="section est-help">
   <div class="wrap">
     <div class="est-tips">
-      <div class="est-tip"><h3>Fenêtres et portes</h3><p>Comptez chaque fenêtre et chaque porte extérieure. Une porte-fenêtre ou une porte de garage compte pour deux.</p></div>
+      <div class="est-tip"><h3>Pieds linéaires de calfeutrage</h3><p>C'est la longueur totale de joint à refaire : le tour de chaque fenêtre et de chaque porte, plus les coins et les joints de revêtement. Une fenêtre moyenne fait environ 14 pi de tour, une porte environ 17 pi. Chaque ouverture est différente, alors on mesure toujours sur place.</p></div>
       <div class="est-tip"><h3>Pieds carrés de revêtement</h3><p>Largeur × hauteur de chaque mur à peindre, moins les grandes ouvertures. Une maison à étages fait souvent de 1 200 à 2 000 pi².</p></div>
       
       <div class="est-tip"><h3>Pas sûr de vos mesures?</h3><p>Envoyez une estimation approximative : on mesure toujours sur place avant de confirmer le prix.</p></div>

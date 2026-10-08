@@ -7,7 +7,7 @@
 // À CONFIRMER : ce sont des valeurs de départ pour la maquette.
 // "min" = prix minimum facturé ; l'estimation affichée est une fourchette.
 const PRIX = {
-  calfeutrage: { unite: "ouverture",          taux: 40,   min: 350 },   // par fenêtre ou porte
+  calfeutrage: { unite: "pied linéaire",      taux: 8,    min: 350 },   // $ par pied linéaire de joint (chaque ouverture est différente)
   peinture:    { unite: "pied carré",         taux: 2.75, min: 2500 },  // revêtement peint
   // brique:   { unite: "pied carré",         taux: 0.60, min: 400 },   // lavage de brique : désactivé pour le moment
   // Multiplicateur selon la hauteur de la maison

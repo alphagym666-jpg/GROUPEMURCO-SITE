@@ -333,7 +333,7 @@
 
   /* ---------- Navigation par chapitres (accueil, grands écrans) ---------- */
   (function () {
-    var CH = [['avant-apres', 'Peinture'], ['services', 'Métiers'], ['quiz', 'Mon projet'], ['calfeutrage-de-pres', 'Calfeutrage'], ['methode', 'Méthode'], ['couleurs', 'Couleurs'], ['equipe', 'Équipe'], ['appel', 'Appeler']];
+    var CH = [['calfeutrage-de-pres', 'Calfeutrage'], ['services', 'Services'], ['avant-apres', 'Peinture'], ['quiz', 'Mon projet'], ['methode', 'Méthode'], ['couleurs', 'Couleurs'], ['equipe', 'Équipe'], ['appel', 'Appeler']];
     var found = CH.filter(function (c) { return document.getElementById(c[0]); });
     if (found.length < 4 || !('IntersectionObserver' in window)) return;
     var nav = document.createElement('nav');
@@ -415,7 +415,9 @@
     function renderDone(failed) {
       var k = (ans.projet_c || '');
       var price = '';
-      if (k && k !== 'plusieurs') price = '<p class="quiz-price">Prix de départ pour ce travail : <strong>à partir de ' + fmt(minPrix(k)) + '</strong>.<br>Le prix final est écrit après une mesure gratuite sur place.</p>';
+      if (k && k !== 'plusieurs') price = k === 'calfeutrage'
+        ? '<p class="quiz-price">Le calfeutrage se calcule au pied linéaire : <strong>environ ' + (typeof PRIX !== 'undefined' && PRIX.calfeutrage ? PRIX.calfeutrage.taux : 8) + '&nbsp;$ du pied</strong> (minimum ' + fmt(minPrix(k)) + ').<br>Le prix final est écrit après une mesure gratuite sur place.</p>'
+        : '<p class="quiz-price">Prix de départ pour ce travail : <strong>à partir de ' + fmt(minPrix(k)) + '</strong>.<br>Le prix final est écrit après une mesure gratuite sur place.</p>';
       else price = '<p class="quiz-price">Le prix est écrit après une visite et des mesures gratuites. <a href="estimation.html">Voir l\'estimation en ligne</a></p>';
       var head = failed ? '<h3 class="quiz-q" id="quiz-q">Presque!</h3><p>L\'envoi n\'a pas passé. Appelez-nous ou écrivez-nous, c\'est tout aussi rapide.</p>'
                         : '<div class="quiz-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#1B1F22" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><h3 class="quiz-q" id="quiz-q">Merci' + (ans.prenom ? ' ' + esc(ans.prenom) : '') + '!</h3><p>On vise de vous rappeler en moins de 24 h.</p>';
@@ -543,6 +545,11 @@
       cta.href = 'contact.html?' + (svcs.length ? 'service=' + svcs.join(',') + '&' : '') + 'details=' +
         encodeURIComponent(details.join(' · ') + (total ? ' · Estimation en ligne : ' + fmt(total * 0.9) + ' – ' + fmt(total * 1.1) : ''));
     };
+    var lfHelp = calc.querySelector('[data-lf-help]');
+    if (lfHelp) lfHelp.addEventListener('input', function () {
+      var n = Math.max(0, parseFloat(lfHelp.value) || 0), main = calc.querySelector('[data-svc-row="calfeutrage"] input[type=number]');
+      if (main && n) { main.value = Math.round(n * 15); main.dispatchEvent(new Event('input', { bubbles: true })); }
+    });
     calc.addEventListener('input', recalc);
     calc.addEventListener('change', recalc);
     recalc();

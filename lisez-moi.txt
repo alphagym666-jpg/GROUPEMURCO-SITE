@@ -92,3 +92,9 @@ FICHES ET PAGES AJOUTÉES (octobre 2026)
 - outils/methode.py : le texte de l'étape par étape (calfeutrage, peinture).
 - Les fichiers de travail (lisez-moi, outils/) sont cachés du public
   (voir _redirects).
+
+PRIX DU CALFEUTRAGE AU PIED LINÉAIRE
+- assets/config.js : PRIX.calfeutrage.taux = 8 ($ par pied linéaire) et min = 350.
+  Le « 8 $ » est une valeur de départ À CONFIRMER : change-la dans config.js
+  (calculateur et quiz) ET dans les textes « Dès 8 $ du pied linéaire »
+  (accueil, services, pages de villes), à chercher avec « 8&nbsp;$ ».

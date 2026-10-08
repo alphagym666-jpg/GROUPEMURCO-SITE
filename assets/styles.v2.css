@@ -1336,3 +1336,14 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .joint-reel-copy h3 { font-size: clamp(2rem, 4.4vw, 3.2rem); margin-bottom: .5rem; }
 .joint-reel-copy p { max-width: 32em; margin-bottom: 1.3rem; }
 @media (max-width: 760px) { .joint-reel { grid-template-columns: 1fr; margin-top: 2rem; } .joint-reel .step-vid { max-width: 300px; margin-inline: auto; } .joint-reel-copy { text-align: center; } .joint-reel-copy p { margin-inline: auto; } }
+/* Calculateur : aide pour estimer les pieds linéaires */
+.calc-row[data-svc-row="calfeutrage"] { flex-wrap: wrap; }
+.calc-help { flex: 1 0 100%; display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; padding-top: .7rem; margin-top: .2rem; border-top: 1px dashed var(--alu); }
+.calc-help label { display: block; font-weight: 500; font-size: .92rem; color: var(--slate); cursor: default; }
+.calc-help input { width: 6rem; font: inherit; padding: .5rem .6rem; border: 1.5px solid var(--alu); border-radius: var(--r-s); text-align: right; }
+.calc-row:not(.on) .calc-help { opacity: .45; }
+/* Cartes de services : détails */
+.svc-list { list-style: none; margin: .2rem 0 .6rem; padding: 0; display: grid; gap: .3rem; font-size: .95rem; color: var(--ink-2, #3a4349); }
+.svc-list li { position: relative; padding-left: 1.3rem; }
+.svc-list li::before { content: ""; position: absolute; left: 0; top: .55em; width: .55rem; height: .55rem; border-radius: 50%; background: var(--amber); }
+@media (max-width: 620px) { .calc-help { flex: none; width: 100%; } }
