@@ -37,9 +37,9 @@ Les pages « nettoyage-gouttieres-<ville>.html » redirigent vers les
 nouvelles « calfeutrage-peinture-<ville>.html » (fichier _redirects).
 
 PHOTOS ET VIDÉOS DE MAQUETTE (à remplacer par les tiennes)
-- photos/video-accueil-exterieur(-mobile) : peinture de façades extérieures, peintre
-  dans l'échelle et peintre au pistolet sur échafaudage (Pexels, vidéos
-  13372330 et 9182402).
+- photos/video-accueil-chantier(-mobile) : vidéo d'accueil = peintre sur échelle,
+  peintre sur échafaudage, puis une belle maison finie (Pexels 13372330,
+  9182402, 4307348). À remplacer par TA vidéo : même nom, 10-15 s.
 - photos/calfeutrage/ : arracher.mp4/.webm = vidéo « on arrache le vieux
   calfeutrage » (reçue de toi). ATTENTION : elle vient d'un reel Facebook
   de « Kettle Caulking » (le texte « Caulk removal » est incrusté dans

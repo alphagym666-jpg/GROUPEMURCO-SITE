@@ -15,8 +15,8 @@ def vurl(slug): return f'calfeutrage-peinture-{slug}.html'
 SVC = [
   dict(id='calfeutrage', nom='Calfeutrage', court='Calfeutrage', prix='350',
        carte="Fenêtres, portes et joints de revêtement : on retire le vieux scellant fissuré et on refait des joints étanches et propres.",
-       img='photos/metiers/carte-calfeutrage.jpg', alt="Fenêtre neuve dans la brique, joints blancs nets tout autour du cadre",
-       hover='trace', hint='Voir les <b>joints</b>'),
+       img='photos/avant-apres/carte-fenetre-avant.jpg', alt="Fenêtre dans la brique avant le calfeutrage",
+       after='photos/avant-apres/carte-fenetre-apres.jpg', hover='avant-apres', hint='Avant <b>→</b> après'),
   dict(id='peinture', nom='Peinture de revêtement extérieur', court='Peinture extérieure', prix='2 500',
        carte="Revêtement de bois, de vinyle, d'aluminium ou de fibrociment : préparation, apprêt et deux couches, au pistolet ou au rouleau.",
        img='photos/metiers/carte-peinture.jpg', alt='Peintre en nacelle sur un mur extérieur',
@@ -44,7 +44,7 @@ def jsonld_business():
         "legalName": "9568-5590 Québec inc.", "url": SITE, "telephone": TELH, "email": "info@groupemurco.com",
         "image": SITE + "assets/icone-murco.png", "logo": SITE + "assets/icone-murco.png",
         "address": {"@type": "PostalAddress", "addressLocality": "Sherrington", "addressRegion": "QC", "addressCountry": "CA"},
-        "areaServed": [n for _, n in VILLES] + ["Rive-Sud de Montréal"], "priceRange": "$$",
+        "areaServed": ["Sherrington", "Napierville", "Saint-Rémi", "Châteauguay", "La Prairie", "Candiac", "Longueuil", "Brossard", "Saint-Lambert", "Boucherville", "Saint-Bruno-de-Montarville", "Saint-Hubert", "Greenfield Park", "Sainte-Julie", "Varennes", "Beloeil", "Mont-Saint-Hilaire", "Chambly", "Carignan", "Saint-Jean-sur-Richelieu", "Delson", "Saint-Constant", "Sainte-Catherine", "Léry", "Mercier", "Salaberry-de-Valleyfield", "Cantons-de-l'Est", "Rive-Sud de Montréal"] + ["Rive-Sud de Montréal"], "priceRange": "$$",
         "description": "Entrepreneur licencié RBQ : calfeutrage, peinture de revêtement extérieur et lavage de brique à pression sur la Rive-Sud.",
         "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Services", "itemListElement": [
             {"@type": "Offer", "itemOffered": {"@type": "Service", "name": s['nom']}} for s in SVC]}}, ensure_ascii=False)
@@ -112,7 +112,7 @@ def foot(fname, scripts=''):
     <div class="footer-grid">
       <div>
         <img src="{pre}assets/logo-murco-blanc.svg" alt="Groupe Murco" width="190" height="52">
-        <p>Calfeutrage, peinture extérieure et lavage de brique à Sherrington et sur la Rive-Sud de Montréal.</p>
+        <p>Calfeutrage, peinture extérieure et lavage de brique à Sherrington, sur toute la Rive-Sud, à Valleyfield et dans les Cantons-de-l'Est.</p>
         <p><a href="tel:{TELH}">{TEL}</a><br><a href="mailto:info@groupemurco.com">info@groupemurco.com</a></p>
         <p class="footer-rbq" data-rbq-footer>Entrepreneur détenteur d'une licence RBQ</p>
       </div>
@@ -195,8 +195,12 @@ JOINT_FIG = '''<div class="step-pair step-pair-sm">
         <span class="step-tag">2 · On refait</span>
       </div>
     </figure>
-  </div>'''
-JOINT_SECTION = '''<section class="section joint-section" id="calfeutrage-de-pres">
+  </div>
+  <figure class="joint-perfect joint-perfect-sm">
+  <img src="photos/avant-apres/joint-parfait.jpg?v=4" width="1200" height="900" loading="lazy" alt="Gros plan d'un joint de calfeutrage parfait le long du revêtement et du rebord de béton">
+  <figcaption class="ba-tag after">Un joint parfait</figcaption>
+</figure>'''
+JOINT_SECTION = '''<section class="section joint-section bead-top" id="calfeutrage-de-pres">
   <div class="wrap steps-grid">
     <div class="joint-copy">
       <p class="eyebrow"><b>01</b> Calfeutrage</p>
@@ -231,12 +235,24 @@ JOINT_SECTION = '''<section class="section joint-section" id="calfeutrage-de-pre
     </div>
   </div>
   <div class="wrap joint-duo-wrap">
-    <h3 class="joint-duo-title">Le résultat : un joint qui ferme pour de bon</h3>
-    <div class="joint-duo" role="group" aria-label="Le même type de joint avant et après le calfeutrage">
-  <figure><img src="photos/avant-apres/joint-avant.jpg?v=3" width="900" height="900" loading="lazy" alt="Vieux joint de calfeutrage détérioré entre la brique et la dalle, plein de débris"><figcaption class="ba-tag before">Avant</figcaption></figure>
-  <figure><img src="photos/avant-apres/joint-apres.jpg?v=3" width="900" height="900" loading="lazy" alt="Nouveau joint blanc, net et continu entre la brique et la dalle"><figcaption class="ba-tag after">Après</figcaption></figure>
-</div>
-</div>
+    <h3 class="joint-duo-title">Le résultat : des joints qui ferment pour de bon</h3>
+    <div class="joint-gallery">
+      <div class="joint-card"><p class="joint-card-t">Au bas du mur</p>
+    <div class="joint-duo" role="group" aria-label="Joint au bas du mur, avant et après">
+  <figure><img src="photos/avant-apres/joint-avant.jpg?v=4" width="900" height="900" loading="lazy" alt="Vieux joint de calfeutrage détérioré entre la brique et la dalle, plein de débris"><figcaption class="ba-tag before">Avant</figcaption></figure>
+  <figure><img src="photos/avant-apres/joint-apres.jpg?v=4" width="900" height="900" loading="lazy" alt="Nouveau joint blanc, net et continu entre la brique et la dalle"><figcaption class="ba-tag after">Après</figcaption></figure>
+</div></div>
+      <div class="joint-card"><p class="joint-card-t">Autour de la fenêtre</p>
+    <div class="joint-duo tall" role="group" aria-label="Autour de la fenêtre, avant et après">
+  <figure><img src="photos/avant-apres/fenetre-avant.jpg?v=4" width="720" height="900" loading="lazy" alt="Fenêtre dans la brique avec du revêtement : joints absents ou usés autour de la colonne de brique"><figcaption class="ba-tag before">Avant</figcaption></figure>
+  <figure><img src="photos/avant-apres/fenetre-apres.jpg?v=4" width="720" height="900" loading="lazy" alt="La même fenêtre : joints blancs, nets et continus des deux côtés de la brique"><figcaption class="ba-tag after">Après</figcaption></figure>
+</div></div>
+    </div>
+    <figure class="joint-perfect">
+  <img src="photos/avant-apres/joint-parfait.jpg?v=4" width="1200" height="900" loading="lazy" alt="Gros plan d'un joint de calfeutrage parfait le long du revêtement et du rebord de béton">
+  <figcaption class="ba-tag after">Un joint parfait</figcaption>
+</figure>
+  </div>
 </section>
 '''
 
@@ -331,7 +347,7 @@ index_main = f'''
   </picture>
   <!-- Vidéo d arrière-plan : peinture extérieure (Pexels 13372330, 9182402). À remplacer par une vraie vidéo de Groupe Murco. -->
   <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
-         data-src="photos/video-accueil-exterieur" data-src-mobile="photos/video-accueil-exterieur-mobile"></video>
+         data-src="photos/video-accueil-chantier" data-src-mobile="photos/video-accueil-chantier-mobile"></video>
   <div class="wrap hero-inner">
     <div class="hero-copy">
       <h1 class="hero-title">Calfeutrage, peinture et brique, faits comme il faut.</h1>
@@ -455,7 +471,7 @@ index_main = f'''
 </section>
 {cta_band()}'''
 pages['index.html'] = head('index.html', 'Groupe Murco | Calfeutrage, peinture extérieure et lavage de brique, Rive-Sud',
-    'Entrepreneur licencié RBQ à Sherrington : calfeutrage de fenêtres et de portes, peinture de revêtement extérieur et lavage de brique à pression sur la Rive-Sud. Soumission gratuite.') + (lambda s: s[s.index('<main id="contenu">') + len('<main id="contenu">\n'):s.index('</main>')])(open('index.html', encoding='utf-8').read()) + foot('index.html')  # l'accueil est maintenant retouché à la main : on reprend son contenu
+    'Entrepreneur licencié RBQ à Sherrington : calfeutrage de fenêtres et de portes, peinture de revêtement extérieur et lavage de brique à pression sur toute la Rive-Sud, à Valleyfield et dans les Cantons-de-l\'Est. Soumission gratuite.') + (lambda s: s[s.index('<main id="contenu">') + len('<main id="contenu">\n'):s.index('</main>')])(open('index.html', encoding='utf-8').read()) + foot('index.html')  # l'accueil est maintenant retouché à la main : on reprend son contenu
 
 # ===================== SERVICES =====================
 DETAIL = {
@@ -482,8 +498,12 @@ DETAIL = {
    media2=('ba', 'brique', 'Brique encrassée avant, brique propre après le lavage (simulation)')),
 }
 JOINT_DUO = '''<div class="joint-duo joint-duo-sm" role="group" aria-label="Le même type de joint avant et après le calfeutrage">
-  <figure><img src="photos/avant-apres/joint-avant.jpg?v=3" width="900" height="900" loading="lazy" alt="Vieux joint de calfeutrage détérioré entre la brique et la dalle, plein de débris"><figcaption class="ba-tag before">Avant</figcaption></figure>
-  <figure><img src="photos/avant-apres/joint-apres.jpg?v=3" width="900" height="900" loading="lazy" alt="Nouveau joint blanc, net et continu entre la brique et la dalle"><figcaption class="ba-tag after">Après</figcaption></figure>
+  <figure><img src="photos/avant-apres/joint-avant.jpg?v=4" width="900" height="900" loading="lazy" alt="Vieux joint de calfeutrage détérioré entre la brique et la dalle, plein de débris"><figcaption class="ba-tag before">Avant</figcaption></figure>
+  <figure><img src="photos/avant-apres/joint-apres.jpg?v=4" width="900" height="900" loading="lazy" alt="Nouveau joint blanc, net et continu entre la brique et la dalle"><figcaption class="ba-tag after">Après</figcaption></figure>
+</div>
+    <div class="joint-duo tall joint-duo-sm" role="group" aria-label="Autour de la fenêtre, avant et après">
+  <figure><img src="photos/avant-apres/fenetre-avant.jpg?v=4" width="720" height="900" loading="lazy" alt="Fenêtre dans la brique avec du revêtement : joints absents ou usés autour de la colonne de brique"><figcaption class="ba-tag before">Avant</figcaption></figure>
+  <figure><img src="photos/avant-apres/fenetre-apres.jpg?v=4" width="720" height="900" loading="lazy" alt="La même fenêtre : joints blancs, nets et continus des deux côtés de la brique"><figcaption class="ba-tag after">Après</figcaption></figure>
 </div>'''
 def media_html(m):
     if m[0] == 'duo':
@@ -667,7 +687,7 @@ for f, t, d, extra in [('merci.html', 'Merci | Groupe Murco', 'Merci, nous avons
 
 # Version des photos : change PHOTOS_V quand tu remplaces une photo par une autre du même nom,
 # pour que les navigateurs qui ont gardé l'ancienne en mémoire chargent la nouvelle.
-PHOTOS_V = '3'
+PHOTOS_V = '4'
 for f, s in pages.items():
     s = re.sub(r'(photos/[A-Za-z0-9_\-/]+\.(?:jpg|jpeg|png|webp|svg))(\?v=\w+)?', r'\1?v=' + PHOTOS_V, s)
     open(f, 'w', encoding='utf-8').write(s)

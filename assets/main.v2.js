@@ -155,8 +155,8 @@
   });
 
   /* ---------- Vidéo d'arrière-plan de l'accueil ----------
-     Fichiers dans photos/ : video-accueil-exterieur.mp4 (+ .webm) et la version verticale
-     video-accueil-exterieur-mobile.mp4 (+ .webm). On essaie dans l'ordre : version mobile
+     Fichiers dans photos/ : video-accueil-chantier.mp4 (+ .webm) et la version verticale
+     video-accueil-chantier-mobile.mp4 (+ .webm). On essaie dans l'ordre : version mobile
      (cellulaire seulement), WebM (plus léger) puis MP4. Si rien ne joue, la
      photo reste. Pas de vidéo en économie de données ou animations réduites. */
   var video = document.querySelector('.hero-video');
@@ -333,7 +333,7 @@
 
   /* ---------- Navigation par chapitres (accueil, grands écrans) ---------- */
   (function () {
-    var CH = [['services', 'Métiers'], ['calfeutrage-de-pres', 'Calfeutrage'], ['brique-avant-apres', 'Brique'], ['avant-apres', 'Peinture'], ['couleurs', 'Couleurs'], ['equipe', 'Équipe'], ['appel', 'Appeler']];
+    var CH = [['services', 'Métiers'], ['quiz', 'Mon projet'], ['calfeutrage-de-pres', 'Calfeutrage'], ['brique-avant-apres', 'Brique'], ['avant-apres', 'Peinture'], ['couleurs', 'Couleurs'], ['equipe', 'Équipe'], ['appel', 'Appeler']];
     var found = CH.filter(function (c) { return document.getElementById(c[0]); });
     if (found.length < 4 || !('IntersectionObserver' in window)) return;
     var nav = document.createElement('nav');
@@ -352,6 +352,123 @@
     var toggle = function () { nav.classList.toggle('show', first.getBoundingClientRect().top < window.innerHeight * 0.6); };
     window.addEventListener('scroll', toggle, { passive: true }); toggle();
   })();
+
+  /* ---------- Quiz « Votre projet en 4 clics » ---------- */
+  (function () {
+    var card = document.querySelector('[data-quiz-card]');
+    if (!card) return;
+    var TEL = '+15142321837', TEL_AFF = '514-232-1837';
+    var STEPS = [
+      { k: 'projet', q: 'Que voulez-vous faire?', opts: [
+        ['Calfeutrage', 'Fenêtres, portes, joints', 'calfeutrage'], ['Peinture du revêtement', 'Façade extérieure', 'peinture'],
+        ['Lavage de brique', 'Brique et pierre', 'brique'], ['Plusieurs travaux', 'Une seule soumission', 'plusieurs']] },
+      { k: 'maison', q: 'Votre maison?', opts: [['1 étage', 'Bungalow'], ['2 étages', ''], ['3 étages ou plus', '']] },
+      { k: 'ville', q: 'Dans quelle ville?', two: true, opts: [['Longueuil'], ['Brossard'], ['Boucherville'], ['La Prairie'], ['Candiac'], ['Châteauguay'], ['Saint-Rémi'], ['Napierville'], ['Sherrington'], ['Saint-Jean-sur-Richelieu'], ['Valleyfield'], ['Cantons-de-l\'Est'], ['Autre ville de la Rive-Sud']] },
+      { k: 'delai', q: 'C\'est pour quand?', opts: [['Dès que possible', 'On vous rappelle vite'], ['Dans le mois', ''], ['Je planifie pour plus tard', 'Prix sans engagement']] }
+    ];
+    var ans = {}, i = 0, sent = false;
+    var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); };
+    var vib = function () { try { if (navigator.vibrate) navigator.vibrate(8); } catch (e) {} };
+    var minPrix = function (k) {
+      var d = { calfeutrage: 350, peinture: 2500, brique: 400 };
+      try { if (typeof PRIX !== 'undefined' && PRIX[k] && PRIX[k].min) return PRIX[k].min; } catch (e) {}
+      return d[k];
+    };
+    var fmt = function (n) { return n.toLocaleString('fr-CA') + ' $'; };
+    var progress = function (n) {
+      var h = '<div class="quiz-progress" aria-hidden="true">';
+      for (var j = 0; j < 5; j++) h += '<span class="' + (j < n ? 'done' : j === n ? 'on' : '') + '"></span>';
+      return h + '</div>';
+    };
+    var summary = function () { return [ans.projet, ans.maison, ans.ville, ans.delai].filter(Boolean); };
+    var smsHref = function () {
+      var t = 'Bonjour, je veux une soumission : ' + summary().join(', ') + '.';
+      return 'sms:' + TEL + '?&body=' + encodeURIComponent(t);
+    };
+    var focusHead = function () { var h = card.querySelector('.quiz-q'); if (h) { h.setAttribute('tabindex', '-1'); try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } } };
+    var scrollTop = function () { var r = card.getBoundingClientRect(); if (r.top < 70 || r.top > window.innerHeight * 0.5) window.scrollTo({ top: window.scrollY + r.top - 90, behavior: reduce ? 'auto' : 'smooth' }); };
+
+    function renderQuestion() {
+      var st = STEPS[i];
+      var h = progress(i) + '<p class="quiz-count">Question ' + (i + 1) + ' sur 4</p><h3 class="quiz-q" id="quiz-q">' + st.q + '</h3>' +
+        '<div class="quiz-options' + (st.two ? ' two' : '') + '" role="radiogroup" aria-labelledby="quiz-q">';
+      st.opts.forEach(function (o) {
+        var on = ans[st.k] === o[0];
+        h += '<button type="button" class="quiz-opt" role="radio" aria-checked="' + on + '" data-v="' + esc(o[0]) + '" data-c="' + esc(o[2] || '') + '"><span>' + esc(o[0]) + (o[1] ? '<small>' + esc(o[1]) + '</small>' : '') + '</span></button>';
+      });
+      h += '</div>' + (i > 0 ? '<button type="button" class="quiz-back" data-back>← Retour</button>' : '');
+      card.innerHTML = h; card.classList.remove('quiz-step-in'); void card.offsetWidth; card.classList.add('quiz-step-in');
+    }
+    function renderForm(err) {
+      card.innerHTML = progress(4) + '<p class="quiz-count">Dernière étape</p><h3 class="quiz-q" id="quiz-q">Où on vous rappelle?</h3>' +
+        '<ul class="quiz-sum">' + summary().map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' +
+        '<form class="quiz-form" novalidate data-quiz-form>' +
+        '<label for="qz-prenom">Votre prénom<input id="qz-prenom" name="prenom" type="text" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" value="' + esc(ans.prenom || '') + '"></label>' +
+        '<label for="qz-tel">Votre cellulaire<input id="qz-tel" name="telephone" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="send" placeholder="514-555-1234" value="' + esc(ans.telephone || '') + '"></label>' +
+        '<div class="hidden-field" aria-hidden="true"><label>Ne pas remplir<input name="adresse-web" tabindex="-1" autocomplete="off"></label></div>' +
+        '<p class="quiz-err" role="alert" data-err>' + (err || '') + '</p>' +
+        '<button type="submit" class="btn quiz-submit">Rappelez-moi</button>' +
+        '<p class="quiz-fine">Pas de pub, pas de spam : juste un appel ou un texto pour votre soumission. <a href="confidentialite.html">Confidentialité</a></p></form>' +
+        '<button type="button" class="quiz-back" data-back>← Retour</button>';
+      card.classList.remove('quiz-step-in'); void card.offsetWidth; card.classList.add('quiz-step-in');
+    }
+    function renderDone(failed) {
+      var k = (ans.projet_c || '');
+      var price = '';
+      if (k && k !== 'plusieurs') price = '<p class="quiz-price">Prix de départ pour ce travail : <strong>à partir de ' + fmt(minPrix(k)) + '</strong>.<br>Le prix final est écrit après une mesure gratuite sur place.</p>';
+      else price = '<p class="quiz-price">Le prix est écrit après une visite et des mesures gratuites. <a href="estimation.html">Voir l\'estimation en ligne</a></p>';
+      var head = failed ? '<h3 class="quiz-q" id="quiz-q">Presque!</h3><p>L\'envoi n\'a pas passé. Appelez-nous ou écrivez-nous, c\'est tout aussi rapide.</p>'
+                        : '<div class="quiz-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#1B1F22" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><h3 class="quiz-q" id="quiz-q">Merci' + (ans.prenom ? ' ' + esc(ans.prenom) : '') + '!</h3><p>On vise de vous rappeler en moins de 24 h.</p>';
+      card.innerHTML = progress(5) + head + '<ul class="quiz-sum">' + summary().map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' + price +
+        '<div class="quiz-done-actions"><a class="btn" href="tel:' + TEL + '">Appeler ' + TEL_AFF + '</a><a class="btn btn-ghost" href="' + smsHref() + '">Envoyer un texto</a>' +
+        (failed ? '<a class="btn btn-ghost" href="contact.html?service=' + encodeURIComponent(k === 'plusieurs' || !k ? '' : k) + '&details=' + encodeURIComponent(summary().join(' · ')) + '">Écrire par le formulaire</a>' : '') + '</div>';
+      card.classList.remove('quiz-step-in'); void card.offsetWidth; card.classList.add('quiz-step-in');
+    }
+
+    card.addEventListener('click', function (e) {
+      var opt = e.target.closest('.quiz-opt');
+      if (opt) {
+        var st = STEPS[i]; ans[st.k] = opt.getAttribute('data-v'); if (st.k === 'projet') ans.projet_c = opt.getAttribute('data-c');
+        card.querySelectorAll('.quiz-opt').forEach(function (b) { b.setAttribute('aria-checked', b === opt ? 'true' : 'false'); });
+        vib();
+        setTimeout(function () { i++; if (i < STEPS.length) renderQuestion(); else renderForm(); focusHead(); scrollTop(); }, reduce ? 0 : 230);
+        return;
+      }
+      if (e.target.closest('[data-back]')) {
+        if (i >= STEPS.length) i = STEPS.length - 1; else i = Math.max(0, i - 1);
+        renderQuestion(); focusHead();
+      }
+    });
+    card.addEventListener('submit', function (e) {
+      var f = e.target.closest('[data-quiz-form]'); if (!f) return; e.preventDefault();
+      if (sent) return;
+      var tel = f.telephone.value.trim(), digits = tel.replace(/\D/g, '');
+      ans.prenom = f.prenom.value.trim(); ans.telephone = tel;
+      if (f['adresse-web'].value) return;
+      if (digits.length < 10) { f.telephone.setAttribute('aria-invalid', 'true'); f.querySelector('[data-err]').textContent = 'Entrez un numéro de téléphone complet (10 chiffres).'; f.telephone.focus(); return; }
+      var btn = f.querySelector('.quiz-submit'); btn.disabled = true; btn.textContent = 'Envoi…';
+      var body = new URLSearchParams({ 'form-name': 'quiz', projet: ans.projet || '', maison: ans.maison || '', ville: ans.ville || '', delai: ans.delai || '', prenom: ans.prenom, telephone: tel, 'adresse-web': '' });
+      var fail = function () { renderDone(true); focusHead(); };
+      var ctl = ('AbortController' in window) ? new AbortController() : null; var to = setTimeout(function () { if (ctl) ctl.abort(); }, 12000);
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString(), signal: ctl ? ctl.signal : undefined })
+        .then(function (r) {
+          clearTimeout(to);
+          if (!r.ok) return fail();
+          sent = true; renderDone(false); focusHead(); scrollTop();
+          try { if (window.gtag) window.gtag('event', 'generate_lead', { method: 'quiz' }); if (window.fbq) window.fbq('track', 'Lead'); } catch (x) {}
+        }).catch(function () { clearTimeout(to); fail(); });
+    });
+    card.addEventListener('input', function (e) { if (e.target.name === 'telephone') { e.target.removeAttribute('aria-invalid'); var er = card.querySelector('[data-err]'); if (er) er.textContent = ''; } });
+    card.addEventListener('focusin', function (e) { if (e.target.matches('input')) setTimeout(function () { try { e.target.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (x) {} }, 320); });
+    renderQuestion();
+    // Dans le quiz, la barre Appeler / Texto / Soumission du bas est cachée : le quiz a ses propres boutons
+    var qs2 = document.getElementById('quiz');
+    if (qs2 && 'IntersectionObserver' in window) new IntersectionObserver(function (es) { document.body.classList.toggle('in-quiz', es[0].isIntersecting && es[0].intersectionRatio > 0.25); }, { threshold: [0, 0.25, 0.5] }).observe(qs2);
+  })();
+
+  /* ---------- Clavier ouvert sur cellulaire : on cache la barre d'appel du bas ---------- */
+  document.addEventListener('focusin', function (e) { if (e.target.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]), textarea, select')) document.body.classList.add('kbd'); });
+  document.addEventListener('focusout', function () { setTimeout(function () { var a = document.activeElement; if (!a || !a.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]), textarea, select')) document.body.classList.remove('kbd'); }, 60); });
 
   /* ---------- Bande saisonnière : visible seulement les mois indiqués ---------- */
   document.querySelectorAll('[data-season]').forEach(function (bar) {
@@ -407,6 +524,7 @@
   var svcParam = qs.get('service');
   if (svcParam) svcParam.split(',').forEach(function (k) { var c = document.querySelector('[data-svc="' + k + '"]'); if (c) c.checked = true; });
   var det = qs.get('details'), ta = document.getElementById('c-msg');
+  var vq = qs.get('ville'), vi = document.getElementById('c-ville'); if (vq && vi && !vi.value) vi.value = vq;
   if (det && ta && !ta.value) ta.value = det;
 
   /* ---------- Badges RBQ / assurance (config.js) ---------- */
@@ -475,7 +593,12 @@
       sim.classList.add('is-ready');
     };
     photo.onload = masque.onload = ready;
-    photo.src = sim.getAttribute('data-sim-photo'); masque.src = sim.getAttribute('data-masque');
+    // Les images du simulateur (≈ 280 Ko) ne se chargent que lorsque la section approche de l'écran
+    var startLoad = function () { photo.src = sim.getAttribute('data-sim-photo'); masque.src = sim.getAttribute('data-masque'); };
+    if ('IntersectionObserver' in window) {
+      var sio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { sio.disconnect(); startLoad(); } }, { rootMargin: '600px 0px' });
+      sio.observe(sim);
+    } else startLoad();
     var paint = function (hex) {
       if (!base) return;
       if (!hex) { sim.classList.remove('is-colored'); return; }
